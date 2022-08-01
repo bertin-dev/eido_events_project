@@ -4,7 +4,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import '../constants.dart';
-import '../models/slider_model.dart';
 import '../widgets/bottom_widget.dart';
 import '../widgets/introView.dart';
 import 'login_page.dart';
