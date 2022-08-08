@@ -1,5 +1,6 @@
 
 import 'package:eido_events_project/pages/forget_password_page.dart';
+import 'package:eido_events_project/pages/home_page.dart';
 import 'package:eido_events_project/pages/register_page.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -177,7 +178,7 @@ class _LoginPageState extends State<LoginPage> {
                           color: labelColorTextField,
                         ),
 
-                        SizedBox(height: hv * 4),//4
+                        SizedBox(height: hv * 2),//4
 
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -200,7 +201,7 @@ class _LoginPageState extends State<LoginPage> {
                                         }
                                       });
                                     },
-                                    activeColor: activeColorSwitch,
+                                    activeColor: iconColor,
                                     inactiveTrackColor: Colors.grey,
                                     inactiveThumbColor: Colors.grey,
                                   ),
@@ -229,7 +230,7 @@ class _LoginPageState extends State<LoginPage> {
                           ],
                         ),
 
-                        SizedBox(height: hv * 5),
+                        SizedBox(height: hv * 2),
 
                         Column(
                           children: <Widget>[
@@ -240,8 +241,8 @@ class _LoginPageState extends State<LoginPage> {
                                 text: 'Se connecter',
                                 textColor: Colors.white,
                                 onPressed: () async {
-                                  print("-----------------");
-                                  //authentication(context);
+                                  Navigator.of(context, rootNavigator: true)
+                                      .pushNamed(HomePageView.pageName);
                                 },
                               ),
                             ),
@@ -271,7 +272,7 @@ class _LoginPageState extends State<LoginPage> {
                             ),*/
                               ],
                             ),
-                            SizedBox(height: hv * 3),
+                            SizedBox(height: hv * 2),
 
                             Row(
                               children: [
@@ -337,7 +338,7 @@ class _LoginPageState extends State<LoginPage> {
                               ],
                             ),
 
-                            SizedBox(height: hv * 5),
+                            SizedBox(height: hv * 2),
 
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -360,7 +361,7 @@ class _LoginPageState extends State<LoginPage> {
                               ],
                             ),
 
-                            SizedBox(height: hv * 3),
+                            SizedBox(height: hv * 2),
 
                           ],
                         ),

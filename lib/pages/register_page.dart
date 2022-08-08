@@ -183,7 +183,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             ),
 
                             Wrap(
-                              spacing: 8.0,
+                              spacing: 3.0,
                               direction: Axis.horizontal,
                               children: [
                                 const Text(
@@ -214,20 +214,19 @@ class _RegisterPageState extends State<RegisterPage> {
                                 ),
                               ],
                             ),
-                            SizedBox(height: hv * 8),
+                            SizedBox(height: hv * 4),
 
                             Wrap(
-                              spacing: 8.0,
+                              spacing: 3.0,
                               direction: Axis.horizontal,
                               alignment: WrapAlignment.center,
                               //mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 const Text(
-                                  'Vous avez un compte? ',
+                                  'Vous avez un compte?',
                                   style: TextStyle(fontSize: 15.0),
                                 ),
-                                Expanded(
-                                  child: GestureDetector(
+                                GestureDetector(
                                     onTap: () {
                                       Navigator.of(context, rootNavigator: true)
                                           .pushNamed(LoginPage.pageName);
@@ -236,11 +235,11 @@ class _RegisterPageState extends State<RegisterPage> {
                                       'Se connecter',
                                       style: TextStyle(fontSize: 16.0, color: kPrimaryColor),
                                     ),
-                                  ),)
+                                  ),
                               ],
                             ),
 
-                            SizedBox(height: hv * 7),
+                            SizedBox(height: hv * 5),
 
                           ],
                         ),
