@@ -1,4 +1,6 @@
 
+import 'package:eido_events_project/pages/home_page.dart';
+import 'package:eido_events_project/pages/notifications_page.dart';
 import 'package:eido_events_project/pages/onbording_page.dart';
 import 'package:eido_events_project/pages/register_page.dart';
 import 'package:eido_events_project/pages/success_page.dart';
@@ -31,6 +33,10 @@ class RouteGenerator {
         return MaterialPageRoute(settings: routeSettings, builder: (context) => const ForgetPasswordPageView());
       case ResetForgetPasswordPageView.pageName:
         return MaterialPageRoute(settings: routeSettings, builder: (context) => const ResetForgetPasswordPageView());
+      case HomePageView.pageName:
+        return MaterialPageRoute(settings: routeSettings, builder: (context) => const HomePageView());
+      case NotificationsPageView.pageName:
+        return MaterialPageRoute(settings: routeSettings, builder: (context) => const NotificationsPageView());
       default:
         return MaterialPageRoute(settings: routeSettings, builder: (context) => const SplashScreen());
 

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:eido_events_project/constants.dart';
 import 'package:eido_events_project/pages/login_page.dart';
 import 'package:flutter/material.dart';
 
@@ -33,7 +34,7 @@ class _SplashScreenState extends State<SplashScreen> {
     final hv =MediaQuery.of(context).size.height/100;
     final wv =MediaQuery.of(context).size.width/100;
     return Scaffold(
-      backgroundColor: const Color(0xffD9532D),
+      backgroundColor: kPrimaryColor,
       body: Container(
         decoration: const BoxDecoration(
             image: DecorationImage(

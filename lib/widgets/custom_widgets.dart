@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
+import '../pages/home_page.dart';
 
 
 class CustomButton extends StatelessWidget {
@@ -78,6 +79,8 @@ class _CustomButtonWithLoadingState extends State<CustomButtonWithLoading> {
           setState(() {
             isLoading ? null : _startLoading();
           });
+          Navigator.of(context, rootNavigator: true)
+              .pushNamed(HomePageView.pageName);
         },
         style: ElevatedButton.styleFrom(
           primary: widget.color,

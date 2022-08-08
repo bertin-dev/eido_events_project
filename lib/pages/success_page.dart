@@ -39,7 +39,7 @@ class _SuccessPageViewState extends State<SuccessPageView> {
                 SizedBox(height: hv * 8.0),
                 const Text('Félicitations', style:TextStyle(fontSize: 35.0, color: kPrimaryColor, fontWeight: FontWeight.w700)),
                 SizedBox(height: hv * 2),
-                const Text('Votre compte a été crée avec succès', style:TextStyle(fontSize: 16.0, color: succesTextColor, fontWeight: FontWeight.w400)),
+                const Text('Votre compte a été crée avec succès', style:TextStyle(fontSize: 16.0, color: successTextColor, fontWeight: FontWeight.w400)),
                 SizedBox(height: hv * 6),
                 Column(
                   children: <Widget>[

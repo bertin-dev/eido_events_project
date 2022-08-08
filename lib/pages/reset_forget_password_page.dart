@@ -1,3 +1,4 @@
+import 'package:eido_events_project/pages/success_page.dart';
 import 'package:flutter/material.dart';
 import 'package:eido_events_project/pages/login_page.dart';
 import 'package:eido_events_project/pages/otp_checking_page.dart';
@@ -140,7 +141,7 @@ class _ResetForgetPasswordPageState extends State<ResetForgetPasswordPage> {
                                 textColor: Colors.white,
                                 onPressed: () async {
                                   Navigator.of(context, rootNavigator: true)
-                                      .pushNamed(OtpCheckingPage.pageName);
+                                      .pushNamed(SuccessPageView.pageName);
                                 },
                               ),
                             ),

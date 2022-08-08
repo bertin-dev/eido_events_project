@@ -1,3 +1,4 @@
+import 'package:eido_events_project/pages/reset_forget_password_page.dart';
 import 'package:eido_events_project/pages/success_page.dart';
 import 'package:flutter/material.dart';
 import '../constants.dart';
@@ -140,7 +141,7 @@ class _OtpCheckingPageState extends State<OtpCheckingPage> {
                                   textColor: Colors.white,
                                   onPressed: () async {
                                     Navigator.of(context, rootNavigator: true)
-                                        .pushNamed(SuccessPageView.pageName);
+                                        .pushNamed(ResetForgetPasswordPageView.pageName);
                                     //authentication(context);
                                   },
                                 ),
@@ -197,7 +198,7 @@ class OtpInput extends StatelessWidget {
       height: 53,
       width: 57.5,
       child: TextField(
-        style: const TextStyle(fontWeight: FontWeight.w600, color: succesTextColor),
+        style: const TextStyle(fontWeight: FontWeight.w600, color: successTextColor),
         autofocus: autoFocus,
         textAlign: TextAlign.center,
         keyboardType: TextInputType.number,
@@ -205,7 +206,7 @@ class OtpInput extends StatelessWidget {
         maxLength: 1,
         cursorColor: Theme.of(context).primaryColor,
         decoration: InputDecoration(
-            labelStyle: const TextStyle(fontWeight: FontWeight.w600, fontSize: 24.0, color: succesTextColor),
+            labelStyle: const TextStyle(fontWeight: FontWeight.w600, fontSize: 24.0, color: successTextColor),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(4.0),
               borderSide: const BorderSide(color: kPrimaryColor,),
