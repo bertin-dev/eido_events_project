@@ -1,4 +1,5 @@
 
+import 'package:eido_events_project/pages/delegate_account/delegate_login_page.dart';
 import 'package:eido_events_project/pages/home_page.dart';
 import 'package:eido_events_project/pages/notifications_page.dart';
 import 'package:eido_events_project/pages/onbording_page.dart';
@@ -37,6 +38,8 @@ class RouteGenerator {
         return MaterialPageRoute(settings: routeSettings, builder: (context) => const HomePageView());
       case NotificationsPageView.pageName:
         return MaterialPageRoute(settings: routeSettings, builder: (context) => const NotificationsPageView());
+      case DelegateLoginPage.pageName:
+        return MaterialPageRoute(settings: routeSettings, builder: (context) => const DelegateLoginPage());
       default:
         return MaterialPageRoute(settings: routeSettings, builder: (context) => const SplashScreen());
 
