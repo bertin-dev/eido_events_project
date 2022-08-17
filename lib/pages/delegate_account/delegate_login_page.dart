@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import '../../constants.dart';
 import '../../widgets/bottom_widget.dart';
 import '../../widgets/custom_widgets.dart';
+import 'delegate_login_step2_page.dart';
+import 'events_page.dart';
 
 
 void main(){
@@ -211,13 +213,13 @@ class _LoginPageState extends State<DelegateLoginPage> {
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.only(bottom: 25.0, left: 10.0, right: 10.0),
-                              child: CustomButtonWithLoading(
+                              child: CustomButton(
                                 color: kPrimaryColor,
                                 text: 'Se connecter',
                                 textColor: Colors.white,
                                 onPressed: () async {
                                   Navigator.of(context, rootNavigator: true)
-                                      .pushNamed(HomePageView.pageName);
+                                      .pushNamed(DelegateLoginStep2PageView.pageName);
                                 },
                               ),
                             ),
@@ -247,38 +249,11 @@ class _LoginPageState extends State<DelegateLoginPage> {
                             ),*/
                               ],
                             ),
-                            SizedBox(height: hv * 2),
+                            SizedBox(height: hv * 4),
 
                             Row(
                               children: [
                                 Expanded(
-                                  flex: 1,
-                                  child: RaisedButton(
-                                    padding: const EdgeInsets.symmetric(vertical: 13.0),
-                                    color: Colors.white,
-                                    shape:  RoundedRectangleBorder(
-                                      side: const BorderSide(width: 1.0, color: kPrimaryColor),
-                                      borderRadius: BorderRadius.circular(12.0),
-                                    ),
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Image.asset('assets/images/qrcode_img.png',
-                                            width: 24,
-                                            height: 24,
-                                            fit: BoxFit.contain),
-                                      ],
-                                    ),
-                                    onPressed: () {
-                                      if (kDebugMode) {
-                                        print("call QR Code");
-                                      }
-                                    },
-                                  ),
-                                ),
-                                const SizedBox(width: 10.0),
-                                Expanded(
-                                  flex: 4,
                                   child: RaisedButton(
                                     padding: const EdgeInsets.symmetric(vertical: 13.0),
                                     color: Colors.white,
@@ -291,7 +266,8 @@ class _LoginPageState extends State<DelegateLoginPage> {
                                       borderRadius: BorderRadius.circular(12.0),
                                     ),
                                     onPressed: () {
-                                      //TODO: Implement event associate functionality
+                                      Navigator.of(context, rootNavigator: true)
+                                          .pushNamed(EventsPageView.pageName);
                                     },
                                     child: Row(
                                       mainAxisAlignment: MainAxisAlignment.center,

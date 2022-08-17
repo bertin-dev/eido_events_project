@@ -21,4 +21,5 @@ const smallTextCard = Color(0xff484D70);
 const bgAvatar = Color(0xffC4C4C4);
 const greyColor = Color(0xff828282);
 const notifBgColor = Color(0xffF6F6F6);
+const violetColor = Color(0xffBB6BD9);
 const double defaultPadding = 16.0;

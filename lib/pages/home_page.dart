@@ -1,9 +1,11 @@
 
 import 'package:badges/badges.dart';
 import 'package:bottom_animation/bottom_animation.dart';
+import 'package:eido_events_project/pages/delegate_account/delegate_login_page.dart';
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
+import 'delegate_account/delegate_login_step2_page.dart';
 import 'notifications_page.dart';
 
 class HomePageView extends StatefulWidget {
@@ -33,7 +35,10 @@ class _HomePageViewState extends State<HomePageView> {
               elevation: 0.0,
               actions: [
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context, rootNavigator: true)
+                        .pushNamed(DelegateLoginPage.pageName);
+                  },
                   icon: const Icon(Icons.calendar_month, color: whiteColor,),
                 ),
                 Badge(

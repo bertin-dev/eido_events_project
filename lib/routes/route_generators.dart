@@ -6,6 +6,9 @@ import 'package:eido_events_project/pages/onbording_page.dart';
 import 'package:eido_events_project/pages/register_page.dart';
 import 'package:eido_events_project/pages/success_page.dart';
 import 'package:flutter/material.dart';
+import '../pages/delegate_account/delegate_home_page.dart';
+import '../pages/delegate_account/delegate_login_step2_page.dart';
+import '../pages/delegate_account/events_page.dart';
 import '../pages/forget_password_page.dart';
 import '../pages/login_page.dart';
 import '../pages/otp_checking_page.dart';
@@ -40,6 +43,12 @@ class RouteGenerator {
         return MaterialPageRoute(settings: routeSettings, builder: (context) => const NotificationsPageView());
       case DelegateLoginPage.pageName:
         return MaterialPageRoute(settings: routeSettings, builder: (context) => const DelegateLoginPage());
+      case DelegateLoginStep2PageView.pageName:
+        return MaterialPageRoute(settings: routeSettings, builder: (context) => const DelegateLoginStep2PageView());
+      case DelegateHomePageView.pageName:
+        return MaterialPageRoute(settings: routeSettings, builder: (context) => const DelegateHomePageView());
+      case EventsPageView.pageName:
+        return MaterialPageRoute(settings: routeSettings, builder: (context) => const EventsPageView());
       default:
         return MaterialPageRoute(settings: routeSettings, builder: (context) => const SplashScreen());
 

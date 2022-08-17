@@ -160,7 +160,7 @@ class _IpasswordFieldState extends State<IpasswordField> {
           ),
         ),
         labelStyle: TextStyle(fontWeight: FontWeight.w400, fontSize: 15.0, color: widget.color),
-        //filled: true,
+        filled: true,
         //fillColor: Color.fromRGBO(255, 255, 255, 0.8),
         //contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
         /*enabledBorder:const UnderlineInputBorder(
