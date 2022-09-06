@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import '../constants.dart';
 import '../widgets/bottom_widget.dart';
 import '../widgets/custom_widgets.dart';
+import 'location_settings/home_location_settings.dart';
+import 'location_settings/search_location_settings.dart';
 
 
 
@@ -278,7 +280,7 @@ class _LoginPageState extends State<LoginPage> {
                               children: [
                                 Expanded(
                                   flex: 1,
-                                  child: RaisedButton(
+                                  child: MaterialButton(
                                     padding: const EdgeInsets.symmetric(vertical: 13.0),
                                     color: Colors.white,
                                     shape:  RoundedRectangleBorder(
@@ -304,7 +306,7 @@ class _LoginPageState extends State<LoginPage> {
                                 const SizedBox(width: 10.0),
                                 Expanded(
                                   flex: 4,
-                                  child: RaisedButton(
+                                  child: MaterialButton(
                                     padding: const EdgeInsets.symmetric(vertical: 13.0),
                                     color: Colors.white,
                                     /*shape: const ContinuousRectangleBorder(
@@ -317,6 +319,8 @@ class _LoginPageState extends State<LoginPage> {
                                     ),
                                     onPressed: () {
                                       //TODO: Implement event associate functionality
+                                      Navigator.of(context, rootNavigator: true)
+                                          .pushNamed(HomeLocationSettingsPageView.pageName);
                                     },
                                     child: Row(
                                       mainAxisAlignment: MainAxisAlignment.center,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../constants.dart';
 import '../pages/home_page.dart';
@@ -20,7 +21,7 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ButtonTheme(
       minWidth: MediaQuery.of(context).size.width,
-      child: RaisedButton(
+      child: MaterialButton(
         onPressed: onPressed,
         elevation: 5.0,
         textColor: textColor,
@@ -300,30 +301,73 @@ class ItextField extends StatelessWidget {
   }
 }
 
-class ITextFieldOld extends StatelessWidget {
+class ItextFieldImgIcon extends StatelessWidget {
   final String? hintText;
   final String emptyValidatorText;
   final TextEditingController controller;
   void Function(String?)? onSavedFunc;
   final TextInputType? keyboardType;
-  final IconData? icon;
   String? Function(String?)? validator;
   Function(String)? onChangedFunc;
-  final int? maxLength;
+
   final Color? labelColor;
 
-  ITextFieldOld({
+  Function? onChanged;
+  Function? onSuffixTap;
+  String? placeholder;
+  bool? obscureText = false;
+  FocusNode? focus;
+  List<TextInputFormatter>? inputFormatters;
+  Key? key;
+  Widget? suffix;
+  String? selectValue;
+  Widget? prefix;
+  bool disable;
+  Color? backgroundColor;
+  Color? textColor;
+  int ?line;
+  bool? readOnly;
+  double? radius;
+  double? pLeftSuffix;
+  double? pRightSuffix;
+  double? pTopSuffix;
+  double? pBottomSuffix;
+  double? pLeftPreffix;
+  double? pRightPreffix;
+  double? pTopPreffix;
+  double? pBottomPreffix;
+
+  ItextFieldImgIcon({
     Key? key,
     this.hintText,
     required this.emptyValidatorText,
     required this.controller,
     this.onSavedFunc,
     this.keyboardType,
-    this.icon,
     this.validator,
     this.onChangedFunc,
-    this.maxLength,
-    this.labelColor
+    this.labelColor,
+    this.onChanged,
+    this.obscureText,
+    this.inputFormatters,
+    this.focus,
+    this.suffix,
+    this.onSuffixTap,
+    this.prefix,
+    this.disable = false,
+    this.line = 1,
+    this.backgroundColor,
+    this.textColor,
+    this.readOnly = false,
+    this.radius,
+    this.pLeftSuffix,
+    this.pRightSuffix,
+    this.pTopSuffix,
+    this.pBottomSuffix,
+    this.pLeftPreffix,
+    this.pRightPreffix,
+    this.pTopPreffix,
+    this.pBottomPreffix
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -331,50 +375,252 @@ class ITextFieldOld extends StatelessWidget {
       data: ThemeData(
         primaryColor: kPrimaryColor,
       ),
-      child: maxLength != null ? TextFormField(
-        style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 18.0, color: Color(0xff039BE5)),
-        cursorColor: const Color(0xff039BE5),
-        maxLength: maxLength,
+      child: TextFormField(
+        style: TextStyle(fontWeight: FontWeight.w400, color: labelColor),
+        textInputAction: TextInputAction.next,
         keyboardType: keyboardType,
-        decoration: InputDecoration(
-            suffixIcon: Icon(icon, color: const Color(0xff039BE5),),
-            labelText: hintText,
-            labelStyle: TextStyle(fontWeight: FontWeight.w400, fontSize: 18.0, color: labelColor),
-            //prefixIcon: Icon(icon, /*color: Color(0xff039BE5)*/),
-            //hintText: this.hintText,
-            //filled: true,
-            //fillColor: Color.fromRGBO(255, 255, 255, 0.7),
-            //contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 5.0),
-            enabledBorder:const UnderlineInputBorder(
-                borderSide: BorderSide(color: Color(0xff039BE5), width: 2.3, style: BorderStyle.solid)
-            )
-        ),
         validator: validator,
         controller: controller,
         onChanged: onChangedFunc,
         onSaved: onSavedFunc,
-      )
-          :
-      TextFormField(
-        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0, color: Color(0xff039BE5)),
-        keyboardType: keyboardType,
+
+        autofocus: false,
+        focusNode: focus ?? FocusNode(),
+        readOnly: readOnly ?? false,
+        cursorColor: textColor ?? Colors.white,
+        inputFormatters: inputFormatters,
+        minLines: line,
+        maxLines: line,
         decoration: InputDecoration(
-            contentPadding: const EdgeInsets.all(0.0),
-            labelText: hintText,
-            labelStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0, color: labelColor),
-            //filled: true,
-            //fillColor: Color.fromRGBO(255, 255, 255, 0.7),
-            //contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 5.0),
-            enabledBorder:const UnderlineInputBorder(
-                borderSide: BorderSide(color: Color(0xff039BE5), width: 2.0, style: BorderStyle.solid)
-            )
+          suffixIcon: suffix != null
+              ? Container(
+            padding: EdgeInsets.only(left: pLeftSuffix??0, right: pRightSuffix??0, top: pTopSuffix??0, bottom: pBottomSuffix??0),
+            child: suffix ?? const Text(''),
+          )
+              : null,
+          labelStyle: TextStyle(fontWeight: FontWeight.w400, fontSize: 15.0, color: labelColor),
+          prefixIcon: prefix != null
+              ? Container(
+            padding: EdgeInsets.only(left: pLeftPreffix??0, right: pRightPreffix??0, top: pTopPreffix??0, bottom: pBottomPreffix??0),
+            child: prefix ?? const Text(''),
+          )
+              : null,
+          //labelText: hintText,
+          hintText: hintText,
+          filled: true,
+          fillColor: backgroundColor,
+          contentPadding: const EdgeInsets.all(15.0),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(radius!),
+            borderSide: const BorderSide(color: kPrimaryColor,),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(radius!),
+            borderSide: const BorderSide(color: Color(0xffE4DFDF), width: 1.0,
+            ),
+          ),
         ),
-        validator: validator,
-        controller: controller,
-        onChanged: onChangedFunc,
-        onSaved: onSavedFunc,
       )
       ,
     );
   }
 }
+
+class CustomButtonRightIcon extends StatelessWidget {
+  final VoidCallback onPressed;
+  final Color textColor;
+  final String text;
+  final Color color;
+  final String icon;
+  final double radius;
+  final double pVertical;
+  final double pHorizontal;
+
+  const CustomButtonRightIcon({Key? key,
+    required this.onPressed,
+    required this.text,
+    required this.textColor,
+    required this.color,
+    required this.icon,
+    required this.radius,
+    required this.pVertical,
+    required this.pHorizontal
+  }) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return MaterialButton(
+      padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 32),
+      color: color,
+      shape:  RoundedRectangleBorder(
+        side: BorderSide(width: 1.0, color: color),
+        borderRadius: BorderRadius.circular(radius),
+      ),
+      onPressed: onPressed,
+      child: Wrap(
+        direction: Axis.horizontal,
+        alignment: WrapAlignment.center,
+        children: [
+           Text(
+            text,
+            style: TextStyle(
+                fontSize: 16.0, color: textColor, fontWeight: FontWeight.w700, fontFamily: "Inter"),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(width: 12.0),
+          Image.asset(icon,
+            fit: BoxFit.cover,
+            width: 20,
+            height: 20,),
+        ],
+      ),
+    );
+  }
+}
+
+class CustomBtnForAlert extends StatelessWidget {
+  final VoidCallback onPressedBtn;
+  final Color textColorBtn;
+  final String textBtn;
+  final double textSizeBtn;
+  final Color colorBtn;
+  final String? iconLeftBtn;
+  final String? iconRightBtn;
+  final double radiusBtn;
+  final double heightBtn;
+  final double minWidthBtn;
+  final double pTopBtn;
+  final double pBottomBtn;
+  final double pLeftBtn;
+  final double pRightBtn;
+  final double? sPacingBtn;
+
+  const CustomBtnForAlert({Key? key,
+    required this.onPressedBtn,
+    required this.textBtn,
+    required this.textColorBtn,
+    required this.textSizeBtn,
+    required this.colorBtn,
+    this.iconLeftBtn,
+    this.iconRightBtn,
+    required this.radiusBtn,
+    required this.heightBtn,
+    required this.minWidthBtn,
+    required this.pTopBtn,
+    required this.pBottomBtn,
+    required this.pLeftBtn,
+    required this.pRightBtn,
+    this.sPacingBtn
+  }) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return MaterialButton(
+      height: heightBtn,
+      minWidth: minWidthBtn,
+      padding:  EdgeInsets.only(top:pTopBtn, bottom: pBottomBtn, right: pRightBtn, left: pLeftBtn),
+      color: colorBtn,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(radiusBtn)),
+      onPressed: onPressedBtn,
+      child: Row(
+        children: [
+          if(iconLeftBtn != null)...{
+            Image.asset(iconLeftBtn!,
+              fit: BoxFit.cover,
+              width: 20,
+              height: 20,),
+            SizedBox(width: sPacingBtn!),
+          },
+          Text(textBtn,
+            style: TextStyle(color: textColorBtn, fontWeight: FontWeight.w700, fontSize: textSizeBtn), textAlign: TextAlign.center,),
+
+          if(iconRightBtn != null)...{
+            SizedBox(width: sPacingBtn!),
+            Image.asset(iconRightBtn!,
+              fit: BoxFit.cover,
+              width: 20,
+              height: 20,),
+          },
+        ],
+      )
+    );
+  }
+}
+
+class CustomAlertDialogDelete extends StatelessWidget {
+
+  final double radius;
+  final String title;
+  final Color titleColor;
+  final double titleSize;
+  final String body;
+  final Color bodyColor;
+  final double bodySize;
+  final double pLeft;
+  final double pRight;
+  final double pTop;
+  final double pBottom;
+
+  /*final VoidCallback onPressedLeftBtn;
+  final Color textColorLeftBtn;
+  final String textLeftBtn;
+  final double textSizeLeftBtn;
+  final Color colorLeftBtn;
+  final String? iconLeftBtn;
+
+  final double radiusBtn;
+
+  final VoidCallback onPressedRightBtn;
+  final Color textColorRightBtn;
+  final String textRightBtn;
+  final double textSizeRightBtn;
+  final Color colorRightBtn;
+  final String? iconRightBtn;*/
+
+  List<Widget>? action;
+
+
+
+   CustomAlertDialogDelete({Key? key,
+    required this.title,
+    required this.titleColor,
+    required this.titleSize,
+    required this.body,
+    required this.bodyColor,
+    required this.bodySize,
+    required this.radius,
+    required this.pLeft,
+    required this.pRight,
+    required this.pTop,
+    required this.pBottom,
+
+    /*required this.onPressedLeftBtn,
+    required this.textColorLeftBtn,
+    required this.textLeftBtn,
+    required this.textSizeLeftBtn,
+    required this.colorLeftBtn,
+    this.iconLeftBtn,
+    required this.radiusBtn,
+    required this.onPressedRightBtn,
+    required this.textColorRightBtn,
+    required this.textRightBtn,
+    required this.textSizeRightBtn,
+    required this.colorRightBtn,
+    this.iconRightBtn*/
+
+     this.action
+
+  }) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(radius))),
+      title:  Text(title,
+        style:TextStyle(fontSize: titleSize, color: titleColor, fontWeight: FontWeight.w700, fontFamily: "Inter"), textAlign: TextAlign.center,),
+      content: Text(body,
+        style:TextStyle(fontSize: bodySize, color: bodyColor, fontWeight: FontWeight.w400, fontFamily: "Inter"), textAlign: TextAlign.center,),
+      actionsPadding: EdgeInsets.fromLTRB(pRight, pTop, pRight, pBottom),
+      actions: action
+    );
+  }
+}
+
+

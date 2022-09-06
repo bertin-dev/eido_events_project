@@ -6,14 +6,24 @@ import 'package:eido_events_project/pages/onbording_page.dart';
 import 'package:eido_events_project/pages/register_page.dart';
 import 'package:eido_events_project/pages/success_page.dart';
 import 'package:flutter/material.dart';
+import '../pages/associate_account/list_associate_account_page.dart';
+import '../pages/controller_account/controller_home_page.dart';
 import '../pages/delegate_account/delegate_home_page.dart';
 import '../pages/delegate_account/delegate_login_step2_page.dart';
 import '../pages/delegate_account/events_page.dart';
 import '../pages/forget_password_page.dart';
+import '../pages/location_settings/add_location_settings.dart';
+import '../pages/location_settings/add_settings.dart';
+import '../pages/location_settings/edit_location_settings.dart';
+import '../pages/location_settings/home_location_settings.dart';
+import '../pages/location_settings/list_settings.dart';
+import '../pages/location_settings/search_location_settings.dart';
+import '../pages/location_settings/success_location_page.dart';
 import '../pages/login_page.dart';
 import '../pages/otp_checking_page.dart';
 import '../pages/reset_forget_password_page.dart';
 import '../pages/splash_screen.dart';
+import '../widgets/offline_page.dart';
 
 class RouteGenerator {
 
@@ -49,6 +59,36 @@ class RouteGenerator {
         return MaterialPageRoute(settings: routeSettings, builder: (context) => const DelegateHomePageView());
       case EventsPageView.pageName:
         return MaterialPageRoute(settings: routeSettings, builder: (context) => const EventsPageView());
+      case ControllerHomePageView.pageName:
+        return MaterialPageRoute(settings: routeSettings, builder: (context) => const ControllerHomePageView());
+      case HomeLocationSettingsPageView.pageName:
+        return MaterialPageRoute(settings: routeSettings, builder: (context) => const HomeLocationSettingsPageView());
+      case AddLocationSettingsPageView.pageName:
+        return MaterialPageRoute(settings: routeSettings, builder: (context) =>
+         AddLocationSettingsPageView());
+      case SearchLocationSettingsPageView.pageName:
+        return MaterialPageRoute(settings: routeSettings, builder: (context) => const SearchLocationSettingsPageView());
+      case EditLocationSettingsPageView.pageName:
+      Map param = routeSettings.arguments as Map;
+        return MaterialPageRoute(settings: routeSettings, builder: (context) =>
+            EditLocationSettingsPageView(
+              locationSettings: param["locationSettings"],
+            title: param["title"]
+            ));
+      case SuccessLocationPageView.pageName:
+        Map param = routeSettings.arguments as Map;
+        return MaterialPageRoute(settings: routeSettings, builder: (context) =>
+            SuccessLocationPageView(
+                saved: param["saved"]
+            ));
+      case AddSettingsPageView.pageName:
+        return MaterialPageRoute(settings: routeSettings, builder: (context) => AddSettingsPageView());
+      case OfflinePagePageView.pageName:
+        return MaterialPageRoute(settings: routeSettings, builder: (context) => const OfflinePagePageView());
+      case ListSettingsPageView.pageName:
+        return MaterialPageRoute(settings: routeSettings, builder: (context) => const ListSettingsPageView());
+      case ListAssociateAccountPageView.pageName:
+        return MaterialPageRoute(settings: routeSettings, builder: (context) => const ListAssociateAccountPageView());
       default:
         return MaterialPageRoute(settings: routeSettings, builder: (context) => const SplashScreen());
 

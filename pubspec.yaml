@@ -39,15 +39,23 @@ dependencies:
   animations: ^2.0.3
   logger: ^1.1.0
   intl: ^0.17.0
-  #http: ^0.13.4
+  http: ^0.13.5
   #http_parser: ^4.0.1
-  flutter_launcher_icons: ^0.9.3
+  flutter_launcher_icons: ^0.10.0
   custom_dialog: ^0.0.2
-  timeago: ^3.2.2
-  timeago_flutter: ^1.1.0
+  timeago: ^3.3.0
+  timeago_flutter: ^1.2.0
   bottom_animation: ^2.0.0
-  awesome_dialog: ^2.2.1
   badges: ^2.0.3
+  #qr_code_scanner: ^1.0.1
+  qr_flutter: ^4.0.0
+  flutter_typeahead: ^4.0.0
+  image_picker: ^0.8.5+3
+  permission_handler: ^10.0.0
+  path_provider: ^2.0.11
+  #path: ../
+  video_player: ^2.1.4
+  flutter_share: ^2.0.0
 
 flutter_icons:
   android: "launcher_icon"
@@ -83,6 +91,9 @@ flutter:
     - assets/images/onboarding/
     - assets/images/home_page/
     - assets/images/delegate_account/
+    - assets/images/controller_account/
+    - assets/images/location_settings/
+    - assets/images/associate_account/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -387,13 +387,13 @@ class _EventsPageViewState extends State<EventsPageView> {
             ),
             actionsPadding: EdgeInsets.fromLTRB(11, 0, 29, 15.17),
           actions: [
-           FlatButton(
+            MaterialButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
               child: const Text('Cancel', style: TextStyle(color: kPrimaryColor)),
             ),
-             FlatButton(
+            MaterialButton(
                 height: 40,
                 minWidth: 117,
                 padding: const EdgeInsets.only(top:2.0, bottom: 2.0),

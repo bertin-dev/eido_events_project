@@ -254,7 +254,7 @@ class _LoginPageState extends State<DelegateLoginPage> {
                             Row(
                               children: [
                                 Expanded(
-                                  child: RaisedButton(
+                                  child: MaterialButton(
                                     padding: const EdgeInsets.symmetric(vertical: 13.0),
                                     color: Colors.white,
                                     /*shape: const ContinuousRectangleBorder(

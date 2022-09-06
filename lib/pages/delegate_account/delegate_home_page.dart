@@ -87,7 +87,7 @@ class _DelegateHomePageViewState extends State<DelegateHomePageView> {
                                       color: Colors.white,
                                       size: 25,
                                     ),
-                                    onPressed: () => print("Menu"),
+                                    onPressed: () => Navigator.of(context).pop(),
                                   ),
 
                                   const Text("EidoEvents", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400, color: Color.fromRGBO(255, 255, 255, 0.8)),textAlign: TextAlign.center,),

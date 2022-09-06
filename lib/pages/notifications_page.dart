@@ -98,7 +98,8 @@ class _NotificationsPageViewState extends State<NotificationsPageView> {
                 ),
                 onDismissed: (direction){
                   if(direction == DismissDirection.endToStart){
-                    Scaffold.of(context).showSnackBar(const SnackBar(content: Text("Suppression effectué avec succès.")));
+                    print("Suppression effectué avec succès");
+                    //Scaffold.of(context).showSnackBar(const SnackBar(content: Text("Suppression effectué avec succès.")));
                   }
                 },
               );

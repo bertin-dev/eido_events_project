@@ -108,7 +108,7 @@ class _OnboardingPageState extends State<OnboardingPage> with SingleTickerProvid
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
 
-                          Expanded(child:  FlatButton(
+                          Expanded(child:  MaterialButton(
                             onPressed: () {
                               Navigator.of(context, rootNavigator: true)
                                   .popAndPushNamed(LoginPage.pageName);
@@ -116,7 +116,7 @@ class _OnboardingPageState extends State<OnboardingPage> with SingleTickerProvid
                             child: const Text('Passer', style: TextStyle(color: Color(0xFF2E3233))),
                           ),),
                           Expanded(
-                            child: FlatButton(
+                            child: MaterialButton(
                               height: 54,
                               padding: const EdgeInsets.only(top:2.0, bottom: 2.0),
                               color: kPrimaryColor,
@@ -136,7 +136,7 @@ class _OnboardingPageState extends State<OnboardingPage> with SingleTickerProvid
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
 
-                          Expanded(child:  FlatButton(
+                          Expanded(child:  MaterialButton(
                             onPressed: () {
                               Navigator.of(context, rootNavigator: true)
                                   .popAndPushNamed(LoginPage.pageName);
@@ -144,7 +144,7 @@ class _OnboardingPageState extends State<OnboardingPage> with SingleTickerProvid
                             child: const Text('Passer', style: TextStyle(color: Color(0xFF2E3233))),
                           ),),
                           Expanded(
-                            child: FlatButton(
+                            child: MaterialButton(
                               height: 54,
                               padding: const EdgeInsets.only(top:2.0, bottom: 2.0),
                               color: kPrimaryColor,
