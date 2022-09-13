@@ -25,4 +25,6 @@ const violetColor = Color(0xffBB6BD9);
 const grayForProfilName = Color(0xff4F4F4F);
 const grayLocation = Color(0xffF2F2F2);
 const blackTextFieldRightIcon = Color(0xff130F26);
+const redBtn = Color(0xffFF0F00);
+const switchGreenColor = Color(0xff219653);
 const double defaultPadding = 16.0;

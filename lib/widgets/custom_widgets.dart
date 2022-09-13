@@ -336,6 +336,7 @@ class ItextFieldImgIcon extends StatelessWidget {
   double? pRightPreffix;
   double? pTopPreffix;
   double? pBottomPreffix;
+  bool? suffixbgColor;
 
   ItextFieldImgIcon({
     Key? key,
@@ -367,7 +368,8 @@ class ItextFieldImgIcon extends StatelessWidget {
     this.pLeftPreffix,
     this.pRightPreffix,
     this.pTopPreffix,
-    this.pBottomPreffix
+    this.pBottomPreffix,
+    this.suffixbgColor = false
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -392,8 +394,22 @@ class ItextFieldImgIcon extends StatelessWidget {
         minLines: line,
         maxLines: line,
         decoration: InputDecoration(
-          suffixIcon: suffix != null
+          suffixIcon: suffix != null && suffixbgColor==false
               ? Container(
+            padding: EdgeInsets.only(left: pLeftSuffix??0, right: pRightSuffix??0, top: pTopSuffix??0, bottom: pBottomSuffix??0),
+            child: suffix ?? const Text(''),
+          )
+              : suffix != null && suffixbgColor==true ?
+                Container(
+            decoration: const BoxDecoration(
+              color: kPrimaryColor,
+              /*boxShadow: [
+                  BoxShadow(color: Colors.green, spreadRadius: 3)
+                ]*/
+              borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(12.0),
+                  bottomRight: Radius.circular(12.0)),
+            ),
             padding: EdgeInsets.only(left: pLeftSuffix??0, right: pRightSuffix??0, top: pTopSuffix??0, bottom: pBottomSuffix??0),
             child: suffix ?? const Text(''),
           )
@@ -493,6 +509,8 @@ class CustomBtnForAlert extends StatelessWidget {
   final double pLeftBtn;
   final double pRightBtn;
   final double? sPacingBtn;
+  final double? widthIconBtn;
+  final double? heightIconBtn;
 
   const CustomBtnForAlert({Key? key,
     required this.onPressedBtn,
@@ -509,7 +527,9 @@ class CustomBtnForAlert extends StatelessWidget {
     required this.pBottomBtn,
     required this.pLeftBtn,
     required this.pRightBtn,
-    this.sPacingBtn
+    this.sPacingBtn,
+    this.widthIconBtn,
+    this.heightIconBtn,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -525,8 +545,8 @@ class CustomBtnForAlert extends StatelessWidget {
           if(iconLeftBtn != null)...{
             Image.asset(iconLeftBtn!,
               fit: BoxFit.cover,
-              width: 20,
-              height: 20,),
+              width: widthIconBtn!=null ? widthIconBtn! : 20,
+              height: heightIconBtn!=null ? heightIconBtn! : 20,),
             SizedBox(width: sPacingBtn!),
           },
           Text(textBtn,
@@ -536,8 +556,8 @@ class CustomBtnForAlert extends StatelessWidget {
             SizedBox(width: sPacingBtn!),
             Image.asset(iconRightBtn!,
               fit: BoxFit.cover,
-              width: 20,
-              height: 20,),
+              width: widthIconBtn!=null ? widthIconBtn! : 20,
+              height: heightIconBtn!=null ? heightIconBtn! : 20,),
           },
         ],
       )

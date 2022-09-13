@@ -6,7 +6,11 @@ import 'package:eido_events_project/pages/onbording_page.dart';
 import 'package:eido_events_project/pages/register_page.dart';
 import 'package:eido_events_project/pages/success_page.dart';
 import 'package:flutter/material.dart';
+import '../pages/associate_account/detail_profils_associate_account.dart';
 import '../pages/associate_account/list_associate_account_page.dart';
+import '../pages/associate_account/menu_edit_associate_account.dart';
+import '../pages/associate_account/privilege_associate_account.dart';
+import '../pages/associate_account/profile_activity.dart';
 import '../pages/controller_account/controller_home_page.dart';
 import '../pages/delegate_account/delegate_home_page.dart';
 import '../pages/delegate_account/delegate_login_step2_page.dart';
@@ -89,6 +93,14 @@ class RouteGenerator {
         return MaterialPageRoute(settings: routeSettings, builder: (context) => const ListSettingsPageView());
       case ListAssociateAccountPageView.pageName:
         return MaterialPageRoute(settings: routeSettings, builder: (context) => const ListAssociateAccountPageView());
+      case MenuEditAssociateAccountPageView.pageName:
+        return MaterialPageRoute(settings: routeSettings, builder: (context) => const MenuEditAssociateAccountPageView());
+      case ProfileActivityAssociateAccountPageView.pageName:
+        return MaterialPageRoute(settings: routeSettings, builder: (context) => const ProfileActivityAssociateAccountPageView());
+      case PrivilegeAssociateAccountPageView.pageName:
+        return MaterialPageRoute(settings: routeSettings, builder: (context) => const PrivilegeAssociateAccountPageView());
+      case DetailProfileAssociateAccountPageView.pageName:
+        return MaterialPageRoute(settings: routeSettings, builder: (context) => const DetailProfileAssociateAccountPageView());
       default:
         return MaterialPageRoute(settings: routeSettings, builder: (context) => const SplashScreen());
 
