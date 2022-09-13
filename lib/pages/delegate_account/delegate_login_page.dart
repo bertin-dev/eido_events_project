@@ -5,7 +5,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants.dart';
-import '../../widgets/bottom_widget.dart';
 import '../../widgets/custom_widgets.dart';
 import 'delegate_login_step2_page.dart';
 import 'events_page.dart';
@@ -322,11 +321,7 @@ class _LoginPageState extends State<DelegateLoginPage> {
                 ),
 
               ],
-            ),
-            Positioned(
-                bottom: 0,
-                width: MediaQuery.of(context).size.width,
-                child: const BottomWidget())
+            )
           ],
         )
       );

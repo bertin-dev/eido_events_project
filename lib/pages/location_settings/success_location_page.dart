@@ -1,7 +1,5 @@
 import 'package:eido_events_project/constants.dart';
 import 'package:flutter/material.dart';
-
-import '../../widgets/bottom_widget.dart';
 import '../../widgets/custom_widgets.dart';
 import 'add_settings.dart';
 

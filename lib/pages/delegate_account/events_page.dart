@@ -4,7 +4,6 @@ import '../../constants.dart';
 import '../../models/events_delegate_details_model.dart';
 import '../../models/events_delegate_model.dart';
 import '../../models/filter_model.dart';
-import '../../widgets/bottom_widget.dart';
 import '../../widgets/custom_widgets.dart';
 import '../../widgets/filter_row.dart';
 
@@ -136,7 +135,6 @@ class _EventsPageViewState extends State<EventsPageView> {
                                 ),
                               ),
                               const SizedBox(height: 45),
-                              const BottomWidget()
                             ],
                           ),
                         ),
@@ -326,11 +324,7 @@ class _EventsPageViewState extends State<EventsPageView> {
                       );
                     },
                   ),
-                ),
-                Positioned(
-                    bottom: 0,
-                    width: MediaQuery.of(context).size.width,
-                    child: const BottomWidget())
+                )
               ],
             ),
           );

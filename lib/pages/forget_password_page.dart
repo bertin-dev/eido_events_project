@@ -3,7 +3,6 @@ import 'package:eido_events_project/pages/login_page.dart';
 import 'package:eido_events_project/pages/otp_checking_page.dart';
 import 'package:flutter/foundation.dart';
 import '../constants.dart';
-import '../widgets/bottom_widget.dart';
 import '../widgets/custom_widgets.dart';
 
 
@@ -142,11 +141,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                   ),
                 ),
               ],
-            ),
-            Positioned(
-                bottom: 0,
-                width: MediaQuery.of(context).size.width,
-                child: const BottomWidget())
+            )
           ],
         )
       );

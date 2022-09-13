@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
-import 'bottom_widget.dart';
 
 class OfflinePagePageView extends StatelessWidget {
   const OfflinePagePageView({Key? key}) : super(key: key);
@@ -135,11 +134,7 @@ class OfflinePagePageView extends StatelessWidget {
                           ],
                         ),
                       ),
-                    },
-                    Positioned(
-                        bottom: 0,
-                        width: MediaQuery.of(context).size.width,
-                        child: const BottomWidget())
+                    }
                   ],
                 )
               ],

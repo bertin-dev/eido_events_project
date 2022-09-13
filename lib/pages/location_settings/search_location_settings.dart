@@ -4,8 +4,6 @@ import 'package:eido_events_project/widgets/custom_widgets.dart';
 import 'package:eido_events_project/widgets/location_base_settings_widget.dart';
 import 'package:flutter/material.dart';
 
-import '../../widgets/bottom_widget.dart';
-
 class SearchLocationSettingsPageView extends StatefulWidget {
   const SearchLocationSettingsPageView({Key? key}) : super(key: key);
   static const String pageName = "search_location_settings";

@@ -4,7 +4,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import '../constants.dart';
-import '../widgets/bottom_widget.dart';
 import '../widgets/introView.dart';
 import 'login_page.dart';
 
@@ -161,11 +160,7 @@ class _OnboardingPageState extends State<OnboardingPage> with SingleTickerProvid
                   )
                 ],
               ),
-            ),
-            Positioned(
-                bottom: 0,
-                width: MediaQuery.of(context).size.width,
-                child: const BottomWidget())
+            )
           ],
         ));
   }

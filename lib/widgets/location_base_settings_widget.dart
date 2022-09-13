@@ -6,7 +6,6 @@ import '../models/menus.dart';
 import '../pages/associate_account/detail_profils_associate_account.dart';
 import '../pages/associate_account/menu_edit_associate_account.dart';
 import '../pages/associate_account/privilege_associate_account.dart';
-import 'bottom_widget.dart';
 
 
 class LocationBaseSettingsWidget extends StatefulWidget {
@@ -113,13 +112,7 @@ class _LocationBaseSettingsWidgetState extends State<LocationBaseSettingsWidget>
                             widget.containerWidget
                           ],
                         ),
-                      ),
-                      if(widget.bottomNav == true)...{
-                        Positioned(
-                            bottom: 0,
-                            width: MediaQuery.of(context).size.width,
-                            child: const BottomWidget())
-                      }
+                      )
                     ],
                   ),
                 ],
@@ -138,7 +131,6 @@ class LocationBaseAssociateAccountWidget extends StatefulWidget {
   final String title;
   final String? iconMenu;
   final VoidCallback? onPressedMenu;
-  bool? bottomNav = true;
   late final GlobalKey<ScaffoldState> devKey;
   final String fullBgImg;
   final VoidCallback? onPressedShared;
@@ -150,7 +142,6 @@ class LocationBaseAssociateAccountWidget extends StatefulWidget {
     required this.title,
     this.iconMenu,
     this.onPressedMenu,
-    this.bottomNav,
     required this.devKey,
     required this.fullBgImg,
     this.onPressedShared,}) : super(key: key);

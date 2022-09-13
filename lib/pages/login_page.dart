@@ -5,31 +5,8 @@ import 'package:eido_events_project/pages/register_page.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../constants.dart';
-import '../widgets/bottom_widget.dart';
 import '../widgets/custom_widgets.dart';
 import 'location_settings/home_location_settings.dart';
-import 'location_settings/search_location_settings.dart';
-
-
-
-void main(){
-  runApp(const LoginPageView());
-}
-
-class LoginPageView extends StatelessWidget {
-  const LoginPageView({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: Colors.white,
-      ),
-      home: const LoginPage(),
-    );
-  }
-}
 
 class LoginPage extends StatefulWidget {
   static const String pageName = "login";
@@ -58,14 +35,8 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return OrientationBuilder(builder: (context, orientation) {
-      final hv = MediaQuery
-          .of(context)
-          .size
-          .height / 100;
-      final wv = MediaQuery
-          .of(context)
-          .size
-          .width / 100;
+      final hv = MediaQuery.of(context).size.height / 100;
+      final wv = MediaQuery.of(context).size.width / 100;
 
       bool isLoading = false;
       void _startLoading() async {
@@ -82,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
       }
 
       return Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: whiteColor,
         resizeToAvoidBottomInset: true,
         key: scaffoldKey,
         body: Stack(
@@ -376,10 +347,6 @@ class _LoginPageState extends State<LoginPage> {
 
               ],
             ),
-            Positioned(
-                bottom: 0,
-                width: MediaQuery.of(context).size.width,
-                child: const BottomWidget())
           ],
         )
       );

@@ -2,7 +2,6 @@ import 'package:eido_events_project/pages/reset_forget_password_page.dart';
 import 'package:eido_events_project/pages/success_page.dart';
 import 'package:flutter/material.dart';
 import '../constants.dart';
-import '../widgets/bottom_widget.dart';
 import '../widgets/custom_widgets.dart';
 
 
@@ -155,11 +154,7 @@ class _OtpCheckingPageState extends State<OtpCheckingPage> {
 
 
                   ],
-                ),
-                Positioned(
-                  bottom: 0,
-                    width: MediaQuery.of(context).size.width,
-                    child: const BottomWidget())
+                )
               ],
             );
           },),
