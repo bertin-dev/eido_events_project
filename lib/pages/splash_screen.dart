@@ -58,7 +58,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 //Text('Chargement En Cours...', style:TextStyle(fontSize: 17.0, color: Colors.white.withOpacity(0.9), fontWeight: FontWeight.w600))
               ],
             ),
-            Positioned(
+        /*    Positioned(
                 bottom: 0,
                 width: MediaQuery.of(context).size.width,
                 child: const Align(
@@ -66,7 +66,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   child: Image(
                     image: AssetImage('assets/images/bottom_bar.png'),
                   ),
-                ))
+                ))*/
           ],
         ),
       ),

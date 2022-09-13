@@ -89,6 +89,16 @@ class _ListAssociateAccountPageViewState extends State<ListAssociateAccountPageV
                   print(isChecked);
                 }
               });
+
+              setState(() {
+                if(status=="activer"){
+                  print("désactiver");
+                  status = "désactiver";
+                }else{
+                  print("activer");
+                  status = "activer";
+                }
+              });
             },
             activeColor: switchGreenColor,
             inactiveTrackColor: Colors.grey,
@@ -186,18 +196,18 @@ class _ListAssociateAccountPageViewState extends State<ListAssociateAccountPageV
                     return InkWell(
                       splashColor: Colors.grey,
                       onTap: (){
-                        changeState(
-                          bgColor:bottomNavSelected,
-                          avatarImg: "assets/images/associate_account/user-orange.png",
-                          titleColor: whiteColor,
-                          subTitleColor: whiteColor,
-                          btnEditTextColor: kPrimaryColor,
-                          btnSendTextColor: bottomNavSelected,
-                          btnBgEditColor: whiteColor,
-                          btnBgSendColor: whiteColor,
-                        );
-                          Navigator.of(context).pushNamed(MenuEditAssociateAccountPageView.pageName);
 
+                          changeState(
+                            bgColor:bottomNavSelected,
+                            avatarImg: "assets/images/associate_account/user-orange.png",
+                            titleColor: whiteColor,
+                            subTitleColor: whiteColor,
+                            btnEditTextColor: kPrimaryColor,
+                            btnSendTextColor: bottomNavSelected,
+                            btnBgEditColor: whiteColor,
+                            btnBgSendColor: whiteColor,
+                          );
+                          Navigator.of(context).pushNamed(MenuEditAssociateAccountPageView.pageName);
                       },
                       child: Card(
                         elevation: 5,

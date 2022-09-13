@@ -83,7 +83,7 @@ class _MenuEditAssociateAccountPageViewState extends State<MenuEditAssociateAcco
                 children: [
                   CustomBtnForAlert(
                     onPressedBtn: () {
-                      print("Bloquer");
+                      alertDialogBlocage();
                     },
                     textBtn: 'Bloquer',
                     textColorBtn: whiteColor,
@@ -104,6 +104,7 @@ class _MenuEditAssociateAccountPageViewState extends State<MenuEditAssociateAcco
                   CustomBtnForAlert(
                     onPressedBtn: () {
                       print("Supprimer");
+                      alertDialogDelete();
                     },
                     textBtn: 'Supprimer',
                     textColorBtn: whiteColor,
@@ -141,6 +142,133 @@ class _MenuEditAssociateAccountPageViewState extends State<MenuEditAssociateAcco
         text: 'Partage des accès',
         linkUrl: 'https://flutter.dev/',
         chooserTitle: 'My EidoEvents'
+    );
+  }
+
+  void alertDialogBlocage() {
+    showDialog(
+      context: context,
+      builder: (context) => CustomAlertDialogDelete(
+        title: 'Blocage ?',
+        titleColor: successTextColor,
+        titleSize: 23.0,
+        body: "Voulez-vous vraiment bloquer cet utilisateur ?",
+        bodyColor: Colors.black,
+        bodySize: 13.0,
+        radius: 20.0,
+        pLeft: 5.0,
+        pRight: 5.0,
+        pTop: 0,
+        pBottom: 15.17,
+        action: <Widget>[
+          SizedBox(
+            width: MediaQuery.of(context).size.width,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CustomBtnForAlert(
+                  onPressedBtn: () {
+                    Navigator.of(context).pop();
+                  },
+                  textBtn: 'Revenir',
+                  textColorBtn: whiteColor,
+                  textSizeBtn: 13.0,
+                  colorBtn: labelColorTextField,
+                  radiusBtn: 100.0,
+                  heightBtn: 40.0,
+                  minWidthBtn: 117,
+                  pTopBtn: 0,
+                  pBottomBtn: 0,
+                  pLeftBtn: 0,
+                  pRightBtn: 0,),
+                const SizedBox(width: 15,),
+                CustomBtnForAlert(
+                  iconRightBtn: "assets/images/associate_account/danger-icon.png",
+                  sPacingBtn: 5,
+                  widthIconBtn: 16,
+                  heightIconBtn: 16,
+                  onPressedBtn: () {
+                    print("Bloquer");
+                  },
+                  textBtn: 'Bloquer',
+                  textColorBtn: whiteColor,
+                  textSizeBtn: 13.0,
+                  colorBtn: kPrimaryColor,
+                  radiusBtn: 100.0,
+                  heightBtn: 40.0,
+                  minWidthBtn: 117,
+                  pTopBtn: 2.0,
+                  pBottomBtn: 2.0,
+                  pLeftBtn: 0,
+                  pRightBtn: 0,)
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+  void alertDialogDelete() {
+    showDialog(
+      context: context,
+      builder: (context) => CustomAlertDialogDelete(
+        title: 'Supprimer ?',
+        titleColor: successTextColor,
+        titleSize: 23.0,
+        body: "Voulez-vous vraiment supprimer cet utilisateur ?",
+        bodyColor: Colors.black,
+        bodySize: 13.0,
+        radius: 20.0,
+        pLeft: 5.0,
+        pRight: 5.0,
+        pTop: 0,
+        pBottom: 15.17,
+        action: <Widget>[
+          SizedBox(
+            width: MediaQuery.of(context).size.width,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CustomBtnForAlert(
+                  onPressedBtn: () {
+                    Navigator.of(context).pop();
+                  },
+                  textBtn: 'Revenir',
+                  textColorBtn: whiteColor,
+                  textSizeBtn: 13.0,
+                  colorBtn: labelColorTextField,
+                  radiusBtn: 100.0,
+                  heightBtn: 40.0,
+                  minWidthBtn: 117,
+                  pTopBtn: 0,
+                  pBottomBtn: 0,
+                  pLeftBtn: 0,
+                  pRightBtn: 0,),
+                const SizedBox(width: 15,),
+                CustomBtnForAlert(
+                  iconRightBtn: "assets/images/home_page/delete.png",
+                  sPacingBtn: 5,
+                  widthIconBtn: 16,
+                  heightIconBtn: 16,
+                  onPressedBtn: () {
+                    print("Supprimer");
+                  },
+                  textBtn: 'Supprimer',
+                  textColorBtn: whiteColor,
+                  textSizeBtn: 13.0,
+                  colorBtn: kPrimaryColor,
+                  radiusBtn: 100.0,
+                  heightBtn: 40.0,
+                  minWidthBtn: 117,
+                  pTopBtn: 2.0,
+                  pBottomBtn: 2.0,
+                  pLeftBtn: 0,
+                  pRightBtn: 0,)
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 

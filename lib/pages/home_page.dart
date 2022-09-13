@@ -220,7 +220,7 @@ class _HomePageViewState extends State<HomePageView> {
                                                 ),
                                               )),
 
-                                            Expanded(child: Image.asset("assets/images/home_page/crown.png", width: 82.03,height: 70.76,))
+                                            Expanded(child: Image.asset("assets/images/home_page/crown.png", width: 78.03,height: 66.76,))
                                           ],
                                         )
                                       ],
@@ -541,7 +541,671 @@ class _HomePageViewState extends State<HomePageView> {
                                             child: Align(
                                               alignment: Alignment.topLeft,
                                               child: Text("Jeudi 25 - Sam 28", style: TextStyle(
-                                                  fontSize: 11.0,
+                                                  fontSize: 10.0,
+                                                  color: successTextColor,
+                                                  fontWeight: FontWeight.w500
+                                              ),
+                                              ),
+                                            )
+                                        ),
+
+
+                                        Expanded(
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 0.0, left: 0.0, bottom: 0.0),
+                                            child: Row(
+                                              children: [
+                                                Stack(children: [
+                                                  // Material(
+                                                  //   elevation: 0,
+                                                  //   borderRadius: BorderRadius.circular(100),
+                                                  //   child: Padding(
+                                                  //     padding: const EdgeInsets.only(top: 2.0),
+                                                  //     child: CircleAvatar(
+                                                  //         radius: 10,
+                                                  //         backgroundImage: NetworkImage(
+                                                  //           'https://miro.medium.com/max/10000/0*wZAcNrIWFFjuJA78',
+                                                  //         )),
+                                                  //   ),
+                                                  // ),
+
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(
+                                                      left: 0.0,
+                                                      top: 0.5,
+                                                    ),
+                                                    child: Material(
+                                                      elevation: 4,
+                                                      borderRadius:
+                                                      BorderRadius.circular(100),
+                                                      child: Padding(
+                                                        padding: const EdgeInsets.all(2.0),
+                                                        child: CircleAvatar(
+                                                            radius: 9,
+                                                            backgroundImage: NetworkImage(
+                                                              'https://i.insider.com/5c9a115d8e436a63e42c2883?width=600&format=jpeg&auto=webp',
+                                                            )),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(
+                                                      left: 16.0,
+                                                    ),
+                                                    child: Material(
+                                                      elevation: 4,
+                                                      borderRadius:
+                                                      BorderRadius.circular(100),
+                                                      child: Padding(
+                                                        padding: const EdgeInsets.all(2.0),
+                                                        child: CircleAvatar(
+                                                            radius: 9,
+                                                            backgroundImage: NetworkImage(
+                                                              'https://play-images-prod-cms.tech.tvnz.co.nz/api/v1/web/image/content/dam/images/entertainment/shows/p/person-of-interest/personofinterest_coverimg.png.2017-03-08T11:21:33+13:00.jpg?width=960&height=540',
+                                                            )),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(
+                                                      left: 32.0,
+                                                    ),
+                                                    child: Material(
+                                                      elevation: 4,
+                                                      borderRadius:
+                                                      BorderRadius.circular(100),
+                                                      child: Padding(
+                                                        padding: const EdgeInsets.all(2.0),
+                                                        child: CircleAvatar(
+                                                            radius: 9,
+                                                            backgroundImage: NetworkImage(
+                                                              'https://i.insider.com/5c9a115d8e436a63e42c2883?width=600&format=jpeg&auto=webp',
+                                                            )),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(
+                                                      left: 48.0,
+                                                    ),
+                                                    child: Material(
+                                                      elevation: 4,
+                                                      borderRadius: BorderRadius.circular(100),
+                                                      child: const Padding(
+                                                        padding: EdgeInsets.all(1.0),
+                                                        child: CircleAvatar(
+                                                          radius: 10,
+                                                          backgroundColor: whiteColor,
+                                                          child: Text("+254", style: TextStyle(fontSize: 7.75, fontWeight: FontWeight.w400),),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ]),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+
+
+                                        Expanded(
+                                          child:Row(
+                                            mainAxisAlignment: MainAxisAlignment.end,
+                                            children: [
+                                              Icon(
+                                                Icons.history_rounded,
+                                                color: iconColor,
+                                                size: 25,
+                                              ),
+                                              SizedBox(width: 6.19,),
+                                              Align(
+                                                alignment: Alignment.topRight,
+                                                child: Text("JJ-55", style: TextStyle(
+                                                    fontSize: 11.0,
+                                                    color: iconColor,
+                                                    fontWeight: FontWeight.w500
+                                                ),
+                                                ),
+                                              )
+                                            ],
+                                          ),)
+
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              )
+                          ),
+                        ),
+
+                        InkWell(
+                          onTap: (){},
+                          child: Card(
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 20, right: 20, top: 20),
+                                    child: Row(
+                                      children: [
+                                        Container(
+                                          height: 60,
+                                          width: 2.0,
+                                          //color: Colors.red,
+                                          decoration: BoxDecoration(
+                                              color: iconColor
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: Container(
+                                            width: MediaQuery.of(context).size.width,
+                                            color: Color(0xffF2F2F2),
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(left: 10.0),
+                                              child: Column(
+                                                mainAxisAlignment: MainAxisAlignment.start,
+                                                children: <Widget>[
+                                                  Row(
+                                                    children: [
+                                                      Align(
+                                                        alignment: Alignment.topLeft,
+                                                        child: Container(
+                                                          child: Text("Mariage d'Alice", style: TextStyle(
+                                                              fontSize: 16.0,
+                                                              color: labelColorTextField,
+                                                              fontWeight: FontWeight.w700
+                                                          ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      Chip(
+                                                        backgroundColor: Color(0xffFCD4FF),
+                                                        label: Align(
+                                                          alignment: Alignment.center,
+                                                          child: Container(
+                                                            child: Text("Spécial", style: TextStyle(
+                                                                fontSize: 11.0,
+                                                                color: Color(0xff9B51E0),
+                                                                fontWeight: FontWeight.w400
+                                                            ),
+                                                            ),
+                                                          ),
+                                                        ),)
+                                                    ],
+                                                  ),
+                                                  Align(
+                                                    alignment: Alignment.topLeft,
+                                                    child: Text("Baffoussam entrée de la ville", style: TextStyle(
+                                                        fontSize: 13.0,
+                                                        color: greyColor,
+                                                        fontWeight: FontWeight.w400
+                                                    ),
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 15),
+                                    child: Row(
+                                      children: [
+                                        const Icon(
+                                          Icons.calendar_month,
+                                          color: kPrimaryColor,
+                                          size: 25,
+                                        ),
+                                        const Expanded(
+                                            child: Align(
+                                              alignment: Alignment.topLeft,
+                                              child: Text("Jeudi 25 - Sam 28", style: TextStyle(
+                                                  fontSize: 10.0,
+                                                  color: successTextColor,
+                                                  fontWeight: FontWeight.w500
+                                              ),
+                                              ),
+                                            )
+                                        ),
+
+
+                                        Expanded(
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 0.0, left: 0.0, bottom: 0.0),
+                                            child: Row(
+                                              children: [
+                                                Stack(children: [
+                                                  // Material(
+                                                  //   elevation: 0,
+                                                  //   borderRadius: BorderRadius.circular(100),
+                                                  //   child: Padding(
+                                                  //     padding: const EdgeInsets.only(top: 2.0),
+                                                  //     child: CircleAvatar(
+                                                  //         radius: 10,
+                                                  //         backgroundImage: NetworkImage(
+                                                  //           'https://miro.medium.com/max/10000/0*wZAcNrIWFFjuJA78',
+                                                  //         )),
+                                                  //   ),
+                                                  // ),
+
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(
+                                                      left: 0.0,
+                                                      top: 0.5,
+                                                    ),
+                                                    child: Material(
+                                                      elevation: 4,
+                                                      borderRadius:
+                                                      BorderRadius.circular(100),
+                                                      child: Padding(
+                                                        padding: const EdgeInsets.all(2.0),
+                                                        child: CircleAvatar(
+                                                            radius: 9,
+                                                            backgroundImage: NetworkImage(
+                                                              'https://i.insider.com/5c9a115d8e436a63e42c2883?width=600&format=jpeg&auto=webp',
+                                                            )),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(
+                                                      left: 16.0,
+                                                    ),
+                                                    child: Material(
+                                                      elevation: 4,
+                                                      borderRadius:
+                                                      BorderRadius.circular(100),
+                                                      child: Padding(
+                                                        padding: const EdgeInsets.all(2.0),
+                                                        child: CircleAvatar(
+                                                            radius: 9,
+                                                            backgroundImage: NetworkImage(
+                                                              'https://play-images-prod-cms.tech.tvnz.co.nz/api/v1/web/image/content/dam/images/entertainment/shows/p/person-of-interest/personofinterest_coverimg.png.2017-03-08T11:21:33+13:00.jpg?width=960&height=540',
+                                                            )),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(
+                                                      left: 32.0,
+                                                    ),
+                                                    child: Material(
+                                                      elevation: 4,
+                                                      borderRadius:
+                                                      BorderRadius.circular(100),
+                                                      child: Padding(
+                                                        padding: const EdgeInsets.all(2.0),
+                                                        child: CircleAvatar(
+                                                            radius: 9,
+                                                            backgroundImage: NetworkImage(
+                                                              'https://i.insider.com/5c9a115d8e436a63e42c2883?width=600&format=jpeg&auto=webp',
+                                                            )),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(
+                                                      left: 48.0,
+                                                    ),
+                                                    child: Material(
+                                                      elevation: 4,
+                                                      borderRadius: BorderRadius.circular(100),
+                                                      child: const Padding(
+                                                        padding: EdgeInsets.all(1.0),
+                                                        child: CircleAvatar(
+                                                          radius: 10,
+                                                          backgroundColor: whiteColor,
+                                                          child: Text("+254", style: TextStyle(fontSize: 7.75, fontWeight: FontWeight.w400),),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ]),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+
+
+                                        Expanded(
+                                          child:Row(
+                                            mainAxisAlignment: MainAxisAlignment.end,
+                                            children: [
+                                              Icon(
+                                                Icons.history_rounded,
+                                                color: iconColor,
+                                                size: 25,
+                                              ),
+                                              SizedBox(width: 6.19,),
+                                              Align(
+                                                alignment: Alignment.topRight,
+                                                child: Text("JJ-55", style: TextStyle(
+                                                    fontSize: 11.0,
+                                                    color: iconColor,
+                                                    fontWeight: FontWeight.w500
+                                                ),
+                                                ),
+                                              )
+                                            ],
+                                          ),)
+
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              )
+                          ),
+                        ),
+                        InkWell(
+                          onTap: (){},
+                          child: Card(
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 20, right: 20, top: 20),
+                                    child: Row(
+                                      children: [
+                                        Container(
+                                          height: 60,
+                                          width: 2.0,
+                                          //color: Colors.red,
+                                          decoration: BoxDecoration(
+                                              color: iconColor
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: Container(
+                                            width: MediaQuery.of(context).size.width,
+                                            color: Color(0xffF2F2F2),
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(left: 10.0),
+                                              child: Column(
+                                                mainAxisAlignment: MainAxisAlignment.start,
+                                                children: <Widget>[
+                                                  Row(
+                                                    children: [
+                                                      Align(
+                                                        alignment: Alignment.topLeft,
+                                                        child: Container(
+                                                          child: Text("Mariage d'Alice", style: TextStyle(
+                                                              fontSize: 16.0,
+                                                              color: labelColorTextField,
+                                                              fontWeight: FontWeight.w700
+                                                          ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      Chip(
+                                                        backgroundColor: Color(0xffFCD4FF),
+                                                        label: Align(
+                                                          alignment: Alignment.center,
+                                                          child: Container(
+                                                            child: Text("Spécial", style: TextStyle(
+                                                                fontSize: 11.0,
+                                                                color: Color(0xff9B51E0),
+                                                                fontWeight: FontWeight.w400
+                                                            ),
+                                                            ),
+                                                          ),
+                                                        ),)
+                                                    ],
+                                                  ),
+                                                  Align(
+                                                    alignment: Alignment.topLeft,
+                                                    child: Text("Baffoussam entrée de la ville", style: TextStyle(
+                                                        fontSize: 13.0,
+                                                        color: greyColor,
+                                                        fontWeight: FontWeight.w400
+                                                    ),
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 15),
+                                    child: Row(
+                                      children: [
+                                        const Icon(
+                                          Icons.calendar_month,
+                                          color: kPrimaryColor,
+                                          size: 25,
+                                        ),
+                                        const Expanded(
+                                            child: Align(
+                                              alignment: Alignment.topLeft,
+                                              child: Text("Jeudi 25 - Sam 28", style: TextStyle(
+                                                  fontSize: 10.0,
+                                                  color: successTextColor,
+                                                  fontWeight: FontWeight.w500
+                                              ),
+                                              ),
+                                            )
+                                        ),
+
+
+                                        Expanded(
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 0.0, left: 0.0, bottom: 0.0),
+                                            child: Row(
+                                              children: [
+                                                Stack(children: [
+                                                  // Material(
+                                                  //   elevation: 0,
+                                                  //   borderRadius: BorderRadius.circular(100),
+                                                  //   child: Padding(
+                                                  //     padding: const EdgeInsets.only(top: 2.0),
+                                                  //     child: CircleAvatar(
+                                                  //         radius: 10,
+                                                  //         backgroundImage: NetworkImage(
+                                                  //           'https://miro.medium.com/max/10000/0*wZAcNrIWFFjuJA78',
+                                                  //         )),
+                                                  //   ),
+                                                  // ),
+
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(
+                                                      left: 0.0,
+                                                      top: 0.5,
+                                                    ),
+                                                    child: Material(
+                                                      elevation: 4,
+                                                      borderRadius:
+                                                      BorderRadius.circular(100),
+                                                      child: Padding(
+                                                        padding: const EdgeInsets.all(2.0),
+                                                        child: CircleAvatar(
+                                                            radius: 9,
+                                                            backgroundImage: NetworkImage(
+                                                              'https://i.insider.com/5c9a115d8e436a63e42c2883?width=600&format=jpeg&auto=webp',
+                                                            )),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(
+                                                      left: 16.0,
+                                                    ),
+                                                    child: Material(
+                                                      elevation: 4,
+                                                      borderRadius:
+                                                      BorderRadius.circular(100),
+                                                      child: Padding(
+                                                        padding: const EdgeInsets.all(2.0),
+                                                        child: CircleAvatar(
+                                                            radius: 9,
+                                                            backgroundImage: NetworkImage(
+                                                              'https://play-images-prod-cms.tech.tvnz.co.nz/api/v1/web/image/content/dam/images/entertainment/shows/p/person-of-interest/personofinterest_coverimg.png.2017-03-08T11:21:33+13:00.jpg?width=960&height=540',
+                                                            )),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(
+                                                      left: 32.0,
+                                                    ),
+                                                    child: Material(
+                                                      elevation: 4,
+                                                      borderRadius:
+                                                      BorderRadius.circular(100),
+                                                      child: Padding(
+                                                        padding: const EdgeInsets.all(2.0),
+                                                        child: CircleAvatar(
+                                                            radius: 9,
+                                                            backgroundImage: NetworkImage(
+                                                              'https://i.insider.com/5c9a115d8e436a63e42c2883?width=600&format=jpeg&auto=webp',
+                                                            )),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(
+                                                      left: 48.0,
+                                                    ),
+                                                    child: Material(
+                                                      elevation: 4,
+                                                      borderRadius: BorderRadius.circular(100),
+                                                      child: const Padding(
+                                                        padding: EdgeInsets.all(1.0),
+                                                        child: CircleAvatar(
+                                                          radius: 10,
+                                                          backgroundColor: whiteColor,
+                                                          child: Text("+254", style: TextStyle(fontSize: 7.75, fontWeight: FontWeight.w400),),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ]),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+
+
+                                        Expanded(
+                                          child:Row(
+                                            mainAxisAlignment: MainAxisAlignment.end,
+                                            children: [
+                                              Icon(
+                                                Icons.history_rounded,
+                                                color: iconColor,
+                                                size: 25,
+                                              ),
+                                              SizedBox(width: 6.19,),
+                                              Align(
+                                                alignment: Alignment.topRight,
+                                                child: Text("JJ-55", style: TextStyle(
+                                                    fontSize: 11.0,
+                                                    color: iconColor,
+                                                    fontWeight: FontWeight.w500
+                                                ),
+                                                ),
+                                              )
+                                            ],
+                                          ),)
+
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              )
+                          ),
+                        ),
+                        InkWell(
+                          onTap: (){},
+                          child: Card(
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 20, right: 20, top: 20),
+                                    child: Row(
+                                      children: [
+                                        Container(
+                                          height: 60,
+                                          width: 2.0,
+                                          //color: Colors.red,
+                                          decoration: BoxDecoration(
+                                              color: iconColor
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: Container(
+                                            width: MediaQuery.of(context).size.width,
+                                            color: Color(0xffF2F2F2),
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(left: 10.0),
+                                              child: Column(
+                                                mainAxisAlignment: MainAxisAlignment.start,
+                                                children: <Widget>[
+                                                  Row(
+                                                    children: [
+                                                      Align(
+                                                        alignment: Alignment.topLeft,
+                                                        child: Container(
+                                                          child: Text("Mariage d'Alice", style: TextStyle(
+                                                              fontSize: 16.0,
+                                                              color: labelColorTextField,
+                                                              fontWeight: FontWeight.w700
+                                                          ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      Chip(
+                                                        backgroundColor: Color(0xffFCD4FF),
+                                                        label: Align(
+                                                          alignment: Alignment.center,
+                                                          child: Container(
+                                                            child: Text("Spécial", style: TextStyle(
+                                                                fontSize: 11.0,
+                                                                color: Color(0xff9B51E0),
+                                                                fontWeight: FontWeight.w400
+                                                            ),
+                                                            ),
+                                                          ),
+                                                        ),)
+                                                    ],
+                                                  ),
+                                                  Align(
+                                                    alignment: Alignment.topLeft,
+                                                    child: Text("Baffoussam entrée de la ville", style: TextStyle(
+                                                        fontSize: 13.0,
+                                                        color: greyColor,
+                                                        fontWeight: FontWeight.w400
+                                                    ),
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 15),
+                                    child: Row(
+                                      children: [
+                                        const Icon(
+                                          Icons.calendar_month,
+                                          color: kPrimaryColor,
+                                          size: 25,
+                                        ),
+                                        const Expanded(
+                                            child: Align(
+                                              alignment: Alignment.topLeft,
+                                              child: Text("Jeudi 25 - Sam 28", style: TextStyle(
+                                                  fontSize: 10.0,
                                                   color: successTextColor,
                                                   fontWeight: FontWeight.w500
                                               ),
