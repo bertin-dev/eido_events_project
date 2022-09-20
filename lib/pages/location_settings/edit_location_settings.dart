@@ -29,10 +29,12 @@ class _EditLocationSettingsState extends State<EditLocationSettingsPageView> {
   var focusNode1 = FocusNode();
   var focusNode2 = FocusNode();
   var focusNode3 = FocusNode();
-
+  late final GlobalKey<ScaffoldState> _scaffoldKey;
 
   @override
   void initState() {
+    super.initState();
+    _scaffoldKey = GlobalKey<ScaffoldState>();
     print("${widget.title}");
     print("${widget.locationSettings}");
   }
@@ -262,7 +264,13 @@ class _EditLocationSettingsState extends State<EditLocationSettingsPageView> {
             ),
           )
       ),
-      title: widget.title
+      title: widget.title,
+      devKey: _scaffoldKey,
+      fullBgImg: "assets/images/location_settings/bg-body-add-location.png",
+      isBottomNav: false,
+      isDrawerNavRight: false,
+      bgHeader: "assets/images/location_settings/bg-header-add-location.png",
+      heightBgHeader: 125,
     );
   }
 
