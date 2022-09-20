@@ -14,6 +14,13 @@ class SearchLocationSettingsPageView extends StatefulWidget {
 
 class _SearchLocationSettingsState extends State<SearchLocationSettingsPageView> {
   var scaffoldKey = GlobalKey<ScaffoldState>();
+  late final GlobalKey<ScaffoldState> _scaffoldKey;
+
+  @override
+  void initState() {
+    super.initState();
+    _scaffoldKey = GlobalKey<ScaffoldState>();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,6 +76,12 @@ class _SearchLocationSettingsState extends State<SearchLocationSettingsPageView>
       onPressedMenu: () async {
         Navigator.of(context, rootNavigator: true).pushNamed(AddLocationSettingsPageView.pageName);
       },
+      devKey: _scaffoldKey,
+      fullBgImg: "assets/images/location_settings/bg-body-add-location.png",
+      isBottomNav: false,
+      isDrawerNavRight: false,
+      bgHeader: "assets/images/location_settings/bg-header-add-location.png",
+      heightBgHeader: 125,
     );
   }
 }

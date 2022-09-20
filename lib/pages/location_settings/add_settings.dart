@@ -25,6 +25,7 @@ class AddSettingsPageView extends StatefulWidget {
 
 class _AddSettingsState extends State<AddSettingsPageView> {
   final _addLocationFormKey = GlobalKey<FormState>();
+  late final GlobalKey<ScaffoldState> _scaffoldKey;
   final TextEditingController _addPositionTitleController = TextEditingController();
   final TextEditingController _addPositionDescController = TextEditingController();
   AutovalidateMode? _autovalidate;
@@ -51,6 +52,12 @@ class _AddSettingsState extends State<AddSettingsPageView> {
         positionCounter--;
       }
     });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _scaffoldKey = GlobalKey<ScaffoldState>();
   }
 
   @override
@@ -227,7 +234,13 @@ class _AddSettingsState extends State<AddSettingsPageView> {
             ),
           )
       ),
-      title: "Ajout des Configurations"
+      title: "Ajout des Configurations",
+      devKey: _scaffoldKey,
+      fullBgImg: "assets/images/location_settings/bg-body-add-location.png",
+      isBottomNav: true,
+      isDrawerNavRight: false,
+      bgHeader: "assets/images/location_settings/bg-header-add-location.png",
+      heightBgHeader: 125,
     );
   }
 

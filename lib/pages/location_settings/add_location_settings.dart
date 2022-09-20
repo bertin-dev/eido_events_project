@@ -26,6 +26,15 @@ class _AddLocationSettingsState extends State<AddLocationSettingsPageView> {
   var focusNode2 = FocusNode();
   var focusNode3 = FocusNode();
 
+  late final GlobalKey<ScaffoldState> _scaffoldKey;
+
+
+  @override
+  void initState() {
+    super.initState();
+    _scaffoldKey = GlobalKey<ScaffoldState>();
+  }
+
   @override
   Widget build(BuildContext context) {
 
@@ -121,7 +130,13 @@ class _AddLocationSettingsState extends State<AddLocationSettingsPageView> {
             ),
           )
       ),
-      title: "Ajout d'un Emplacement"
+      title: "Ajout d'un Emplacement",
+      devKey: _scaffoldKey,
+      fullBgImg: "assets/images/location_settings/bg-body-add-location.png",
+      isBottomNav: true,
+      isDrawerNavRight: false,
+      bgHeader: "assets/images/location_settings/bg-header-add-location.png",
+      heightBgHeader: 125,
     );
   }
 

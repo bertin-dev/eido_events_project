@@ -15,14 +15,20 @@ class ListSettingsPageView extends StatefulWidget {
 
 class _ListSettingsState extends State<ListSettingsPageView> {
 
+  late final GlobalKey<ScaffoldState> _scaffoldKey;
 
+  @override
+  void initState() {
+    super.initState();
+    _scaffoldKey = GlobalKey<ScaffoldState>();
+  }
 
   @override
   Widget build(BuildContext context) {
     final hv = MediaQuery.of(context).size.height / 100;
     final wv = MediaQuery.of(context).size.width / 100;
     return LocationBaseSettingsWidget(
-        containerWidget: Container(
+      containerWidget: Container(
           //color: Colors.green,
           padding: const EdgeInsets.only(left: 9, right: 10, top: 100),
           child: ListView(
@@ -491,8 +497,13 @@ class _ListSettingsState extends State<ListSettingsPageView> {
             },
           ),*/
         ),
-        title: "Liste des configurations",
-        bottomNav: false
+      title: "Liste des configurations",
+      devKey: _scaffoldKey,
+      fullBgImg: "assets/images/location_settings/bg-body-add-location.png",
+      isBottomNav: false,
+      isDrawerNavRight: false,
+      bgHeader: "assets/images/location_settings/bg-header-add-location.png",
+      heightBgHeader: 125,
     );
   }
 
