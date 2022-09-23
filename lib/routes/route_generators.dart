@@ -24,6 +24,11 @@ import '../pages/location_settings/list_settings.dart';
 import '../pages/location_settings/search_location_settings.dart';
 import '../pages/location_settings/success_location_page.dart';
 import '../pages/login_page.dart';
+import '../pages/manage_event_programs/add_program_page.dart';
+import '../pages/manage_event_programs/package_page.dart';
+import '../pages/manage_event_programs/program_home_page.dart';
+import '../pages/manage_event_programs/selected_items_page.dart';
+import '../pages/manage_event_programs/success_page.dart';
 import '../pages/otp_checking_page.dart';
 import '../pages/reset_forget_password_page.dart';
 import '../pages/splash_screen.dart';
@@ -44,7 +49,10 @@ class RouteGenerator {
       case RegisterPageView.pageName:
         return MaterialPageRoute(settings: routeSettings, builder: (context) => const RegisterPageView());
       case OtpCheckingPage.pageName:
-        return MaterialPageRoute(settings: routeSettings, builder: (context) => const OtpCheckingPage());
+        Map param = routeSettings.arguments as Map;
+        return MaterialPageRoute(settings: routeSettings, builder: (context) => OtpCheckingPage(
+            isForgotPassword: param["isForgotPassword"]
+        ));
       case SuccessPageView.pageName:
         return MaterialPageRoute(settings: routeSettings, builder: (context) => const SuccessPageView());
       case ForgetPasswordPageView.pageName:
@@ -101,6 +109,24 @@ class RouteGenerator {
         return MaterialPageRoute(settings: routeSettings, builder: (context) => const PrivilegeAssociateAccountPageView());
       case DetailProfileAssociateAccountPageView.pageName:
         return MaterialPageRoute(settings: routeSettings, builder: (context) => const DetailProfileAssociateAccountPageView());
+      case ProgramPageView.pageName:
+        return MaterialPageRoute(settings: routeSettings, builder: (context) => const ProgramPageView());
+      case PackagePageView.pageName:
+        Map param = routeSettings.arguments as Map;
+        return MaterialPageRoute(settings: routeSettings, builder: (context) =>
+            PackagePageView(
+                programModel: param["programModel"],
+                title: param["title"]
+            ));
+      case SelectedItemPageView.pageName:
+        Map param = routeSettings.arguments as Map;
+        return MaterialPageRoute(settings: routeSettings, builder: (context) => SelectedItemPageView(
+            listProgramModel: param["listProgramModel"]
+        ));
+      case AddProgramPageView.pageName:
+        return MaterialPageRoute(settings: routeSettings, builder: (context) => const AddProgramPageView());
+      case SuccessProgramPageView.pageName:
+        return MaterialPageRoute(settings: routeSettings, builder: (context) => const SuccessProgramPageView());
       default:
         return MaterialPageRoute(settings: routeSettings, builder: (context) => const SplashScreen());
 

@@ -75,7 +75,8 @@ class _OnboardingPageState extends State<OnboardingPage> with SingleTickerProvid
                             "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto aspernatur assumenda cum dicta ea enim ex fugiat id labore libero nisi, obcaecati porro quo quod ratione tempora velit vero voluptates!",
                             imageLink: 'assets/images/onboarding/mobile-app.png',
                             tabController:tabController,
-                            position: activeTab
+                            position: activeTab,
+                            headImg: 'assets/images/onboarding/screen2.png'
                         ),
                         IntroView(
                             title: "Organisez les évènements comme un(e) pro",
@@ -83,7 +84,8 @@ class _OnboardingPageState extends State<OnboardingPage> with SingleTickerProvid
                             "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto aspernatur assumenda cum dicta ea enim ex fugiat id labore libero nisi, obcaecati porro quo quod ratione tempora velit vero voluptates!",
                             imageLink: 'assets/images/onboarding/support-team.png',
                             tabController:tabController,
-                            position: activeTab
+                            position: activeTab,
+                            headImg: 'assets/images/onboarding/screen2.png'
                         ),
                         IntroView(
                             title: "Restez organisé comme jamais auparavant",
@@ -98,7 +100,7 @@ class _OnboardingPageState extends State<OnboardingPage> with SingleTickerProvid
                   ),
                   Container(
                     color: Colors.transparent,
-                    padding: const EdgeInsets.only(left: 10.0, right: 10, bottom: 30),
+                    padding: const EdgeInsets.only(left: 24.0, right: 24, bottom: 44.32),
                     child: activeTab != 2
                         ?
                     Container(
@@ -107,21 +109,31 @@ class _OnboardingPageState extends State<OnboardingPage> with SingleTickerProvid
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
 
-                          Expanded(child:  MaterialButton(
-                            onPressed: () {
-                              Navigator.of(context, rootNavigator: true)
-                                  .popAndPushNamed(LoginPage.pageName);
-                            },
-                            child: const Text('Passer', style: TextStyle(color: Color(0xFF2E3233))),
-                          ),),
                           Expanded(
-                            child: MaterialButton(
-                              height: 54,
-                              padding: const EdgeInsets.only(top:2.0, bottom: 2.0),
-                              color: kPrimaryColor,
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-                              onPressed: pageSliding,
-                              child: const Text('Suivant', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700),),
+                            child:MaterialButton(
+                            onPressed: () {
+                              Navigator.of(context, rootNavigator: true).popAndPushNamed(LoginPage.pageName);
+                            },
+                            child: const Text('Passer', style: TextStyle(color: Color(0xFF7A7D86), fontSize: 15, fontFamily: "Inter"), textAlign: TextAlign.center,),
+                          ),
+                          ),
+                          Expanded(
+                            child: Container(
+                              decoration: const BoxDecoration(
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Color.fromRGBO(0, 48, 120, 0.1),
+                                  ),
+                                ],
+                              ),
+                              child: MaterialButton(
+                                height: 54,
+                                padding: const EdgeInsets.all(10),
+                                color: kPrimaryColor,
+                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+                                onPressed: pageSliding,
+                                child: const Text('Suivant', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 15, fontFamily: "Inter"), textAlign: TextAlign.center,),
+                              ),
                             ),
                           )
 

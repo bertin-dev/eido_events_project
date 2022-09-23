@@ -6,28 +6,10 @@ import '../widgets/custom_widgets.dart';
 
 
 
-void main(){
-  runApp( const OtpCheckingPageView());
-}
-class OtpCheckingPageView extends StatelessWidget {
-  const OtpCheckingPageView({Key? key}) : super(key: key);
-  
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: Colors.white,
-      ),
-      home: const OtpCheckingPage(),
-    );
-  }
-}
-
 class OtpCheckingPage extends StatefulWidget {
   static const String pageName = "otp_checking";
-
-  const OtpCheckingPage({Key? key}) : super(key: key);
+  bool isForgotPassword;
+   OtpCheckingPage({Key? key, required this.isForgotPassword}) : super(key: key);
   @override
   _OtpCheckingPageState createState() => _OtpCheckingPageState();
 }
@@ -68,93 +50,83 @@ class _OtpCheckingPageState extends State<OtpCheckingPage> {
         body: StreamBuilder(
           stream: Stream.periodic(const Duration(seconds: 1)),
           builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-            return Stack(
-              children: [
-                ListView(
+            return ListView(
+              padding: const EdgeInsets.only(top: 82.0, left: 29.0, right: 29.0),
+              children: <Widget>[
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: const <Widget>[
+                    Text("Verification du compte", style: TextStyle(fontSize: 23.0,
+                        color: textColor,
+                        fontWeight: FontWeight.w700,
+                        fontFamily: "Inter", fontStyle: FontStyle.normal)),
+                  ],
+                ),
+                const SizedBox(height: 21),//43
+                Wrap(
+                  children: const [
+                    Text("Merci d'avoir créer votre compte, vous recevrez dans quelques instants un code de confirmation",
+                        style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16.0, color: Color(0xff07394B),
+                            fontFamily: "Inter", fontStyle: FontStyle.normal)
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 40),
+                Column(
                   children: <Widget>[
+                    Wrap(
+                      //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        OtpInput(_otpController1, true),
+                        const SizedBox(width: 30,),
+                        OtpInput(_otpController2, false),
+                        const SizedBox(width: 30,),
+                        OtpInput(_otpController3, false),
+                        const SizedBox(width: 30,),
+                        OtpInput(_otpController4, false)
+                      ],
+                    ),
+                    const SizedBox(height: 20),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          'Renvoyer le code dans ',
+                          style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.w400,
+                              fontFamily: "Inter", fontStyle: FontStyle.normal),
+                        ),
 
-                    SizedBox(height: hv * 8),
+                        Text(
+                          target.difference(DateTime.now()).toString().split('.')[0],
+                          style: const TextStyle(fontSize: 15.0, color: kPrimaryColor, fontWeight: FontWeight.w400,
+                              fontFamily: "Inter", fontStyle: FontStyle.normal),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 52),
                     Padding(
-                        padding: const EdgeInsets.only(left: 30.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const <Widget>[
-                            Text("Verification du compte", style: TextStyle(fontSize: 23.0,
-                                color: textColor,
-                                fontWeight: FontWeight.w700)),
-                          ],
-                        )),
+                      padding: const EdgeInsets.only(bottom: 66.0, left: 2.0, right: 3.0),
+                      child: CustomButton(
+                        color: kPrimaryColor,
+                        text: 'Envoyer',
+                        textColor: Colors.white,
+                        onPressed: () async {
 
-                    SizedBox(height: hv * 2),//43
-
-                    const Padding(
-                      padding: EdgeInsets.only(left: 32, right: 29),
-                      child: Text("Merci d'avoir créer votre compte, vous recevrez dans quelques instants un code de confirmation",
-                          style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16.0, color: Color(0xff07394B))
+                          if(widget.isForgotPassword){
+                            Navigator.of(context, rootNavigator: true)
+                                .pushNamed(ResetForgetPasswordPageView.pageName);
+                          } else{
+                            Navigator.of(context, rootNavigator: true)
+                                .pushNamed(SuccessPageView.pageName);
+                          }
+                        },
                       ),
                     ),
-
-                    SizedBox(height: hv * 2),//43
-
-                    Padding(
-                      padding: const EdgeInsets.only(top: 23.0, left: 29.0, right: 29.0),
-                      child: Column(
-                        children: <Widget>[
-
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              OtpInput(_otpController1, true),
-                              OtpInput(_otpController2, false),
-                              OtpInput(_otpController3, false),
-                              OtpInput(_otpController4, false)
-                            ],
-                          ),
-
-                          SizedBox(height: hv * 5),
-
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Text(
-                                'Renvoyer le code dans ',
-                                style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.w400,),
-                              ),
-
-                              Text(
-                                target.difference(DateTime.now()).toString().split('.')[0],
-                                style: const TextStyle(fontSize: 15.0, color: kPrimaryColor, fontWeight: FontWeight.w400),
-                              ),
-                            ],
-                          ),
-
-                          SizedBox(height: hv * 10),
-
-                          Column(
-                            children: <Widget>[
-                              Padding(
-                                padding: const EdgeInsets.only(bottom: 25.0, left: 10.0, right: 10.0),
-                                child: CustomButton(
-                                  color: kPrimaryColor,
-                                  text: 'Envoyer',
-                                  textColor: Colors.white,
-                                  onPressed: () async {
-                                    Navigator.of(context, rootNavigator: true)
-                                        .pushNamed(ResetForgetPasswordPageView.pageName);
-                                    //authentication(context);
-                                  },
-                                ),
-                              ),
-                            ],
-                          ),
-
-                        ],
-                      ),
-                    ),
-
 
                   ],
-                )
+                ),
+
+
               ],
             );
           },),
@@ -206,7 +178,10 @@ class OtpInput extends StatelessWidget {
               borderRadius: BorderRadius.circular(4.0),
               borderSide: const BorderSide(color: kPrimaryColor,),
             ),
-            border: const OutlineInputBorder(),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(4.0),
+              borderSide: const BorderSide(color: titleProgramEventManage,),
+            ),
             counterText: '',
             hintText: "-",
             hintStyle: const TextStyle(color: bottomUnderline, fontSize: 12.0)),

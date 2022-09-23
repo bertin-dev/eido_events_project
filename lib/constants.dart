@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const kPrimaryColor = Color(0xffD9532D);
+const kPrimaryColor = Color(0xffC90A42);
 const kPrimaryLightColor = Color(0xFFF1E6FF);
 const iconColor = Color(0xff039BE5);
 const textColor = Color(0xff120D26);
@@ -27,4 +27,6 @@ const grayLocation = Color(0xffF2F2F2);
 const blackTextFieldRightIcon = Color(0xff130F26);
 const redBtn = Color(0xffFF0F00);
 const switchGreenColor = Color(0xff219653);
+const titleProgramEventManage = Color(0xff002040);
+const blackColor = Color(0xff000000);
 const double defaultPadding = 16.0;

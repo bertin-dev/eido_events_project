@@ -24,36 +24,33 @@ class _SuccessPageViewState extends State<SuccessPageView> {
               fit: BoxFit.cover,
             )
         ),
-        child: Stack(
-          fit: StackFit.expand,
+        child: ListView(
+          padding: const EdgeInsets.only(top: 148.0, left: 44.0, right: 45.0),
           children: <Widget>[
             Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 SizedBox(
-                  width: wv*60,
                   child: Image.asset('assets/images/check_success.png'),
                 ),
-                SizedBox(height: hv * 8.0),
-                const Text('Félicitations', style:TextStyle(fontSize: 35.0, color: kPrimaryColor, fontWeight: FontWeight.w700)),
-                SizedBox(height: hv * 2),
-                const Text('Votre compte a été crée avec succès', style:TextStyle(fontSize: 16.0, color: successTextColor, fontWeight: FontWeight.w400)),
-                SizedBox(height: hv * 6),
-                Column(
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 25.0, left: 100.0, right: 100.0),
-                      child: CustomButton(
-                        color: kPrimaryColor,
-                        text: 'Se connecter',
-                        textColor: Colors.white,
-                        onPressed: () async {
-                          print("-----------------");
-                          //authentication(context);
-                        },
-                      ),
-                    ),
-                  ],
+                const SizedBox(height: 38.0),
+                const Text('Félicitations', style:TextStyle(fontSize: 35.0, color: kPrimaryColor, fontWeight: FontWeight.w700,
+                fontFamily: "Inter", fontStyle: FontStyle.normal)),
+                const SizedBox(height: 17),
+                const Text('Votre compte a été crée avec succès', style:TextStyle(fontSize: 16.0, color: successTextColor, fontWeight: FontWeight.w400,
+                fontFamily: "Inter", fontStyle: FontStyle.normal), textAlign: TextAlign.center,),
+                const SizedBox(height: 57),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 148.0, left: 50, right: 50),
+                  child: CustomButton(
+                    color: kPrimaryColor,
+                    text: 'Se connecter',
+                    textColor: Colors.white,
+                    onPressed: () async {
+                      print("--------FELICITATIONS---------");
+                    },
+                  ),
                 ),
               ],
             ),

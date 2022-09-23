@@ -5,6 +5,7 @@ import 'package:eido_events_project/pages/register_page.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../constants.dart';
+import '../providers/app.dart';
 import '../widgets/custom_widgets.dart';
 import 'location_settings/home_location_settings.dart';
 
@@ -60,39 +61,19 @@ class _LoginPageState extends State<LoginPage> {
           children: [
             ListView(
               children: <Widget>[
-                //SizedBox(height: hv*10),
-                Stack(
-                  fit: StackFit.passthrough,
-                  children: <Widget>[
-                    SizedBox(
-                      height: hv * 25,//66
-                      child: SizedBox(width: wv * 25,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 20.0, horizontal: 20),
-                          child: Image.asset('assets/images/logo_login.png',
-                            width: 99,
-                            height: 136,),
-                        ),),
-                    ),
-                    /*Column(
-                children: <Widget>[
-                  SizedBox(child: Image.asset('assets/images/logo.png'), width: wv*30,),
-                ],
-              ),*/
-                  ],
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 32.0, horizontal: 138),
+                  child: Image.asset('assets/images/logo_login.png'),
                 ),
 
-
-                SizedBox(height: hv * 1),//43
                 Padding(
-                    padding: const EdgeInsets.only(left: 30.0),
+                    padding: const EdgeInsets.only(left: 29.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: const <Widget>[
-                        Text("Se connecter", style: TextStyle(fontSize: 23.0,
-                            color: textColor,
-                            fontWeight: FontWeight.w700)),
+                        Text("Se connecter",
+                            style: TextStyle(fontSize: 23.0, color: textColor, fontWeight: FontWeight.w700, fontFamily: "Inter")),
                       ],
                     )),
 
@@ -103,43 +84,18 @@ class _LoginPageState extends State<LoginPage> {
                     key: _loginFormKey,
                     child: Column(
                       children: <Widget>[
-
-                        // Champ de texte du numéro
-
-                        /*     CustomTextField(
-                      maxLength: 9,
-                      hintText: 'Téléphone',
-                      controller: _phoneController,
-                      emptyValidatorText: 'Entrez un numéro',
-                      keyboardType: TextInputType.phone,
-                      validator: _phoneFieldValidator,
-                      icon: Icons.phone_outlined,
-                      labelColor: Colors.black45,
-                    ),
-
-                    // Champ de texte du mot de passe
-
-                    CustomPasswordField(
-                      hintText: 'Mot de passe',
-                      keyboardType: TextInputType.text,
-                      controller: _passwordController,
-                      onSavedFunc: (value) => userPassword = value,
-                      emptyValidatorText: 'Entrez votre mot de passe',
-                      validator: _passwordFieldValidator,
-                      color: Colors.black45,
-                    ),*/
-
                         ItextField(
                           hintText: 'Numéro de téléphone',
                           controller: _phoneController,
                           emptyValidatorText: 'Entrez un numéro',
                           keyboardType: TextInputType.phone,
                           validator: _phoneFieldValidator,
-                          icon: Icons.phone_outlined,
+                          //icon: Icons.phone_outlined,
                           labelColor: labelColorTextField,
+                          imgLeftIcon: Image.asset("assets/images/call-icon.png", width: 22, height: 22,),
                         ),
 
-                        SizedBox(height: hv * 4),//4
+                        const SizedBox(height: 20),
 
                         IpasswordField(
                           hintText: 'Mot de passe',
@@ -149,17 +105,20 @@ class _LoginPageState extends State<LoginPage> {
                           emptyValidatorText: 'Entrez votre mot de passe',
                           validator: _passwordFieldValidator,
                           color: labelColorTextField,
+                          leftIcon: Image.asset("assets/images/lock-icon.png", width: 22, height: 22,),
                         ),
 
-                        SizedBox(height: hv * 2),//4
+                        const SizedBox(height: 25),//4
 
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
-                            Center(
-                              child: Row(
-                                children: [
-                                  Switch(
+                            Row(
+                              children: [
+                                Transform.scale(
+                                  alignment: Alignment.centerLeft,
+                                  scale: 0.9,
+                                  child: Switch(
                                     value: isChecked,
                                     onChanged: (bool isOn) {
                                       if (kDebugMode) {
@@ -174,42 +133,32 @@ class _LoginPageState extends State<LoginPage> {
                                         }
                                       });
                                     },
-                                    activeColor: iconColor,
+                                    activeColor: whiteColor,
+                                    activeTrackColor: iconColor,
                                     inactiveTrackColor: Colors.grey,
                                     inactiveThumbColor: Colors.grey,
                                   ),
-                                  const Text("Se rappeler ?",
-                                    style: TextStyle(color: textColor,
-                                        fontStyle: FontStyle.normal,
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: 14.0),)
-                                ],
-                              ),
+                                ),
+                                const Text("Se rappeler",
+                                  style: TextStyle(color: textColor, fontStyle: FontStyle.normal, fontWeight: FontWeight.w400, fontSize: 14.0, fontFamily: "Inter",), textAlign: TextAlign.left,)
+                              ],
                             ),
-
-                            Center(
-                              child: InkWell(
-                                  onTap: () {
-                                    Navigator.of(context, rootNavigator: true)
-                                        .pushNamed(ForgetPasswordPageView.pageName);
-                                  },
-                                  child: const Text("Mot de passe oublié ?",
-                                    style: TextStyle(
-                                        color: textColor,
-                                        fontStyle: FontStyle.normal,
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: 14.0),)),
-                            ),
+                            InkWell(
+                                onTap: () {
+                                  Navigator.of(context, rootNavigator: true).pushNamed(ForgetPasswordPageView.pageName);
+                                },
+                                child: const Text("Mot de passe oublié?",
+                                  style: TextStyle(color: textColor, fontStyle: FontStyle.normal,fontWeight: FontWeight.w400, fontFamily: "Inter", fontSize: 14.0), textAlign: TextAlign.right,)),
                           ],
                         ),
 
-                        SizedBox(height: hv * 2),
+                        const SizedBox(height: 3),
 
                         Column(
                           children: <Widget>[
                             Padding(
-                              padding: const EdgeInsets.only(bottom: 25.0, left: 10.0, right: 10.0),
-                              child: CustomButtonWithLoading(
+                              padding: const EdgeInsets.symmetric(vertical: 32.0),
+                              child: CustomButtonWithLoading2(
                                 color: kPrimaryColor,
                                 text: 'Se connecter',
                                 textColor: Colors.white,
@@ -219,7 +168,7 @@ class _LoginPageState extends State<LoginPage> {
                                 },
                               ),
                             ),
-
+                            
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: const [
@@ -233,7 +182,7 @@ class _LoginPageState extends State<LoginPage> {
                             ),*/
                                 Text(
                                   'OU',
-                                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500, color: colorGray),
+                                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500, color: colorGray, fontFamily: "Inter", fontStyle: FontStyle.normal), textAlign: TextAlign.center,
                                 ),
                                 /*Padding(
                               padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -245,14 +194,15 @@ class _LoginPageState extends State<LoginPage> {
                             ),*/
                               ],
                             ),
-                            SizedBox(height: hv * 2),
 
-                            Row(
+                            Padding(
+                              padding: const EdgeInsets.only(top: 22.0, left: 3.0, right: 2.0, bottom: 58),
+                              child: Row(
                               children: [
                                 Expanded(
                                   flex: 1,
                                   child: MaterialButton(
-                                    padding: const EdgeInsets.symmetric(vertical: 13.0),
+                                    padding: const EdgeInsets.symmetric(vertical: 13.0, horizontal: 6),
                                     color: Colors.white,
                                     shape:  RoundedRectangleBorder(
                                       side: const BorderSide(width: 1.0, color: kPrimaryColor),
@@ -261,10 +211,7 @@ class _LoginPageState extends State<LoginPage> {
                                     child: Row(
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
-                                        Image.asset('assets/images/qrcode_img.png',
-                                            width: 24,
-                                            height: 24,
-                                            fit: BoxFit.contain),
+                                        Image.asset('assets/images/qrcode_img.png', width: 24, height: 24, fit: BoxFit.cover),
                                       ],
                                     ),
                                     onPressed: () {
@@ -274,11 +221,11 @@ class _LoginPageState extends State<LoginPage> {
                                     },
                                   ),
                                 ),
-                                const SizedBox(width: 10.0),
+                                const SizedBox(width: 8.0),
                                 Expanded(
                                   flex: 4,
                                   child: MaterialButton(
-                                    padding: const EdgeInsets.symmetric(vertical: 13.0),
+                                    padding: const EdgeInsets.symmetric(vertical: 13.0, horizontal: 6.0),
                                     color: Colors.white,
                                     /*shape: const ContinuousRectangleBorder(
                                   side:
@@ -297,14 +244,14 @@ class _LoginPageState extends State<LoginPage> {
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
                                         Image.asset('assets/images/users.png',
-                                            fit: BoxFit.cover,
-                                        width: 24,
-                                        height: 24,),
+                                          fit: BoxFit.cover,
+                                          width: 24,
+                                          height: 24,),
                                         const SizedBox(width: 10.0),
                                         const Text(
                                           'Evènement associé',
                                           style: TextStyle(
-                                              fontSize: 16.0, color: Colors.black),
+                                              fontSize: 16.0, color: textColor, fontWeight: FontWeight.w400, fontStyle: FontStyle.normal, fontFamily: "Inter"), textAlign: TextAlign.center,
                                         ),
                                       ],
                                     ),
@@ -312,32 +259,29 @@ class _LoginPageState extends State<LoginPage> {
                                 ),
                               ],
                             ),
-
-                            SizedBox(height: hv * 2),
+                            ),
 
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 const Text(
                                   'Vous n\'avez pas de compte? ',
-                                  style: TextStyle(fontSize: 15.0),
+                                  style: TextStyle(fontSize: 15.0, fontFamily: "Inter", fontWeight: FontWeight.w400, fontStyle: FontStyle.normal, color: textColor), textAlign: TextAlign.center,
                                 ),
                                 Expanded(
-                                  child: GestureDetector(
+                                  child: InkWell(
                                     onTap: () {
                                       Navigator.of(context, rootNavigator: true)
                                           .pushNamed(RegisterPageView.pageName);
                                     },
                                     child: const Text(
                                       ' S\'enregistrer',
-                                      style: TextStyle(fontSize: 16.0, color: kPrimaryColor),
+                                      style: TextStyle(fontSize: 15.0, fontFamily: "Inter", fontWeight: FontWeight.w400, fontStyle: FontStyle.normal, color: kPrimaryColor), textAlign: TextAlign.center,
                                     ),
                                   ),)
                               ],
                             ),
-
-                            SizedBox(height: hv * 2),
-
+                            const SizedBox(height: 38),
                           ],
                         ),
                       ],
@@ -388,9 +332,4 @@ class _LoginPageState extends State<LoginPage> {
     return 'Password must be 5 characters long';
   }
 
-}
-
-class Global{
-  static final shared =Global();
-  bool isInstructionView = false;
 }

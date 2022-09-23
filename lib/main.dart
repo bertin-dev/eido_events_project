@@ -27,6 +27,7 @@ class _MyAppState extends State<MyApp> {
       onGenerateRoute: RouteGenerator.generateRoute,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+          //visualDensity: VisualDensity.adaptivePlatformDensity,
           fontFamily: 'Inter',
           disabledColor: Colors.white,
           brightness: Brightness.light,

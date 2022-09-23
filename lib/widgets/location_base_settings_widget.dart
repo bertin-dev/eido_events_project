@@ -181,88 +181,85 @@ class _LocationBaseSettingsWidgetState extends State<LocationBaseSettingsWidget>
                 }).toList(),
 
               ) : null,
-              body: ListView(
-                shrinkWrap: true,
-                children: [
-                  Stack(
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage(widget.fullBgImg),
-                            fit: BoxFit.cover,
+              body: SingleChildScrollView(
+                child: Stack(
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage(widget.fullBgImg),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      child: Stack(
+                        //fit: StackFit.expand,
+                        children: [
+                          Container(
+                            height: widget.heightBgHeader,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage(widget.bgHeader!),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
                           ),
-                        ),
-                        child: Stack(
-                          //fit: StackFit.expand,
-                          children: [
-                            Container(
-                              height: widget.heightBgHeader,
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  image: AssetImage(widget.bgHeader!),
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
-                            Positioned(
-                              top: 25,
-                              left: 1,
-                              right: 1,
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 3.58),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: <Widget>[
-                                    if(widget.iconMenuLeft !=null)...{
-                                      IconButton(
-                                        onPressed: widget.onPressedMenuLeft,
-                                        icon: Image.asset(widget.iconMenuLeft!,
-                                          width: 30,
-                                          height: 30,),
-                                      )
-                                    }
-                                    else...{
-                                      IconButton(
-                                        icon: const Icon(
-                                          Icons.arrow_back,
-                                          color: Colors.white,
-                                          size: 25,
-                                        ),
-                                        onPressed: () => Navigator.of(context).pop(),
+                          Positioned(
+                            top: 25,
+                            left: 1,
+                            right: 1,
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 3.58),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  if(widget.iconMenuLeft !=null)...{
+                                    IconButton(
+                                      onPressed: widget.onPressedMenuLeft,
+                                      icon: Image.asset(widget.iconMenuLeft!,
+                                        width: 30,
+                                        height: 30,),
+                                    )
+                                  }
+                                  else...{
+                                    IconButton(
+                                      icon: const Icon(
+                                        Icons.arrow_back,
+                                        color: Colors.white,
+                                        size: 25,
                                       ),
-                                    },
+                                      onPressed: () => Navigator.of(context).pop(),
+                                    ),
+                                  },
 
-                                     Expanded(child: Text(widget.title,
-                                      style: const TextStyle(fontSize: 19, fontWeight: FontWeight.w600, color: whiteColor,
-                                          fontFamily: "Inter"),textAlign: TextAlign.center,),),
-                                    if(widget.iconMenu != null)...{
-                                      IconButton(
-                                        onPressed: widget.onPressedMenu,
-                                        icon: Image.asset(widget.iconMenu!,
-                                          width: 30,
-                                          height: 30,),
-                                      )
-                                    },
-                                    if(widget.iconMenu2 != null)...{
-                                      IconButton(
-                                        onPressed: widget.onPressedMenu2,
-                                        icon: Image.asset(widget.iconMenu2!,
-                                          width: 30,
-                                          height: 30,),
-                                      )
-                                    }
-                                  ],
-                                ),
+                                  Expanded(child: Text(widget.title,
+                                    style: const TextStyle(fontSize: 19, fontWeight: FontWeight.w600, color: whiteColor,
+                                        fontFamily: "Inter"),textAlign: TextAlign.center,),),
+                                  if(widget.iconMenu != null)...{
+                                    IconButton(
+                                      onPressed: widget.onPressedMenu,
+                                      icon: Image.asset(widget.iconMenu!,
+                                        width: 30,
+                                        height: 30,),
+                                    )
+                                  },
+                                  if(widget.iconMenu2 != null)...{
+                                    IconButton(
+                                      onPressed: widget.onPressedMenu2,
+                                      icon: Image.asset(widget.iconMenu2!,
+                                        width: 30,
+                                        height: 30,),
+                                    )
+                                  }
+                                ],
                               ),
                             ),
-                            widget.containerWidget
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                ],
+                          ),
+                          widget.containerWidget
+                        ],
+                      ),
+                    )
+                  ],
+                ),
               )
           );
         });

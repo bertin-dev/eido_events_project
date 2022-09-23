@@ -29,7 +29,7 @@ class CustomButton extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100.0)),
         child: Padding(
           padding: const EdgeInsets.only(top:16.0, bottom: 16.0),
-          child: Text(text, style: const TextStyle(fontSize: 16.0, fontWeight: FontWeight.w700)),
+          child: Text(text, style: const TextStyle(fontSize: 16.0, fontWeight: FontWeight.w700, fontFamily: "Inter", fontStyle: FontStyle.normal,),textAlign: TextAlign.center,),
         ),
       ),
     );
@@ -84,23 +84,91 @@ class _CustomButtonWithLoadingState extends State<CustomButtonWithLoading> {
               .pushNamed(HomePageView.pageName);
         },
         style: ElevatedButton.styleFrom(
-          primary: widget.color,
-          onPrimary: widget.textColor,
-          elevation: 5.0,
-          //fixedSize: const Size(5.0, 1.0),
-          //textStyle: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-          //shadowColor: Colors.red,
-          shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(100.0),
-          //side: const BorderSide(width: 1.0, color: Colors.red,),
-          ),
-      ),
+          primary: Colors.blue, //button's fill color
+          onPrimary: Colors.red, //specify the color of the button's text and icons as well as the overlay colors used to indicate the hover, focus, and pressed states
+          onSurface: Colors.orange, //specify the button's disabled text, icon, and fill color
+          shadowColor: Colors.black, //specify the button's elevation color
+          elevation: 4.0, //buttons Material shadow
+          fixedSize: const Size(5.0, 1.0),
+          textStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, fontFamily: 'roboto'), //specify the button's text TextStyle
+          padding: const EdgeInsets.only(top: 4.0, bottom: 4.0, right: 8.0, left: 8.0), //specify the button's Padding
+          minimumSize: Size(20, 40), //specify the button's first: width and second: height
+          side: BorderSide(color: Colors.yellow, width: 2.0, style: BorderStyle.solid), //set border for the button
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(35.0)), // set the buttons shape. Make its birders rounded etc
+          enabledMouseCursor: MouseCursor.defer, //used to construct ButtonStyle.mouseCursor
+          disabledMouseCursor: MouseCursor.uncontrolled, //used to construct ButtonStyle.mouseCursor
+          visualDensity: VisualDensity(horizontal: 0.0, vertical: 0.0), //set the button's visual density
+          tapTargetSize: MaterialTapTargetSize.padded, // set the MaterialTapTarget size. can set to: values, padded and shrinkWrap properties
+          animationDuration: Duration(milliseconds: 100), //the buttons animations duration
+          enableFeedback: true, //to set the feedback to true or false
+          alignment: Alignment.bottomCenter, //set the button's child Alignment
+        ),
 
         child: Padding(
-    padding: isLoading ? const EdgeInsets.symmetric(vertical:5.0, horizontal: 82.0) : const EdgeInsets.symmetric(vertical:16.0, horizontal: 62.0),
-    child: isLoading ? const CircularProgressIndicator(color: Colors.white, strokeWidth: 2,):Text(widget.text, style: const TextStyle(fontSize: 16.0, fontWeight: FontWeight.w700)),
+    padding: isLoading ? const EdgeInsets.symmetric(vertical:16.0, horizontal: 32.0) : const EdgeInsets.symmetric(vertical:16.0, horizontal: 32.0),
+    child: isLoading ? const CircularProgressIndicator(color: Colors.white, strokeWidth: 2,):Text(widget.text, style: const TextStyle(fontSize: 16.0, fontWeight: FontWeight.w700, fontStyle: FontStyle.normal, fontFamily: "Inter",), textAlign: TextAlign.center,),
     ),
     )
+    );
+  }
+}
+
+
+class CustomButtonWithLoading2 extends StatefulWidget {
+
+  final VoidCallback onPressed;
+  final Color textColor;
+  final String text;
+  final Color color;
+
+  CustomButtonWithLoading2({Key? key,
+    required this.onPressed,
+    required this.text,
+    required this.textColor,
+    required this.color,
+  }) : super(key: key);
+
+  @override
+  _CustomButtonWithLoading2State createState() => _CustomButtonWithLoading2State();
+}
+
+class _CustomButtonWithLoading2State extends State<CustomButtonWithLoading2> {
+
+  bool isLoading = false;
+  void _startLoading() async {
+    print("is downloading=$isLoading");
+    setState(() {
+      isLoading = true;
+    });
+    await Future.delayed(const Duration(seconds: 3));
+    setState(() {
+      isLoading = false;
+    });
+    print("is downloading=$isLoading");
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ButtonTheme(
+        minWidth: MediaQuery.of(context).size.width,
+        child: MaterialButton(
+          //onPressed: widget.onPressed,
+          elevation: 5.0,
+          textColor: widget.textColor,
+          color: widget.color,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100.0)),
+          onPressed: () {
+            // Update the state i.e. toogle the state of passwordVisible variable
+            setState(() {
+              isLoading ? null : _startLoading();
+            });
+            Navigator.of(context, rootNavigator: true).pushNamed(HomePageView.pageName);
+          },
+          child: Padding(
+            padding: isLoading ? const EdgeInsets.symmetric(vertical:10.0, horizontal: 26.0) : const EdgeInsets.symmetric(vertical:16.0, horizontal: 32.0),
+            child: isLoading ? const CircularProgressIndicator(color: Colors.white, strokeWidth: 2,):Text(widget.text, style: const TextStyle(fontSize: 16.0, fontWeight: FontWeight.w700, fontStyle: FontStyle.normal, fontFamily: "Inter",), textAlign: TextAlign.center,),
+          ),
+        )
     );
   }
 }
@@ -114,6 +182,7 @@ class IpasswordField extends StatefulWidget {
   String? Function(String?)? validator;
   final Color? color;
   final int? maxLength;
+  final Widget? leftIcon;
 
   IpasswordField({
     Key? key,
@@ -124,7 +193,8 @@ class IpasswordField extends StatefulWidget {
     this.keyboardType,
     this.validator,
     this.color,
-    this.maxLength
+    this.maxLength,
+    this.leftIcon
   }) : super(key: key);
 
   @override
@@ -138,14 +208,20 @@ class _IpasswordFieldState extends State<IpasswordField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      maxLength: widget.maxLength ?? null,
+      maxLength: widget.maxLength,
       textInputAction: TextInputAction.done,
       cursorColor: kPrimaryColor,
       obscureText: passwordVisible,
       style: TextStyle(fontWeight: FontWeight.w400, color: widget.color),
       keyboardType: widget.keyboardType,
       decoration: InputDecoration(
-        prefixIcon: const Icon(Icons.lock, color: iconColor,),
+        //prefixIcon: widget.leftIcon != null ? widget.leftIcon! : const Icon(Icons.lock, color: iconColor,),
+        prefixIcon: widget.leftIcon != null
+            ? Container(
+          padding: const EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 14),
+          child: widget.leftIcon ?? const Icon(Icons.lock, color: iconColor,),
+        )
+            : const Icon(Icons.lock, color: iconColor,),
         //labelText: widget.hintText,
         hintText: widget.hintText,
         fillColor: Colors.white,
@@ -205,7 +281,7 @@ class ICheckbox extends StatelessWidget {
 }
 
 
-class ItextField extends StatelessWidget {
+class ItextField extends StatefulWidget {
   final String? hintText;
   final String emptyValidatorText;
   final TextEditingController controller;
@@ -216,9 +292,10 @@ class ItextField extends StatelessWidget {
   Function(String)? onChangedFunc;
   final int? maxLength;
   final Color? labelColor;
+  final Widget? imgLeftIcon;
 
   ItextField({
-      Key? key,
+    Key? key,
     this.hintText,
     required this.emptyValidatorText,
     required this.controller,
@@ -228,56 +305,76 @@ class ItextField extends StatelessWidget {
     this.validator,
     this.onChangedFunc,
     this.maxLength,
-    this.labelColor
+    this.labelColor,
+    this.imgLeftIcon
   }) : super(key: key);
+
+  @override
+  State<ItextField> createState() => _ItextFieldState();
+}
+
+class _ItextFieldState extends State<ItextField> {
   @override
   Widget build(BuildContext context) {
     return Theme(
       data: ThemeData(
         primaryColor: kPrimaryColor,
       ),
-      child: maxLength != null ? TextFormField(
-        style: TextStyle(fontWeight: FontWeight.w400, color: labelColor),
+      child: widget.maxLength != null ? TextFormField(
+        style: TextStyle(fontWeight: FontWeight.w400, color: widget.labelColor),
         textInputAction: TextInputAction.next,
         cursorColor: kPrimaryColor,
-        maxLength: maxLength,
-        keyboardType: keyboardType,
+        maxLength: widget.maxLength,
+        keyboardType: widget.keyboardType,
         decoration: InputDecoration(
-            //suffixIcon: Icon(icon, color: const Color(0xff039BE5),),
-            prefixIcon: Icon(icon, color: iconColor,),
-            //labelText: hintText,
-            hintText: hintText,
-            fillColor: Colors.white,
-            filled: true,
-            labelStyle: TextStyle(fontWeight: FontWeight.w400, fontSize: 15.0, color: labelColor),
-            contentPadding: const EdgeInsets.all(15.0),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12.0),
-              borderSide: const BorderSide(color: kPrimaryColor,),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12.0),
-              borderSide: const BorderSide(color: Color(0xffE4DFDF), width: 1.0,
-              ),
+          //suffixIcon: Icon(icon, color: const Color(0xff039BE5),),
+          //prefixIcon:  Icon(icon, color: iconColor,) ?? imgLeftIcon!,
+
+          prefixIcon: widget.imgLeftIcon != null
+              ? Container(
+            padding: const EdgeInsets.only(left: 15, right: 14, top: 15, bottom: 15),
+            child: widget.imgLeftIcon ?? Icon(widget.icon, color: iconColor,),
+          )
+              : Icon(widget.icon, color: iconColor,),
+
+          //labelText: hintText,
+          hintText: widget.hintText,
+          fillColor: Colors.white,
+          filled: true,
+          labelStyle: TextStyle(fontWeight: FontWeight.w400, fontSize: 15.0, color: widget.labelColor),
+          contentPadding: const EdgeInsets.all(15.0),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12.0),
+            borderSide: const BorderSide(color: kPrimaryColor,),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12.0),
+            borderSide: const BorderSide(color: Color(0xffE4DFDF), width: 1.0,
             ),
           ),
-        validator: validator,
-        controller: controller,
-        onChanged: onChangedFunc,
-        onSaved: onSavedFunc,
+        ),
+        validator: widget.validator,
+        controller: widget.controller,
+        onChanged: widget.onChangedFunc,
+        onSaved: widget.onSavedFunc,
       )
           :
       TextFormField(
-        style: TextStyle(fontWeight: FontWeight.w400, color: labelColor),
+        style: TextStyle(fontWeight: FontWeight.w400, color: widget.labelColor),
         textInputAction: TextInputAction.next,
         cursorColor: kPrimaryColor,
-        keyboardType: keyboardType,
+        keyboardType: widget.keyboardType,
         decoration: InputDecoration(
           //suffixIcon: Icon(icon, color: const Color(0xff039BE5),),
-          labelStyle: TextStyle(fontWeight: FontWeight.w400, fontSize: 15.0, color: labelColor),
-          prefixIcon: Icon(icon, color: iconColor,),
+          labelStyle: TextStyle(fontWeight: FontWeight.w400, fontSize: 15.0, color: widget.labelColor),
+          prefixIcon: widget.imgLeftIcon != null
+              ? Container(
+            padding: const EdgeInsets.only(left: 15, right: 10, top: 15, bottom: 15),
+            child: widget.imgLeftIcon ?? Icon(widget.icon, color: iconColor,),
+          )
+              : Icon(widget.icon, color: iconColor,),
           //labelText: hintText,
-          hintText: hintText,
+          hintText: widget.hintText,
           filled: true,
           fillColor: Colors.white,
           contentPadding: const EdgeInsets.all(15.0),
@@ -291,10 +388,10 @@ class ItextField extends StatelessWidget {
             ),
           ),
         ),
-        validator: validator,
-        controller: controller,
-        onChanged: onChangedFunc,
-        onSaved: onSavedFunc,
+        validator: widget.validator,
+        controller: widget.controller,
+        onChanged: widget.onChangedFunc,
+        onSaved: widget.onSavedFunc,
       )
       ,
     );

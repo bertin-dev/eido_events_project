@@ -9,6 +9,7 @@ class IntroView extends StatelessWidget {
   final String? buttonLabel;
   final TabController? tabController;
   final int? position;
+  final String? headImg;
 
    IntroView(
       {Key? key,
@@ -17,7 +18,8 @@ class IntroView extends StatelessWidget {
       this.message,
       this.buttonLabel,
       this.tabController,
-      this.position})
+      this.position,
+      this.headImg})
       : super(key: key);
 
   @override
@@ -35,38 +37,95 @@ class IntroView extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    SizedBox(
-                      width: 300,
-                      height: 300,
-                      child: Image.asset(imageLink!),
-                    ),
 
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: List.generate(tabController!.length, (index) => buildDot(index, context),),
-                    ),
+                    if(position==0)...[
+                      Stack(
+                        children: [
+                          if(headImg != null)...{
+                            SizedBox(
+                              width: 255.41,
+                              height: 86.77,
+                              child: Image.asset(headImg!),
+                            ),
+                          },
+                          Container(
+                            width: 305,
+                            height: 305,
+                            margin: const EdgeInsets.only(top: 50, bottom: 40),
+                            child: Image.asset(imageLink!),
+                          ),
 
-                    Text(title!,
-                        style: const TextStyle(
-                            fontSize: 23,
-                            fontWeight: FontWeight.w700,
-                            color: labelColorTextField),
-                      textAlign: TextAlign.center,
-                    ),
-                    SizedBox(
-                      height: hv * 2,
-                    ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: List.generate(tabController!.length, (index) => buildDot(index, context),),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 8, right: 8, top: 40, bottom: 19),
+                        child: Text(title!,
+                          style: const TextStyle(fontSize: 23, fontWeight: FontWeight.w700, color: labelColorTextField, fontFamily: "Inter"), textAlign: TextAlign.center,),),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 3, right: 3, bottom: 60),
+                        child: Text(message!,
+                          style: const TextStyle(fontSize: 14.55, fontWeight: FontWeight.w500, color: descOnBoarding, fontFamily: "Inter"), textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ] else if(position==1)...[
+                      Stack(
+                        children: [
+                          if(headImg != null)...{
+                            SizedBox(
+                              width: 255.41,
+                              height: 86.77,
+                              child: Image.asset(headImg!),
+                            ),
+                          },
+                          Container(
+                            width: 305,
+                            height: 305,
+                            margin: const EdgeInsets.only(top: 50, bottom: 40),
+                            child: Image.asset(imageLink!),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: List.generate(tabController!.length, (index) => buildDot(index, context),),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 3.5, right: 3.5, top: 40, bottom: 19),
+                        child: Text(title!,
+                          style: const TextStyle(fontSize: 23, fontWeight: FontWeight.w700, color: labelColorTextField, fontFamily: "Inter"), textAlign: TextAlign.center,),),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 3, right: 3, bottom: 60),
+                        child: Text(message!,
+                          style: const TextStyle(fontSize: 14.55, fontWeight: FontWeight.w500, color: descOnBoarding, fontFamily: "Inter"), textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ] else...[
+                      Container(
+                        width: 305,
+                        height: 305,
+                        margin: const EdgeInsets.only(bottom: 40, left: 2.5, right: 2.5),
+                        child: Image.asset(imageLink!),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: List.generate(tabController!.length, (index) => buildDot(index, context),),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 8, right: 8, top: 40, bottom: 19),
+                        child: Text(title!,
+                          style: const TextStyle(fontSize: 23, fontWeight: FontWeight.w700, color: labelColorTextField, fontFamily: "Inter"), textAlign: TextAlign.center,),),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 3, right: 3, bottom: 60),
+                        child: Text(message!,
+                          style: const TextStyle(fontSize: 14.55, fontWeight: FontWeight.w500, color: descOnBoarding, fontFamily: "Inter"), textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ]
 
-                    Text(message!,
-                      style: const TextStyle(
-                          fontSize: 14.55,
-                          fontWeight: FontWeight.w500,
-                          color: descOnBoarding),
-                      textAlign: TextAlign.center,
-                    ),
-                    SizedBox(
-                      height: hv * 5,
-                    ),
                   ],
                 ),
               ),
