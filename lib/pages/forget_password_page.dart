@@ -5,36 +5,14 @@ import 'package:flutter/foundation.dart';
 import '../constants.dart';
 import '../widgets/custom_widgets.dart';
 
-
-void main(){
-  runApp(const ForgetPasswordPageView());
-}
-
-
-class ForgetPasswordPageView extends StatelessWidget {
-  const ForgetPasswordPageView({Key? key}) : super(key: key);
+class ForgetPasswordPageView extends StatefulWidget {
   static const String pageName = "forget_password";
+  const ForgetPasswordPageView({Key? key}) : super(key: key);
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: Colors.white,
-      ),
-      home: const ForgetPasswordPage(),
-    );
-  }
+  _ForgetPasswordPageViewState createState() => _ForgetPasswordPageViewState();
 }
 
-
-class ForgetPasswordPage extends StatefulWidget {
-
-  const ForgetPasswordPage({Key? key}) : super(key: key);
-  @override
-  _ForgetPasswordPageState createState() => _ForgetPasswordPageState();
-}
-
-class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
+class _ForgetPasswordPageViewState extends State<ForgetPasswordPageView> {
 
   final _forgetPasswordFormKey = GlobalKey<FormState>();
   var scaffoldKey = GlobalKey<ScaffoldState>();
@@ -63,85 +41,69 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
         backgroundColor: Colors.white,
         resizeToAvoidBottomInset: true,
         key: scaffoldKey,
-        body: Stack(
-          children: [
-            ListView(
-              children: <Widget>[
-                SizedBox(height: hv * 8),//43
-                Padding(
-                    padding: const EdgeInsets.only(left: 32.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const <Widget>[
-                        Text("Mot de passe oublié", style: TextStyle(fontSize: 23.0,
-                            color: textColor,
-                            fontWeight: FontWeight.w700)),
-                      ],
-                    )),
-
-                SizedBox(height: hv * 3),
-
-                Padding(
-                  padding: const EdgeInsets.only(left: 32, right: 29),
-                  child: Wrap(
-                    spacing: 8.0,
-                    direction: Axis.horizontal,
-                    children: const [
-                       Text(
-                        'Pour récuperer votre mot de passe, entrez votre nom d\'utilisateur, nous vous enverrons un code'
-                            'par SMS que vous confirmerez',
-                        style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w400, color: labelColorTextField),
+        body: ListView(
+          padding: const EdgeInsets.only(top: 82.0, left: 29.0, right: 29.0),
+          children: <Widget>[
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: const <Widget>[
+                Text("Mot de passe oublié", style: TextStyle(fontSize: 23.0,
+                    color: textColor,
+                    fontWeight: FontWeight.w700,
+                    fontFamily: "Inter", fontStyle: FontStyle.normal)),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 21, bottom: 40),
+              child: Wrap(
+                spacing: 8.0,
+                direction: Axis.horizontal,
+                children: const [
+                  Text(
+                    'Pour récuperer votre mot de passe, entrez votre nom d\'utilisateur, nous vous enverrons un code'
+                        'par SMS que vous confirmerez',
+                    style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w400, color: labelColorTextField,
+                        fontFamily: "Inter", fontStyle: FontStyle.normal),
+                  ),
+                ],
+              ),
+            ),
+            Form(
+              autovalidateMode: _autovalidate,
+              key: _forgetPasswordFormKey,
+              child: Column(
+                children: <Widget>[
+                  ItextField(
+                    hintText: 'Numéro de téléphone',
+                    controller: _phoneController,
+                    emptyValidatorText: 'Entrez un numéro',
+                    keyboardType: TextInputType.number,
+                    validator: _phoneFieldValidator,
+                    imgLeftIcon: Image.asset("assets/images/call-icon.png", width: 22, height: 22,),
+                    labelColor: labelColorTextField,
+                  ),
+                  const SizedBox(height: 20),
+                  Column(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 123.0),
+                        child: CustomButton(
+                          color: kPrimaryColor,
+                          text: 'Envoyer',
+                          textColor: Colors.white,
+                          onPressed: () async {
+                            Navigator.of(context, rootNavigator: true)
+                                .pushNamed(OtpCheckingPage.pageName, arguments: {
+                                  "isForgotPassword": true
+                            });
+                          },
+                        ),
                       ),
                     ],
                   ),
-                ),
-                SizedBox(height: hv * 5),
-
-                Padding(
-                  padding: const EdgeInsets.only(left: 29.0, right: 29.0),
-                  child: Form(
-                    autovalidateMode: _autovalidate,
-                    key: _forgetPasswordFormKey,
-                    child: Column(
-                      children: <Widget>[
-
-                        ItextField(
-                          hintText: 'Numéro de téléphone',
-                          controller: _phoneController,
-                          emptyValidatorText: 'Entrez un numéro',
-                          keyboardType: TextInputType.number,
-                          validator: _phoneFieldValidator,
-                          icon: Icons.phone,
-                          labelColor: labelColorTextField,
-                        ),
-
-                        SizedBox(height: hv * 4),//4
-
-                        Column(
-                          children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 25.0, left: 10.0, right: 10.0),
-                              child: CustomButton(
-                                color: kPrimaryColor,
-                                text: 'Envoyer',
-                                textColor: Colors.white,
-                                onPressed: () async {
-                                  Navigator.of(context, rootNavigator: true)
-                                      .pushNamed(OtpCheckingPage.pageName);
-                                },
-                              ),
-                            ),
-
-                            SizedBox(height: hv * 3),
-
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            )
+                ],
+              ),
+            ),
           ],
         )
       );

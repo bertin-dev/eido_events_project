@@ -7,35 +7,14 @@ import '../constants.dart';
 import '../widgets/custom_widgets.dart';
 
 
-void main(){
-  runApp(const ResetForgetPasswordPageView());
-}
-
-
-class ResetForgetPasswordPageView extends StatelessWidget {
-  const ResetForgetPasswordPageView({Key? key}) : super(key: key);
+class ResetForgetPasswordPageView extends StatefulWidget {
   static const String pageName = "reset_forget_password";
+  const ResetForgetPasswordPageView({Key? key}) : super(key: key);
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: Colors.white,
-      ),
-      home: const ResetForgetPasswordPage(),
-    );
-  }
+  _ResetForgetPasswordPageViewState createState() => _ResetForgetPasswordPageViewState();
 }
 
-
-class ResetForgetPasswordPage extends StatefulWidget {
-
-  const ResetForgetPasswordPage({Key? key}) : super(key: key);
-  @override
-  _ResetForgetPasswordPageState createState() => _ResetForgetPasswordPageState();
-}
-
-class _ResetForgetPasswordPageState extends State<ResetForgetPasswordPage> {
+class _ResetForgetPasswordPageViewState extends State<ResetForgetPasswordPageView> {
 
   final _forgetPasswordFormKey = GlobalKey<FormState>();
   var scaffoldKey = GlobalKey<ScaffoldState>();
@@ -65,96 +44,84 @@ class _ResetForgetPasswordPageState extends State<ResetForgetPasswordPage> {
         backgroundColor: Colors.white,
         resizeToAvoidBottomInset: true,
         key: scaffoldKey,
-        body: Stack(
-          children: [
-            ListView(
-              children: <Widget>[
-                SizedBox(height: hv * 8),//43
-                Padding(
-                    padding: const EdgeInsets.only(left: 32.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const <Widget>[
-                        Text("Mot de passe oublié", style: TextStyle(fontSize: 23.0,
-                            color: textColor,
-                            fontWeight: FontWeight.w700)),
-                      ],
-                    )),
+        body: ListView(
+          padding: const EdgeInsets.only(top: 82.0, left: 29.0, right: 29.0),
+          children: <Widget>[
+            Padding(
+                padding: const EdgeInsets.only(bottom: 21.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: const <Widget>[
+                    Text("Mot de passe oublié", style: TextStyle(fontSize: 23.0,
+                        color: textColor,
+                        fontWeight: FontWeight.w700,
+                        fontFamily: "Inter", fontStyle: FontStyle.normal)),
+                  ],
+                )
+            ),
 
-                SizedBox(height: hv * 3),
-
-                Padding(
-                  padding: const EdgeInsets.only(left: 32, right: 29),
-                  child: Wrap(
-                    spacing: 8.0,
-                    direction: Axis.horizontal,
-                    children: const [
-                       Text(
-                        'Entrer le nouveau mot de passe',
-                        style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w400, color: labelColorTextField),
-                      ),
-                    ],
+            Padding(
+              padding: const EdgeInsets.only(bottom: 40),
+              child: Wrap(
+                spacing: 8.0,
+                direction: Axis.horizontal,
+                children: const [
+                  Text(
+                    'Entrer le nouveau mot de passe',
+                    style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w400, color: labelColorTextField,
+                        fontFamily: "Inter", fontStyle: FontStyle.normal),
                   ),
-                ),
-                SizedBox(height: hv * 5),
+                ],
+              ),
+            ),
 
-                Padding(
-                  padding: const EdgeInsets.only(left: 29.0, right: 29.0),
-                  child: Form(
-                    autovalidateMode: _autovalidate,
-                    key: _forgetPasswordFormKey,
-                    child: Column(
-                      children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(bottom: 100.0),
+              child: Form(
+                autovalidateMode: _autovalidate,
+                key: _forgetPasswordFormKey,
+                child: Column(
+                  children: <Widget>[
 
-                        IpasswordField(
-                          hintText: 'Nouveau mot de passe',
-                          keyboardType: TextInputType.text,
-                          controller: _newPasswordController,
-                          onSavedFunc: (value) => userPassword = value,
-                          emptyValidatorText: 'Entrez votre nouveau mot de passe',
-                          validator: _passwordFieldValidator,
-                          color: labelColorTextField,
-                        ),
-
-                      SizedBox(height: hv * 4),
-
-                        IpasswordField(
-                          hintText: 'Confirmer le mot de passe',
-                          keyboardType: TextInputType.text,
-                          controller: _confirmPasswordController,
-                          onSavedFunc: (value) => userPassword = value,
-                          emptyValidatorText: 'Entrez votre mot de passe de confirmation',
-                          validator: _passwordFieldValidator,
-                          color: labelColorTextField,
-                        ),
-
-                        SizedBox(height: hv * 4),//4
-
-                        Column(
-                          children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 25.0, left: 10.0, right: 10.0),
-                              child: CustomButton(
-                                color: kPrimaryColor,
-                                text: 'Envoyer',
-                                textColor: Colors.white,
-                                onPressed: () async {
-                                  Navigator.of(context, rootNavigator: true)
-                                      .pushNamed(SuccessPageView.pageName);
-                                },
-                              ),
-                            ),
-
-                            SizedBox(height: hv * 3),
-
-                          ],
-                        ),
-                      ],
+                    IpasswordField(
+                      hintText: 'Nouveau mot de passe',
+                      keyboardType: TextInputType.text,
+                      controller: _newPasswordController,
+                      onSavedFunc: (value) => userPassword = value,
+                      emptyValidatorText: 'Entrez votre nouveau mot de passe',
+                      validator: _passwordFieldValidator,
+                      color: labelColorTextField,
+                      leftIcon : Image.asset("assets/images/lock-icon.png", width: 22, height: 22,),
                     ),
-                  ),
+                    const SizedBox(height: 18),
+                    IpasswordField(
+                      hintText: 'Confirmer le mot de passe',
+                      keyboardType: TextInputType.text,
+                      controller: _confirmPasswordController,
+                      onSavedFunc: (value) => userPassword = value,
+                      emptyValidatorText: 'Entrez votre mot de passe de confirmation',
+                      validator: _passwordFieldValidator,
+                      leftIcon : Image.asset("assets/images/lock-icon.png", width: 22, height: 22,),
+                      color: labelColorTextField,
+                    ),
+                    const SizedBox(height: 29),
+
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 100.0),
+                      child: CustomButton(
+                        color: kPrimaryColor,
+                        text: 'Reinitialiser',
+                        textColor: Colors.white,
+                        onPressed: () async {
+                          Navigator.of(context, rootNavigator: true)
+                              .pushNamed(SuccessPageView.pageName);
+                        },
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            )
+              ),
+            ),
           ],
         )
       );
