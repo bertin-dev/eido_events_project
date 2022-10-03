@@ -1,4 +1,4 @@
-import 'dart:io';
+
 import 'package:eido_events_project/pages/splash_screen.dart';
 import 'package:eido_events_project/routes/route_generators.dart';
 import 'package:flutter/material.dart';
@@ -27,8 +27,9 @@ class _MyAppState extends State<MyApp> {
       onGenerateRoute: RouteGenerator.generateRoute,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          //visualDensity: VisualDensity.adaptivePlatformDensity,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
           fontFamily: 'Inter',
+          //primarySwatch: const Color(0xFF343434),
           disabledColor: Colors.white,
           brightness: Brightness.light,
           primaryColorDark: const Color(0xFF343434),

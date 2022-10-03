@@ -4,6 +4,7 @@ import 'package:flutter_share/flutter_share.dart';
 
 import '../../constants.dart';
 import '../../models/items_associate_list_model.dart';
+import '../../providers/app.dart';
 import '../../widgets/custom_widgets.dart';
 import '../../widgets/location_base_settings_widget.dart';
 import '../delegate_account/delegate_login_page.dart';
@@ -139,6 +140,177 @@ class _ListAssociateAccountPageViewState extends State<ListAssociateAccountPageV
               ],
             )
         ),
+        isSelected: false
+    ));
+    itemsAssociate.add(ItemsAssociateListModel(
+        name: "Chatnoir123",
+        phone: "+237 690 000 000",
+        avatar: Image.asset(avatars, width: 37, height: 37,),
+        state: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+          decoration: BoxDecoration(
+            color: bgChipColor,
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: Align(
+            alignment: Alignment.center,
+            child: Text(status,
+              style: TextStyle(fontSize: 8.0, color: txtChipColor, fontWeight: FontWeight.w400, fontFamily: "Inter"),),
+          ),
+        ),
+        switchButton: Transform.scale(
+          alignment: Alignment.topRight,
+          scale: 0.8,
+          child: Switch(
+            value: isChecked,
+            onChanged: (bool isOn) {
+              if (kDebugMode) {
+                print(isOn);
+              }
+              setState(() {
+                isChecked = isOn;
+                Global.shared.isInstructionView = isOn;
+                isOn =!isOn;
+                if (kDebugMode) {
+                  print(isChecked);
+                }
+              });
+
+              setState(() {
+                if(status=="activer"){
+                  print("désactiver");
+                  status = "désactiver";
+                }else{
+                  print("activer");
+                  status = "activer";
+                }
+              });
+            },
+            activeColor: switchGreenColor,
+            inactiveTrackColor: Colors.grey,
+            inactiveThumbColor: whiteColor,
+          ),
+        ),
+        editButton: MaterialButton(
+            height: 26,
+            //minWidth: 117,
+            padding: const EdgeInsets.all(5),
+            color: kPrimaryColor,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0)),
+            onPressed: (){
+              _scaffoldKey.currentState!.openEndDrawer();
+            },
+            child: Row(
+              children: [
+                Image.asset("assets/images/associate_account/edit-white.png", width: 16, height: 16,),
+                const SizedBox(width: 6.84,),
+                Text('Modifier',
+                  style: TextStyle(color: btnEditTextColors, fontWeight: FontWeight.w400, fontSize: 12), textAlign: TextAlign.center,),
+              ],
+            )
+        ),
+        sendButton: MaterialButton(
+            height: 26,
+            //minWidth: 117,
+            padding: const EdgeInsets.all(5),
+            color: bottomNavSelected,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0)),
+            onPressed: share,
+            child: Row(
+              children: [
+                Image.asset("assets/images/associate_account/send-white.png", width: 16, height: 16,),
+                const SizedBox(width: 6.84,),
+                Text('Envoyer les accès',
+                  style: TextStyle(color: btnSendTextColors, fontWeight: FontWeight.w400, fontSize: 12), textAlign: TextAlign.center,),
+              ],
+            )
+        ),
+        isSelected: false
+    ));
+    itemsAssociate.add(ItemsAssociateListModel(
+        name: "Chatnoir123",
+        phone: "+237 690 000 000",
+        avatar: Image.asset(avatars, width: 37, height: 37,),
+        state: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+          decoration: BoxDecoration(
+            color: bgChipColor,
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: Align(
+            alignment: Alignment.center,
+            child: Text(status,
+              style: TextStyle(fontSize: 8.0, color: txtChipColor, fontWeight: FontWeight.w400, fontFamily: "Inter"),),
+          ),
+        ),
+        switchButton: Transform.scale(
+          alignment: Alignment.topRight,
+          scale: 0.8,
+          child: Switch(
+            value: isChecked,
+            onChanged: (bool isOn) {
+              if (kDebugMode) {
+                print(isOn);
+              }
+              setState(() {
+                isChecked = isOn;
+                Global.shared.isInstructionView = isOn;
+                isOn =!isOn;
+                if (kDebugMode) {
+                  print(isChecked);
+                }
+              });
+
+              setState(() {
+                if(status=="activer"){
+                  print("désactiver");
+                  status = "désactiver";
+                }else{
+                  print("activer");
+                  status = "activer";
+                }
+              });
+            },
+            activeColor: switchGreenColor,
+            inactiveTrackColor: Colors.grey,
+            inactiveThumbColor: whiteColor,
+          ),
+        ),
+        editButton: MaterialButton(
+            height: 26,
+            //minWidth: 117,
+            padding: const EdgeInsets.all(5),
+            color: kPrimaryColor,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0)),
+            onPressed: (){
+              _scaffoldKey.currentState!.openEndDrawer();
+            },
+            child: Row(
+              children: [
+                Image.asset("assets/images/associate_account/edit-white.png", width: 16, height: 16,),
+                const SizedBox(width: 6.84,),
+                Text('Modifier',
+                  style: TextStyle(color: btnEditTextColors, fontWeight: FontWeight.w400, fontSize: 12), textAlign: TextAlign.center,),
+              ],
+            )
+        ),
+        sendButton: MaterialButton(
+            height: 26,
+            //minWidth: 117,
+            padding: const EdgeInsets.all(5),
+            color: bottomNavSelected,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0)),
+            onPressed: share,
+            child: Row(
+              children: [
+                Image.asset("assets/images/associate_account/send-white.png", width: 16, height: 16,),
+                const SizedBox(width: 6.84,),
+                Text('Envoyer les accès',
+                  style: TextStyle(color: btnSendTextColors, fontWeight: FontWeight.w400, fontSize: 12), textAlign: TextAlign.center,),
+              ],
+            )
+        ),
+        isSelected: false
     ));
   }
 
@@ -186,34 +358,44 @@ class _ListAssociateAccountPageViewState extends State<ListAssociateAccountPageV
   @override
   Widget build(BuildContext context) {
     return LocationBaseAssociateAccountWidget(
-        containerWidget: Center(
-            child: Padding(
-              padding: const EdgeInsets.only(top: 120, left: 10, right: 10),
-              child: ListView.builder(
-                shrinkWrap: true,
-                  itemCount: itemsAssociate.length,
-                  itemBuilder: (context, int position){
-                    return InkWell(
-                      splashColor: Colors.grey,
-                      onTap: (){
+      containerWidget: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 115, left: 10, right: 10),
+                child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: itemsAssociate.length,
+                    itemBuilder: (context, int position){
+                      return InkWell(
+                        splashColor: Colors.grey,
+                        onTap: (){
 
-                          changeState(
-                            bgColor:bottomNavSelected,
-                            avatarImg: "assets/images/associate_account/user-orange.png",
-                            titleColor: whiteColor,
-                            subTitleColor: whiteColor,
-                            btnEditTextColor: kPrimaryColor,
-                            btnSendTextColor: bottomNavSelected,
-                            btnBgEditColor: whiteColor,
-                            btnBgSendColor: whiteColor,
-                          );
+                          setState((){
+                            itemsAssociate[position].isSelected = !itemsAssociate[position].isSelected!;
+                          });
+
+                          print("before: ${!itemsAssociate[position].isSelected!}");
+                          print("position=$position");
+                          print("after: ${itemsAssociate[position].isSelected}");
+
+                         /* if(itemsAssociate[position].isSelected!){
+                            changeState(
+                              bgColor:bottomNavSelected,
+                              avatarImg: "assets/images/associate_account/user-orange.png",
+                              titleColor: whiteColor,
+                              subTitleColor: whiteColor,
+                              btnEditTextColor: kPrimaryColor,
+                              btnSendTextColor: bottomNavSelected,
+                              btnBgEditColor: whiteColor,
+                              btnBgSendColor: whiteColor,
+                            );
+                          }*/
                           Navigator.of(context).pushNamed(MenuEditAssociateAccountPageView.pageName);
-                      },
-                      child: Card(
-                        elevation: 5,
+                        },
                         child: Container(
-                          decoration:BoxDecoration(
-                              color: cardBackgroundColor,
+                          decoration:BoxDecoration (
+                              color: itemsAssociate[position].isSelected! ? bottomNavSelected : cardBackgroundColor,
                               borderRadius: BorderRadius.circular(8),
                               boxShadow: [
                                 BoxShadow(
@@ -223,7 +405,8 @@ class _ListAssociateAccountPageViewState extends State<ListAssociateAccountPageV
                                     offset: const Offset(0, 8)),
                               ]
                           ),
-                          padding: const EdgeInsets.all(10),
+                          padding: const EdgeInsets.only(left: 10, right: 10, top: 10),
+                          margin: const EdgeInsets.only(bottom: 10),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -263,24 +446,31 @@ class _ListAssociateAccountPageViewState extends State<ListAssociateAccountPageV
                                   ),
                                 ],
                               ),
-                              itemsAssociate[position].switchButton!,
+                              SizedBox(
+                                width: 30,
+                                height: 30,
+                                //alignment: Alignment.topRight,
+                                child: itemsAssociate[position].switchButton!,
+                              )
                             ],
                           ),
                         ),
-                      ),
-                    );
-                  }
-              ),
-            ),
+                      );
+                    }
+                ),
+              )
+            ],
         ),
-        title: "Comptes associés",
-        iconMenu: "assets/images/associate_account/add-user.png",
-        onPressedMenu:() {
+      title: "Comptes associés",
+      iconMenu: "assets/images/associate_account/add-user.png",
+      onPressedMenu:() {
           getBottomSheet(context);
-        },
-        devKey: _scaffoldKey,
-        fullBgImg: "assets/images/associate_account/bg-ass-account.png",
-        onPressedShared: share
+      },
+      devKey: _scaffoldKey,
+      fullBgImg: "assets/images/associate_account/bg-ass-account.png",
+      onPressedShared: share,
+      isBottomNav: true,
+      isDrawerNavRight: true,
     );
   }
 

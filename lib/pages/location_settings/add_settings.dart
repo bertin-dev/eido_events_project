@@ -66,7 +66,7 @@ class _AddSettingsState extends State<AddSettingsPageView> {
     return LocationBaseSettingsWidget(
       containerWidget: Center(
           child: Padding(
-            padding: const EdgeInsets.only(top: 120, left: 10, right: 10),
+            padding: const EdgeInsets.only(top: 130, left: 10, right: 10),
             child: Form(
               autovalidateMode: _autovalidate,
               key: _addLocationFormKey,
@@ -75,7 +75,7 @@ class _AddSettingsState extends State<AddSettingsPageView> {
                 children: [
                   const Text("Ajouter des configurations pour pouvoir y assigner des configuations",
                     style: TextStyle(fontWeight: FontWeight.w400, fontSize: 13, fontFamily: "Inter", color: labelColorTextField),),
-                  const SizedBox(height: 25,),
+                  const SizedBox(height: 31,),
                   Container(
                     margin: const EdgeInsets.only(left: 5, right: 5),
                     decoration:BoxDecoration(
@@ -86,7 +86,7 @@ class _AddSettingsState extends State<AddSettingsPageView> {
                     child: Column(
                       children: [
                         Container(
-                          padding: EdgeInsets.only(left: 17, right: 17),
+                          padding: const EdgeInsets.only(left: 17, right: 17),
                           height: 58,
                           decoration:BoxDecoration(
                             borderRadius: BorderRadius.circular(8),
@@ -96,7 +96,7 @@ class _AddSettingsState extends State<AddSettingsPageView> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text("Config 1",
+                              const Text("Config 1",
                             style:TextStyle(fontSize: 15.0, color: whiteColor, fontWeight: FontWeight.w600, fontFamily: "Inter"), textAlign: TextAlign.left,),
 
                               Row(
@@ -132,7 +132,7 @@ class _AddSettingsState extends State<AddSettingsPageView> {
                                 focus: focusNode1,
                                 //: labelColorTextField,
                                 textColor: bottomNavUnSelected,
-                                prefix: Image.asset("assets/images/location_settings/add-title-location.png", width: 32, height: 32,),
+                                prefix: Image.asset("assets/images/location_settings/add-title-location3.png", width: 32, height: 32,),
                                 hintText: "Ex: table 1, rangée 1, etc...",
                                 controller: _addPositionTitleController,
                                 keyboardType: TextInputType.text,

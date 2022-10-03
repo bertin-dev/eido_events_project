@@ -4,34 +4,16 @@ import 'package:flutter/material.dart';
 import '../../widgets/custom_widgets.dart';
 import 'delegate_home_page.dart';
 
-void main(){
-  runApp(const DelegateLoginStep2PageView());
-}
 
-class DelegateLoginStep2PageView extends StatelessWidget {
+class DelegateLoginStep2PageView extends StatefulWidget {
   const DelegateLoginStep2PageView({Key? key}) : super(key: key);
   static const String pageName = "delagate_login_step2";
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: Colors.white,
-      ),
-      home:  DelegateLoginStep2Page(),
-    );
-  }
+  _DelegateLoginStep2PageViewState createState() => _DelegateLoginStep2PageViewState();
 }
 
-class DelegateLoginStep2Page extends StatefulWidget {
-
-
-  @override
-  _DelegateLoginStep2PageState createState() => _DelegateLoginStep2PageState();
-}
-
-class _DelegateLoginStep2PageState extends State<DelegateLoginStep2Page> {
+class _DelegateLoginStep2PageViewState extends State<DelegateLoginStep2PageView> {
   final _loginFormKey = GlobalKey<FormState>();
   var scaffoldKey = GlobalKey<ScaffoldState>();
   final TextEditingController _codeBlinderController = TextEditingController();
@@ -59,10 +41,10 @@ class _DelegateLoginStep2PageState extends State<DelegateLoginStep2Page> {
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text("Se connecter au", style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16, color: bottomNavSelected),),
-                SizedBox(height: 2.0),
-                Text("Mariage de Aîcha", style: TextStyle(fontWeight: FontWeight.w700, fontSize: 32.85, color: whiteColor),),
-                 SizedBox(height: hv * 3.0),
+                const Text("Se connecter au", style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16, color: Color(0xff2D68E6), fontFamily: "Inter"),),
+                const SizedBox(height: 5.0),
+                const Text("Mariage de Aîcha", style: TextStyle(fontWeight: FontWeight.w700, fontSize: 32.85, color: whiteColor, fontFamily: "Inter"),),
+                 SizedBox(height: 35),
 
                 Container(
                   //width: double.infinity,
@@ -84,7 +66,7 @@ class _DelegateLoginStep2PageState extends State<DelegateLoginStep2Page> {
                           emptyValidatorText: 'Entrez un code blinder',
                           keyboardType: TextInputType.phone,
                           validator: _phoneFieldValidator,
-                          icon: Icons.person,
+                          imgLeftIcon: Image.asset("assets/images/profile-blue-icon.png", width: 22, height: 22,),
                           labelColor: labelColorTextField,
                         ),
 
@@ -98,6 +80,7 @@ class _DelegateLoginStep2PageState extends State<DelegateLoginStep2Page> {
                           emptyValidatorText: 'Entrez votre Code d\'accès',
                           validator: _passwordFieldValidator,
                           color: labelColorTextField,
+                          leftIcon : Image.asset("assets/images/lock-icon.png", width: 22, height: 22,),
                         ),
 
                         SizedBox(height: hv * 3.0),
@@ -117,16 +100,7 @@ class _DelegateLoginStep2PageState extends State<DelegateLoginStep2Page> {
                 ),
               ],
             ),
-            ),
-            Positioned(
-                bottom: 0,
-                width: MediaQuery.of(context).size.width,
-                child: const Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Image(
-                    image: AssetImage('assets/images/bottom_bar.png'),
-                  ),
-                ))
+            )
           ],
         ),
       ),

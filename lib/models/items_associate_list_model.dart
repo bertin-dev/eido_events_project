@@ -9,6 +9,7 @@ class ItemsAssociateListModel{
   final Widget? switchButton;
   final Widget? editButton;
   final Widget? sendButton;
+  bool? isSelected;
 
   ItemsAssociateListModel({
     this.name,
@@ -17,7 +18,8 @@ class ItemsAssociateListModel{
     this.state,
     this.switchButton,
     this.editButton,
-    this.sendButton
+    this.sendButton,
+    this.isSelected
 });
 
 }

@@ -30,78 +30,80 @@ class _SuccessLocationPageViewState extends State<SuccessLocationPageView> {
                   fit: BoxFit.cover,
                 )
             ),
-            child: Align(
+            child: Container(
               alignment: Alignment.center,
-              child: Container(
-                //height: (hv*100)/2,
-                margin: Orientation.landscape==orientation ? const EdgeInsets.only(left: 27, right: 27) : EdgeInsets.only(left: 27, right: 27, top: (hv*100)/5, bottom: (hv*100)/5),
-                decoration:BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
-                  color: whiteColor,
-                  border: Border.all(width: 1.0, color: kPrimaryColor),
-                ),
-                //shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16), side:const BorderSide(color: Colors.green),),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    SizedBox(height: 12,),
-                    SizedBox(
-                      width: wv*40,
+              margin: const EdgeInsets.only(left: 27, right: 27, top: 100, bottom: 80),
+              //margin: Orientation.landscape==orientation ? const EdgeInsets.only(left: 27, right: 27, top: 100, bottom: 50) : EdgeInsets.only(left: 27, right: 27, top: (hv*100)/5, bottom: (hv*100)/5),
+              decoration:BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+                color: whiteColor,
+                border: Border.all(width: 1.0, color: kPrimaryColor),
+              ),
+              //shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16), side:const BorderSide(color: Colors.green),),
+              child: ListView(
+                children: <Widget>[
+                  if(Orientation.portrait==orientation)...{
+                    Padding(
+                      padding: const EdgeInsets.only(left: 56, right: 56, bottom: 30.08),
                       child: Image.asset('assets/images/check_success.png'),
                     ),
-                    SizedBox(height: hv * 2.0),
-                     Text(widget.saved ? 'l\'emplacement a été bien ajouté' : "La configuration a été bien sauvegarder",
-                      style:TextStyle(fontSize: 23.0, color: Color(0xff090E18), fontWeight: FontWeight.w700, fontFamily: "Inter"), textAlign: TextAlign.center,),
-                    SizedBox(height: hv * 1),
-                     Text(widget.saved ? 'Que voulez-vous faire ensuite ?': "Vous allez être redirigé vers la liste des configurations",
-                      style:TextStyle(fontSize: 13.0, color: Colors.black, fontWeight: FontWeight.w400, fontFamily: "Inter"), textAlign: TextAlign.center,),
-                    SizedBox(height: hv * 2),
-                    if(widget.saved)...{
-                      Expanded(
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            MaterialButton(
+                  } else...{
+                    Padding(
+                      padding: const EdgeInsets.only(left: 216, right: 216, bottom: 10.08),
+                      child: Image.asset('assets/images/check_success.png'),
+                    ),
+                  },
+                  Padding(padding: const EdgeInsets.only(left: 43, right: 42),
+                    child: Text(widget.saved ? 'L\'emplacement a été bien ajouté' : "La configuration const a été bien sauvegarder",
+                      style:const TextStyle(fontSize: 23.0, color: titleProgramEventManage, fontWeight: FontWeight.w700, fontFamily: "Inter"), textAlign: TextAlign.center,),),
+                  const SizedBox(height: 6),
+                  Text(widget.saved ? 'Que voulez-vous faire ensuite ?': "Vous allez être redirigé vers la liste des configurations",
+                    style:const TextStyle(fontSize: 13.0, color: Colors.black, fontWeight: FontWeight.w400, fontFamily: "Inter"), textAlign: TextAlign.center,),
+                  const SizedBox(height: 30),
+                  if(widget.saved)...{
+                    Expanded(
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          MaterialButton(
+                            height: 40,
+                            minWidth: 117,
+                            padding: const EdgeInsets.only(top:2.0, bottom: 2.0),
+                            color: labelColorTextField,
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100.0)),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: const Text('Annuler',
+                              style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 13), textAlign: TextAlign.center,),
+                          ),
+                          const SizedBox(width: 15,),
+                          MaterialButton(
                               height: 40,
                               minWidth: 117,
                               padding: const EdgeInsets.only(top:2.0, bottom: 2.0),
-                              color: labelColorTextField,
+                              color: kPrimaryColor,
                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100.0)),
                               onPressed: () {
-                                Navigator.of(context).pop();
+                                Navigator.of(context).pushNamed(AddSettingsPageView.pageName);
                               },
-                              child: const Text('Annuler',
-                                style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 13), textAlign: TextAlign.center,),
-                            ),
-                            const SizedBox(width: 15,),
-                            MaterialButton(
-                                height: 40,
-                                minWidth: 117,
-                                padding: const EdgeInsets.only(top:2.0, bottom: 2.0),
-                                color: kPrimaryColor,
-                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100.0)),
-                                onPressed: () {
-                                  Navigator.of(context).pushNamed(AddSettingsPageView.pageName);
-                                },
-                                child: Row(
-                                  children: [
-                                    const Text('Configurer',
-                                      style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 13), textAlign: TextAlign.center,),
-                                    SizedBox(width: 12,),
-                                    Image.asset("assets/images/location_settings/setting.png", width: 16, height: 16,),
-                                  ],
-                                )
-                            ),
-                          ],
-                        ),),
-                    }else...{
-                      const CircularProgressIndicator(color: kPrimaryColor,),
-                    },
-                    const SizedBox(height: 50,),
-                  ],
-                ),
+                              child: Row(
+                                children: [
+                                  const Text('Configurer',
+                                    style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 13), textAlign: TextAlign.center,),
+                                  const SizedBox(width: 12,),
+                                  Image.asset("assets/images/location_settings/setting.png", width: 16, height: 16,),
+                                ],
+                              )
+                          ),
+                        ],
+                      ),),
+                  }else...{
+                    const CircularProgressIndicator(color: kPrimaryColor,),
+                  },
+                  const SizedBox(height: 20,),
+                ],
               ),
             ),
           ),

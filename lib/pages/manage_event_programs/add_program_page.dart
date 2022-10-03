@@ -520,7 +520,7 @@ class _AddProgramState extends State<AddProgramPageView> {
                         text: 'Sauvegarder',
                         textColor: Colors.white,
                         onPressed: () async {
-                          //Navigator.of(context, rootNavigator: true).pushNamed(OtpCheckingPage.pageName);
+                          Navigator.of(context, rootNavigator: true).pushNamed(SuccessProgramPageView.pageName);
                         },
                       ),
                     ),

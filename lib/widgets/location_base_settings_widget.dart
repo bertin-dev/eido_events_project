@@ -169,6 +169,9 @@ class _LocationBaseSettingsWidgetState extends State<LocationBaseSettingsWidget>
               backgroundColor: whiteColor,
               bottomNavigationBar: widget.isBottomNav==true ? BottomNavigationBar(
                 type: BottomNavigationBarType.fixed,
+                //showSelectedLabels: true,
+                //showUnselectedLabels: true,
+                fixedColor: kPrimaryColor,
                 currentIndex: 0,
                 onTap: (int index){
                 },
@@ -204,13 +207,13 @@ class _LocationBaseSettingsWidgetState extends State<LocationBaseSettingsWidget>
                             ),
                           ),
                           Positioned(
-                            top: 25,
+                            top: 40,
                             left: 1,
                             right: 1,
                             child: Padding(
-                              padding: const EdgeInsets.only(left: 3.58),
+                              padding: const EdgeInsets.only(left: 10, right: 10),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: <Widget>[
                                   if(widget.iconMenuLeft !=null)...{
                                     IconButton(
@@ -230,10 +233,9 @@ class _LocationBaseSettingsWidgetState extends State<LocationBaseSettingsWidget>
                                       onPressed: () => Navigator.of(context).pop(),
                                     ),
                                   },
-
-                                  Expanded(child: Text(widget.title,
-                                    style: const TextStyle(fontSize: 19, fontWeight: FontWeight.w600, color: whiteColor,
-                                        fontFamily: "Inter"),textAlign: TextAlign.center,),),
+                                   Text(widget.title,
+                                    style: const TextStyle(fontSize: 19, fontWeight: FontWeight.w700, color: whiteColor,
+                                        fontFamily: "Inter"),textAlign: TextAlign.center,),
                                   if(widget.iconMenu != null)...{
                                     IconButton(
                                       onPressed: widget.onPressedMenu,
@@ -332,6 +334,7 @@ class _LocationBaseAssociateAccountWidgetState extends State<LocationBaseAssocia
           final hv = MediaQuery.of(context).size.height / 100;
           final wv = MediaQuery.of(context).size.width / 100;
           return Scaffold(
+              resizeToAvoidBottomInset: false,
               key: widget.devKey,
               endDrawer: widget.isDrawerNavRight==true ? Drawer(
                 elevation: 16.0,
@@ -448,7 +451,7 @@ class _LocationBaseAssociateAccountWidgetState extends State<LocationBaseAssocia
                 selectedItemColor: kPrimaryColor,
                 showSelectedLabels: false,
                 showUnselectedLabels: false,*/
-
+                fixedColor: kPrimaryColor,
                 type: BottomNavigationBarType.fixed,
                 currentIndex: _selectedIndex,
                 onTap: (int index){
@@ -501,13 +504,13 @@ class _LocationBaseAssociateAccountWidgetState extends State<LocationBaseAssocia
                           ),
                         },
                         Positioned(
-                          top: 25,
+                          top: 33,
                           left: 1,
                           right: 1,
                           child: Padding(
-                            padding: const EdgeInsets.only(left: 3.58),
+                            padding: const EdgeInsets.only(left: 10, right: 10),
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
 
                                 if(widget.iconMenuLeft !=null)...{
@@ -529,10 +532,11 @@ class _LocationBaseAssociateAccountWidgetState extends State<LocationBaseAssocia
                                   ),
                                 },
 
+                                const SizedBox(width: 11,),
                                 //title of page
                                 Expanded(
                                   child: Text(widget.title,
-                                    style: const TextStyle(fontSize: 19, fontWeight: FontWeight.w600, color: whiteColor, fontFamily: "Inter"),textAlign: TextAlign.center,),),
+                                    style: const TextStyle(fontSize: 19, fontWeight: FontWeight.w600, color: whiteColor, fontFamily: "Inter"),textAlign: TextAlign.left,),),
 
                                 if(widget.iconMenu != null)...{
                                   IconButton(
@@ -633,6 +637,7 @@ class _MenuEditBaseAssociateAccountWidgetState extends State<MenuEditBaseAssocia
                       children: [
                         InkWell(
                           onTap: (){
+                            Navigator.of(context).pop();
                             Navigator.of(context).pushNamed(DetailProfileAssociateAccountPageView.pageName);
                           },
                           hoverColor: kPrimaryColor,
@@ -656,6 +661,7 @@ class _MenuEditBaseAssociateAccountWidgetState extends State<MenuEditBaseAssocia
                       children: [
                         InkWell(
                           onTap: (){
+                            Navigator.of(context).pop();
                             Navigator.of(context).pushNamed(DetailProfileAssociateAccountPageView.pageName);
                           },
                           hoverColor: kPrimaryColor,
@@ -696,6 +702,7 @@ class _MenuEditBaseAssociateAccountWidgetState extends State<MenuEditBaseAssocia
                       children: [
                         InkWell(
                           onTap: (){
+                            Navigator.of(context).pop();
                             Navigator.of(context).pushNamed(PrivilegeAssociateAccountPageView.pageName);
                           },
                           child: Column(
@@ -719,6 +726,7 @@ class _MenuEditBaseAssociateAccountWidgetState extends State<MenuEditBaseAssocia
               backgroundColor: whiteColor,
               bottomNavigationBar: BottomNavigationBar(
                 type: BottomNavigationBarType.fixed,
+                fixedColor: kPrimaryColor,
                 currentIndex: 0,
                 onTap: (int index){
                   if(index == 0){
@@ -744,104 +752,101 @@ class _MenuEditBaseAssociateAccountWidgetState extends State<MenuEditBaseAssocia
                 }).toList(),
 
               ),
-              body: ListView(
-                shrinkWrap: true,
-                children: [
-                  Stack(
-                    children: [
-                      Container(
-                        decoration: const BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage("assets/images/associate_account/bg-menu-edit.png"),
-                            fit: BoxFit.cover,
-                          ),
+              body: SingleChildScrollView(
+                child: Stack(
+                  children: [
+                    Container(
+                      decoration: const BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage("assets/images/associate_account/bg-menu-edit.png"),
+                          fit: BoxFit.cover,
                         ),
-                        child: Stack(
-                          //fit: StackFit.expand,
-                          children: [
-                            Container(
-                              height: 264,
-                              decoration: const BoxDecoration(
-                                image: DecorationImage(
-                                  image: AssetImage('assets/images/associate_account/bg-header-ass-account.png'),
-                                  fit: BoxFit.cover,
-                                ),
+                      ),
+                      child: Stack(
+                        //fit: StackFit.expand,
+                        children: [
+                          Container(
+                            height: 264,
+                            decoration: const BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage('assets/images/associate_account/bg-header-ass-account.png'),
+                                fit: BoxFit.cover,
                               ),
-                              child: Center(
-                                child: Container(
-                                  margin: const EdgeInsets.only(top: 32, left: 88, right: 91),
-                                  decoration: const BoxDecoration(
-                                    borderRadius: BorderRadius.only(
-                                      topRight: Radius.circular(100),
-                                      topLeft: Radius.circular(100),
-                                    ),
-                                    color: whiteColor,
+                            ),
+                            child: Center(
+                              child: Container(
+                                margin: const EdgeInsets.only(top: 32, left: 88, right: 91),
+                                decoration: const BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                    topRight: Radius.circular(100),
+                                    topLeft: Radius.circular(100),
                                   ),
-                                  child: Column(
-                                    children: [
-                                      Container(
-                                        margin: const EdgeInsets.only(top: 20, left: 44, right: 41, bottom: 19),
-                                        padding: const EdgeInsets.all(16),
-                                        decoration:BoxDecoration(
-                                          color: kPrimaryColor,
-                                          borderRadius: BorderRadius.circular(100),
-                                        ),
-                                        child: const CircleAvatar(
-                                          backgroundColor: Colors.transparent,
-                                          backgroundImage: AssetImage("assets/images/home_page/avatar.png"),
-                                          radius: 30,
-                                          //backgroundColor: Color(0xfff1f3f5),
-                                        ),
+                                  color: whiteColor,
+                                ),
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      margin: const EdgeInsets.only(top: 20, left: 44, right: 41, bottom: 19),
+                                      padding: const EdgeInsets.all(16),
+                                      decoration:BoxDecoration(
+                                        color: kPrimaryColor,
+                                        borderRadius: BorderRadius.circular(100),
                                       ),
-                                      Text(widget.profileName!,
-                                          style: const TextStyle(fontSize: 24.0, color: labelColorTextField, fontWeight: FontWeight.w500, fontFamily: "Inter"), textAlign: TextAlign.center,),
-                                    ],
-                                  ),
+                                      child: const CircleAvatar(
+                                        backgroundColor: Colors.transparent,
+                                        backgroundImage: AssetImage("assets/images/associate_account/avatar-associate-account.png"),
+                                        radius: 30,
+                                        //backgroundColor: Color(0xfff1f3f5),
+                                      ),
+                                    ),
+                                    Text(widget.profileName!,
+                                      style: const TextStyle(fontSize: 24.0, color: labelColorTextField, fontWeight: FontWeight.w500, fontFamily: "Inter"), textAlign: TextAlign.center,),
+                                  ],
                                 ),
                               ),
                             ),
-                            if(widget.isNavBar!)...{
-                              Positioned(
-                                top: 25,
-                                left: 1,
-                                right: 1,
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 3.58),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: <Widget>[
-                                      IconButton(
-                                        icon: const Icon(
-                                          Icons.arrow_back,
-                                          color: Colors.white,
-                                          size: 25,
-                                        ),
-                                        onPressed: () => Navigator.of(context).pop(),
+                          ),
+                          if(widget.isNavBar!)...{
+                            Positioned(
+                              top: 25,
+                              left: 1,
+                              right: 1,
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 3.58),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: <Widget>[
+                                    IconButton(
+                                      icon: const Icon(
+                                        Icons.arrow_back,
+                                        color: Colors.white,
+                                        size: 25,
                                       ),
+                                      onPressed: () => Navigator.of(context).pop(),
+                                    ),
 
-                                      Expanded(child: Text(widget.title,
-                                        style: const TextStyle(fontSize: 19, fontWeight: FontWeight.w600, color: whiteColor,
-                                            fontFamily: "Inter"),textAlign: TextAlign.center,),),
-                                      if(widget.iconMenu != null)...{
-                                        IconButton(
-                                          onPressed: widget.onPressedMenu,
-                                          icon: Image.asset(widget.iconMenu!,
-                                            width: 30,
-                                            height: 30,),
-                                        )
-                                      }
-                                    ],
-                                  ),
+                                    Expanded(child: Text(widget.title,
+                                      style: const TextStyle(fontSize: 19, fontWeight: FontWeight.w600, color: whiteColor,
+                                          fontFamily: "Inter"),textAlign: TextAlign.center,),),
+                                    if(widget.iconMenu != null)...{
+                                      IconButton(
+                                        onPressed: widget.onPressedMenu,
+                                        icon: Image.asset(widget.iconMenu!,
+                                          width: 30,
+                                          height: 30,),
+                                      )
+                                    }
+                                  ],
                                 ),
                               ),
-                            },
-                            widget.containerWidget
-                          ],
-                        ),
+                            ),
+                          },
+                          widget.containerWidget
+                        ],
                       ),
-                    ],
-                  ),
-                ],
+                    ),
+                  ],
+                ),
               )
           );
         });

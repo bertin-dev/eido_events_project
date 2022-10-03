@@ -60,10 +60,11 @@ class _LoginPageState extends State<LoginPage> {
         body: Stack(
           children: [
             ListView(
+              padding: const EdgeInsets.only(top: 34),
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.symmetric(
-                      vertical: 32.0, horizontal: 138),
+                      vertical: 32.0, horizontal: 134),
                   child: Image.asset('assets/images/logo_login.png'),
                 ),
 
@@ -108,7 +109,7 @@ class _LoginPageState extends State<LoginPage> {
                           leftIcon: Image.asset("assets/images/lock-icon.png", width: 22, height: 22,),
                         ),
 
-                        const SizedBox(height: 25),//4
+                        const SizedBox(height: 15),//4
 
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -152,12 +153,10 @@ class _LoginPageState extends State<LoginPage> {
                           ],
                         ),
 
-                        const SizedBox(height: 3),
-
                         Column(
                           children: <Widget>[
                             Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 32.0),
+                              padding: const EdgeInsets.only(top: 25.0, bottom: 38),
                               child: CustomButtonWithLoading2(
                                 color: kPrimaryColor,
                                 text: 'Se connecter',
@@ -196,7 +195,7 @@ class _LoginPageState extends State<LoginPage> {
                             ),
 
                             Padding(
-                              padding: const EdgeInsets.only(top: 22.0, left: 3.0, right: 2.0, bottom: 58),
+                              padding: const EdgeInsets.only(top: 25.0, left: 3.0, right: 2.0, bottom: 58),
                               child: Row(
                               children: [
                                 Expanded(

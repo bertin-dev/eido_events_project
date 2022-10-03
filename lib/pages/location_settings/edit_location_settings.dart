@@ -45,7 +45,7 @@ class _EditLocationSettingsState extends State<EditLocationSettingsPageView> {
     return LocationBaseSettingsWidget(
       containerWidget: Center(
           child: Padding(
-            padding: const EdgeInsets.only(top: 120, left: 10, right: 10),
+            padding: const EdgeInsets.only(top: 130, left: 10, right: 10),
             child: Form(
               autovalidateMode: _autovalidate,
               key: _addLocationFormKey,
@@ -60,7 +60,7 @@ class _EditLocationSettingsState extends State<EditLocationSettingsPageView> {
                     //: labelColorTextField,
                     textColor: bottomNavUnSelected,
                     suffix: Image.asset("assets/images/location_settings/edit-location.png", width: 24, height: 24,),
-                    prefix: Image.asset("assets/images/location_settings/add-title-location.png", width: 32, height: 32,),
+                    prefix: Image.asset("assets/images/location_settings/add-title-location3.png", width: 32, height: 32,),
                     hintText: widget.locationSettings.headerItem,
                     controller: _addLocationTitleController,
                     keyboardType: TextInputType.text,
@@ -84,7 +84,7 @@ class _EditLocationSettingsState extends State<EditLocationSettingsPageView> {
                   const SizedBox(height: 5,),
                   ItextFieldImgIcon(
                       focus: focusNode2,
-                      line: 4,
+                      line: 7,
                       //: labelColorTextField,
                       textColor: bottomNavUnSelected,
                       //prefix: Image.asset("assets/images/location_settings/add-title-location.png", width: 32, height: 32,),
@@ -111,26 +111,26 @@ class _EditLocationSettingsState extends State<EditLocationSettingsPageView> {
                                 left: 0.0,
                                 top: 0.5,
                               ),
-                              child: Image.asset(widget.locationSettings.smallIcon,
+                              child: Image.asset("assets/images/location_settings/small-icon-red.png",
                                 width: 30, height: 30,)
                           ),
                           Padding(
                               padding: const EdgeInsets.only(
                                 left: 16.0,
                               ),
-                              child: Image.asset(widget.locationSettings.smallIcon,
+                              child: Image.asset("assets/images/location_settings/small-icon-red.png",
                                 width: 30, height: 30,)
                           ),
                           Padding(
                               padding: const EdgeInsets.only(
                                 left: 32.0,
                               ),
-                              child: Image.asset(widget.locationSettings.smallIcon,
+                              child: Image.asset("assets/images/location_settings/small-icon-red.png",
                                 width: 30, height: 30,)
                           ),
                           Padding(
                             padding: const EdgeInsets.only(top:5.0, right: 1.0, left: 65.0),
-                            child: Text(widget.locationSettings.locationNumber,
+                            child: Text("(${widget.locationSettings.locationNumber})",
                               style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w400, fontFamily: "Inter", color: labelColorTextField),),
                           ),
                         ]),
@@ -145,7 +145,7 @@ class _EditLocationSettingsState extends State<EditLocationSettingsPageView> {
                       focus: focusNode3,
                       textColor: bottomNavUnSelected,
                       suffix: Image.asset("assets/images/location_settings/edit-location.png", width: 24, height: 24,),
-                      prefix: Image.asset("assets/images/location_settings/location-icon.png", width: 32, height: 32,),
+                      prefix: Image.asset("assets/images/location_settings/location-icon2.png", width: 32, height: 32,),
                       hintText: widget.locationSettings.headerItem,
                       controller: _addLocationPositionController,
                       keyboardType: TextInputType.text,
@@ -153,7 +153,7 @@ class _EditLocationSettingsState extends State<EditLocationSettingsPageView> {
                       backgroundColor: grayLocation,
                       validator: _addLocationTitleFieldValidator,
                       emptyValidatorText: 'Douala Bar 2022',
-                      radius: 12.0,
+                      radius: 100.0,
                     pLeftPreffix: 15.0,
                     pTopPreffix: 10.0,
                     pBottomPreffix: 10.0,
@@ -266,7 +266,7 @@ class _EditLocationSettingsState extends State<EditLocationSettingsPageView> {
       ),
       title: widget.title,
       devKey: _scaffoldKey,
-      fullBgImg: "assets/images/location_settings/bg-body-add-location.png",
+      fullBgImg: "assets/images/location_settings/full_bg_img.png",
       isBottomNav: false,
       isDrawerNavRight: false,
       bgHeader: "assets/images/location_settings/bg-header-add-location.png",

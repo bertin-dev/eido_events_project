@@ -41,7 +41,7 @@ class _AddLocationSettingsState extends State<AddLocationSettingsPageView> {
     return LocationBaseSettingsWidget(
       containerWidget: Center(
           child: Padding(
-            padding: const EdgeInsets.only(top: 120, left: 10, right: 10),
+            padding: const EdgeInsets.only(top: 130, left: 10, right: 10),
             child: Form(
               autovalidateMode: _autovalidate,
               key: _addLocationFormKey,
@@ -49,16 +49,16 @@ class _AddLocationSettingsState extends State<AddLocationSettingsPageView> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                     const Text("Ajouter un emplacement pour pouvoir y assigner des configuations",
-                      style: TextStyle(fontWeight: FontWeight.w400, fontSize: 13, fontFamily: "Inter", color: labelColorTextField),),
+                      style: TextStyle(fontWeight: FontWeight.w400, fontSize: 13, fontFamily: "Inter", color: titleProgramEventManage),),
                      const SizedBox(height: 25,),
                    const Text("Nom de l'emplacement",
-                      style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14, fontFamily: "Inter", color: labelColorTextField),),
+                      style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14, fontFamily: "Inter", color: titleProgramEventManage),),
                   const SizedBox(height: 5,),
                   ItextFieldImgIcon(
                     focus: focusNode1,
-                    //: labelColorTextField,
+                    //: titleProgramEventManage,
                     textColor: bottomNavUnSelected,
-                    prefix: Image.asset("assets/images/location_settings/add-title-location.png", width: 32, height: 32,),
+                    prefix: Image.asset("assets/images/location_settings/add-title-location2.png", width: 32, height: 32,),
                     hintText: "Entrer un nom de la configuration",
                     controller: _addLocationTitleController,
                     keyboardType: TextInputType.text,
@@ -66,7 +66,7 @@ class _AddLocationSettingsState extends State<AddLocationSettingsPageView> {
                     backgroundColor: grayLocation,
                     validator: _addLocationTitleFieldValidator,
                     emptyValidatorText: 'Entrer un nom de la configuration',
-                    radius: 100.0,
+                    radius: 8.0,
                     pLeftPreffix: 15.0,
                     pTopPreffix: 10.0,
                     pBottomPreffix: 10.0,
@@ -74,12 +74,12 @@ class _AddLocationSettingsState extends State<AddLocationSettingsPageView> {
                   ),
                   const SizedBox(height: 20,),
                   const Text("Description",
-                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14, fontFamily: "Inter", color: labelColorTextField),),
+                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14, fontFamily: "Inter", color: titleProgramEventManage),),
                   const SizedBox(height: 5,),
                   ItextFieldImgIcon(
                       focus: focusNode2,
-                      line: 4,
-                      //: labelColorTextField,
+                      line: 8,
+                      //: titleProgramEventManage,
                       textColor: bottomNavUnSelected,
                       //prefix: Image.asset("assets/images/location_settings/add-title-location.png", width: 32, height: 32,),
                       hintText: "Entrez la description",
@@ -93,12 +93,12 @@ class _AddLocationSettingsState extends State<AddLocationSettingsPageView> {
                   ),
                   const SizedBox(height: 20,),
                   const Text("Geolocalisation de l'emplacement",
-                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14, fontFamily: "Inter", color: labelColorTextField),),
+                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14, fontFamily: "Inter", color: titleProgramEventManage),),
                   const SizedBox(height: 5,),
                   ItextFieldImgIcon(
                       focus: focusNode3,
                       textColor: bottomNavUnSelected,
-                      prefix: Image.asset("assets/images/location_settings/location-icon.png", width: 32, height: 32,),
+                      prefix: Image.asset("assets/images/location_settings/location-icon2.png", width: 32, height: 32,),
                       suffix: const Icon(Icons.arrow_forward, color: blackTextFieldRightIcon, size: 24,),
                       hintText: "Douala Bar 2022",
                       controller: _addLocationPositionController,
@@ -115,7 +115,7 @@ class _AddLocationSettingsState extends State<AddLocationSettingsPageView> {
                   ),
                   const SizedBox(height: 20,),
                   Padding(
-                    padding: const EdgeInsets.only(bottom: 70.0, left: 10.0, right: 10.0),
+                    padding: const EdgeInsets.only(bottom: 52.0, left: 10.0, right: 10.0),
                     child: CustomButton(
                       color: kPrimaryColor,
                       text: 'Ajouter',
@@ -132,7 +132,7 @@ class _AddLocationSettingsState extends State<AddLocationSettingsPageView> {
       ),
       title: "Ajout d'un Emplacement",
       devKey: _scaffoldKey,
-      fullBgImg: "assets/images/location_settings/bg-body-add-location.png",
+      fullBgImg: "assets/images/location_settings/full_bg_img_add.png",
       isBottomNav: true,
       isDrawerNavRight: false,
       bgHeader: "assets/images/location_settings/bg-header-add-location.png",

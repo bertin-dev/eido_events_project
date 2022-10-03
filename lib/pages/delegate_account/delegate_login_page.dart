@@ -1,33 +1,14 @@
 import 'package:eido_events_project/pages/forget_password_page.dart';
-import 'package:eido_events_project/pages/home_page.dart';
 import 'package:eido_events_project/pages/register_page.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants.dart';
+import '../../providers/app.dart';
 import '../../widgets/custom_widgets.dart';
 import 'delegate_login_step2_page.dart';
 import 'events_page.dart';
 
-
-void main(){
-  runApp(const DelegateLoginPageView());
-}
-
-class DelegateLoginPageView extends StatelessWidget {
-  const DelegateLoginPageView({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: Colors.white,
-      ),
-      home: const DelegateLoginPage(),
-    );
-  }
-}
 
 class DelegateLoginPage extends StatefulWidget {
   static const String pageName = "delagate_login";
@@ -65,180 +46,124 @@ class _LoginPageState extends State<DelegateLoginPage> {
           .size
           .width / 100;
 
-      bool isLoading = false;
-      void _startLoading() async {
-        print("is downloading=$isLoading");
-        setState(() {
-          isLoading = true;
-        });
-        print("is downloading=$isLoading");
-        await Future.delayed(const Duration(seconds: 23));
-        setState(() {
-          isLoading = false;
-        });
-        print("is downloading=$isLoading");
-      }
-
       return Scaffold(
-        backgroundColor: Colors.white,
-        resizeToAvoidBottomInset: true,
-        key: scaffoldKey,
-        body: Stack(
-          children: [
-            ListView(
-              children: <Widget>[
-                //SizedBox(height: hv*10),
-                Stack(
-                  fit: StackFit.passthrough,
-                  children: <Widget>[
-                    SizedBox(
-                      height: hv * 25,//66
-                      child: SizedBox(width: wv * 25,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 20.0, horizontal: 20),
-                          child: Image.asset('assets/images/logo_login.png',
-                            width: 99,
-                            height: 136,),
-                        ),),
-                    ),
-                    /*Column(
+          backgroundColor: whiteColor,
+          resizeToAvoidBottomInset: true,
+          key: scaffoldKey,
+          body: Stack(
+            children: [
+              ListView(
+                padding: const EdgeInsets.only(top: 34),
                 children: <Widget>[
-                  SizedBox(child: Image.asset('assets/images/logo.png'), width: wv*30,),
-                ],
-              ),*/
-                  ],
-                ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 32.0, horizontal: 134),
+                    child: Image.asset('assets/images/logo_login.png'),
+                  ),
 
+                  Padding(
+                      padding: const EdgeInsets.only(left: 29.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const <Widget>[
+                          Text("Se connecter",
+                              style: TextStyle(fontSize: 23.0, color: textColor, fontWeight: FontWeight.w700, fontFamily: "Inter")),
+                        ],
+                      )),
 
-                SizedBox(height: hv * 1),//43
-                Padding(
-                    padding: const EdgeInsets.only(left: 30.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const <Widget>[
-                        Text("Se connecter", style: TextStyle(fontSize: 23.0,
-                            color: textColor,
-                            fontWeight: FontWeight.w700)),
-                      ],
-                    )),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 23.0, left: 10.0, right: 10.0),
+                    child: Form(
+                      autovalidateMode: _autovalidate,
+                      key: _loginFormKey,
+                      child: Column(
+                        children: <Widget>[
+                          ItextField(
+                            hintText: 'Numéro de téléphone',
+                            controller: _phoneController,
+                            emptyValidatorText: 'Entrez un numéro',
+                            keyboardType: TextInputType.phone,
+                            validator: _phoneFieldValidator,
+                            //icon: Icons.phone_outlined,
+                            labelColor: labelColorTextField,
+                            imgLeftIcon: Image.asset("assets/images/call-icon.png", width: 22, height: 22,),
+                          ),
 
-                Padding(
-                  padding: const EdgeInsets.only(top: 23.0, left: 29.0, right: 29.0),
-                  child: Form(
-                    autovalidateMode: _autovalidate,
-                    key: _loginFormKey,
-                    child: Column(
-                      children: <Widget>[
+                          const SizedBox(height: 20),
 
-                        // Champ de texte du numéro
-                        ItextField(
-                          hintText: 'Numéro de téléphone',
-                          controller: _phoneController,
-                          emptyValidatorText: 'Entrez un numéro',
-                          keyboardType: TextInputType.phone,
-                          validator: _phoneFieldValidator,
-                          icon: Icons.phone_outlined,
-                          labelColor: labelColorTextField,
-                        ),
+                          IpasswordField(
+                            hintText: 'Mot de passe',
+                            keyboardType: TextInputType.text,
+                            controller: _passwordController,
+                            onSavedFunc: (value) => userPassword = value,
+                            emptyValidatorText: 'Entrez votre mot de passe',
+                            validator: _passwordFieldValidator,
+                            color: labelColorTextField,
+                            leftIcon: Image.asset("assets/images/lock-icon.png", width: 22, height: 22,),
+                          ),
 
-                        SizedBox(height: hv * 4),//4
+                          const SizedBox(height: 15),//4
 
-                        IpasswordField(
-                          hintText: 'Mot de passe',
-                          keyboardType: TextInputType.text,
-                          controller: _passwordController,
-                          onSavedFunc: (value) => userPassword = value,
-                          emptyValidatorText: 'Entrez votre mot de passe',
-                          validator: _passwordFieldValidator,
-                          color: labelColorTextField,
-                        ),
-
-                        SizedBox(height: hv * 2),//4
-
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Center(
-                              child: Row(
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Row(
                                 children: [
-                                  Switch(
-                                    value: isChecked,
-                                    onChanged: (bool isOn) {
-                                      if (kDebugMode) {
-                                        print(isOn);
-                                      }
-                                      setState(() {
-                                        isChecked = isOn;
-                                        Global.shared.isInstructionView = isOn;
-                                        isOn =!isOn;
+                                  Transform.scale(
+                                    alignment: Alignment.centerLeft,
+                                    scale: 0.9,
+                                    child: Switch(
+                                      value: isChecked,
+                                      onChanged: (bool isOn) {
                                         if (kDebugMode) {
-                                          print(isChecked);
+                                          print(isOn);
                                         }
-                                      });
-                                    },
-                                    activeColor: iconColor,
-                                    inactiveTrackColor: Colors.grey,
-                                    inactiveThumbColor: Colors.grey,
+                                        setState(() {
+                                          isChecked = isOn;
+                                          Global.shared.isInstructionView = isOn;
+                                          isOn =!isOn;
+                                          if (kDebugMode) {
+                                            print(isChecked);
+                                          }
+                                        });
+                                      },
+                                      activeColor: whiteColor,
+                                      activeTrackColor: iconColor,
+                                      inactiveTrackColor: Colors.grey,
+                                      inactiveThumbColor: Colors.grey,
+                                    ),
                                   ),
-                                  const Text("Se rappeler ?",
-                                    style: TextStyle(color: textColor,
-                                        fontStyle: FontStyle.normal,
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: 14.0),)
+                                  const Text("Se rappeler",
+                                    style: TextStyle(color: textColor, fontStyle: FontStyle.normal, fontWeight: FontWeight.w400, fontSize: 14.0, fontFamily: "Inter",), textAlign: TextAlign.left,)
                                 ],
                               ),
-                            ),
-
-                            Center(
-                              child: InkWell(
+                              InkWell(
                                   onTap: () {
-                                    Navigator.of(context, rootNavigator: true)
-                                        .pushNamed(ForgetPasswordPageView.pageName);
+                                    Navigator.of(context, rootNavigator: true).pushNamed(ForgetPasswordPageView.pageName);
                                   },
-                                  child: const Text("Mot de passe oublié ?",
-                                    style: TextStyle(
-                                        color: textColor,
-                                        fontStyle: FontStyle.normal,
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: 14.0),)),
-                            ),
-                          ],
-                        ),
-
-                        SizedBox(height: hv * 2),
-
-                        Column(
-                          children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 25.0, left: 10.0, right: 10.0),
-                              child: CustomButton(
-                                color: kPrimaryColor,
-                                text: 'Se connecter',
-                                textColor: Colors.white,
-                                onPressed: () async {
-                                  Navigator.of(context, rootNavigator: true)
-                                      .pushNamed(DelegateLoginStep2PageView.pageName);
-                                },
-                              ),
-                            ),
-
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: const [
-                                /*Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                              child: Container(
-                                height: 1.0,
-                                width: 60.0,
-                                color: Colors.black87,
-                              ),
-                            ),*/
-                                Text(
-                                  'OU',
-                                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500, color: colorGray),
+                                  child: const Text("Mot de passe oublié?",
+                                    style: TextStyle(color: textColor, fontStyle: FontStyle.normal,fontWeight: FontWeight.w400, fontFamily: "Inter", fontSize: 14.0), textAlign: TextAlign.right,)),
+                            ],
+                          ),
+                          Column(
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.only(top: 25.0, bottom: 34),
+                                child: CustomButton(
+                                  color: kPrimaryColor,
+                                  text: 'Se connecter',
+                                  textColor: Colors.white,
+                                  onPressed: () async {
+                                    Navigator.of(context, rootNavigator: true)
+                                        .pushNamed(DelegateLoginStep2PageView.pageName);
+                                  },
                                 ),
-                                /*Padding(
+                              ),
+
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: const [
+                                  /*Padding(
                               padding: const EdgeInsets.symmetric(horizontal: 10.0),
                               child: Container(
                                 height: 1.0,
@@ -246,84 +171,97 @@ class _LoginPageState extends State<DelegateLoginPage> {
                                 color: Colors.black87,
                               ),
                             ),*/
-                              ],
-                            ),
-                            SizedBox(height: hv * 4),
+                                  Text(
+                                    'OU',
+                                    style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500, color: colorGray, fontFamily: "Inter", fontStyle: FontStyle.normal), textAlign: TextAlign.center,
+                                  ),
+                                  /*Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                              child: Container(
+                                height: 1.0,
+                                width: 60.0,
+                                color: Colors.black87,
+                              ),
+                            ),*/
+                                ],
+                              ),
 
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: MaterialButton(
-                                    padding: const EdgeInsets.symmetric(vertical: 13.0),
-                                    color: Colors.white,
-                                    /*shape: const ContinuousRectangleBorder(
+
+                              Padding(
+                                padding: const EdgeInsets.only(top: 35, left: 3.0, right: 2.0, bottom: 65),
+                                child: Row(
+                                  children: [
+                                    Expanded(
+                                      flex: 4,
+                                      child: MaterialButton(
+                                        padding: const EdgeInsets.symmetric(vertical: 13.0, horizontal: 6.0),
+                                        color: Colors.white,
+                                        /*shape: const ContinuousRectangleBorder(
                                   side:
                                   BorderSide(width: 1.0, color: kPrimaryColor),
                                 ),*/
-                                    shape:  RoundedRectangleBorder(
-                                      side: const BorderSide(width: 1.0, color: kPrimaryColor),
-                                      borderRadius: BorderRadius.circular(12.0),
-                                    ),
-                                    onPressed: () {
-                                      Navigator.of(context, rootNavigator: true)
-                                          .pushNamed(EventsPageView.pageName);
-                                    },
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Image.asset('assets/images/users.png',
-                                            fit: BoxFit.cover,
-                                        width: 24,
-                                        height: 24,),
-                                        const SizedBox(width: 10.0),
-                                        const Text(
-                                          'Evènement associé',
-                                          style: TextStyle(
-                                              fontSize: 16.0, color: Colors.black),
+                                        shape:  RoundedRectangleBorder(
+                                          side: const BorderSide(width: 1.0, color: kPrimaryColor),
+                                          borderRadius: BorderRadius.circular(100.0),
                                         ),
-                                      ],
+                                        onPressed: () {
+                                          //TODO: Implement event associate functionality
+                                          Navigator.of(context, rootNavigator: true)
+                                              .pushNamed(EventsPageView.pageName);
+                                        },
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            Image.asset('assets/images/users.png',
+                                              fit: BoxFit.cover,
+                                              width: 24,
+                                              height: 24,),
+                                            const SizedBox(width: 10.0),
+                                            const Text(
+                                              'Evènement associé',
+                                              style: TextStyle(
+                                                  fontSize: 16.0, color: textColor, fontWeight: FontWeight.w400, fontStyle: FontStyle.normal, fontFamily: "Inter"), textAlign: TextAlign.center,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
                                     ),
+                                  ],
+                                ),
+                              ),
+
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const Text(
+                                    'Vous n\'avez pas de compte? ',
+                                    style: TextStyle(fontSize: 15.0, fontFamily: "Inter", fontWeight: FontWeight.w400, fontStyle: FontStyle.normal, color: textColor), textAlign: TextAlign.center,
                                   ),
-                                ),
-                              ],
-                            ),
-
-                            SizedBox(height: hv * 2),
-
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                const Text(
-                                  'Vous n\'avez pas de compte? ',
-                                  style: TextStyle(fontSize: 15.0),
-                                ),
-                                Expanded(
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      Navigator.of(context, rootNavigator: true)
-                                          .pushNamed(RegisterPageView.pageName);
-                                    },
-                                    child: const Text(
-                                      ' S\'enregistrer',
-                                      style: TextStyle(fontSize: 16.0, color: kPrimaryColor),
-                                    ),
-                                  ),)
-                              ],
-                            ),
-
-                            SizedBox(height: hv * 2),
-
-                          ],
-                        ),
-                      ],
+                                  Expanded(
+                                    child: InkWell(
+                                      onTap: () {
+                                        Navigator.of(context, rootNavigator: true)
+                                            .pushNamed(RegisterPageView.pageName);
+                                      },
+                                      child: const Text(
+                                        ' S\'enregistrer',
+                                        style: TextStyle(fontSize: 15.0, fontFamily: "Inter", fontWeight: FontWeight.w400, fontStyle: FontStyle.normal, color: kPrimaryColor), textAlign: TextAlign.center,
+                                      ),
+                                    ),)
+                                ],
+                              ),
+                              const SizedBox(height: 38),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
 
-              ],
-            )
-          ],
-        )
+                ],
+              ),
+            ],
+          )
       );
     });
   }
@@ -363,9 +301,4 @@ class _LoginPageState extends State<DelegateLoginPage> {
     return 'Password must be 5 characters long';
   }
 
-}
-
-class Global{
-  static final shared =Global();
-  bool isInstructionView = false;
 }

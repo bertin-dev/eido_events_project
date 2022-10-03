@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../constants.dart';
 import '../../models/privilege_model.dart';
+import '../../providers/app.dart';
 import '../../widgets/location_base_settings_widget.dart';
 import '../delegate_account/delegate_login_page.dart';
 

@@ -29,7 +29,7 @@ class _HomeLocationSettingsState extends State<HomeLocationSettingsPageView> {
               //fit: StackFit.expand,
               children: [
                 Container(
-                  height: 138,
+                  height: 135,
                   decoration: const BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage('assets/images/location_settings/bg_location.png'),
@@ -92,29 +92,25 @@ class _HomeLocationSettingsState extends State<HomeLocationSettingsPageView> {
                               child: ListTile(
                                 enabled: true,
                                 onTap: (){
-
                                   Navigator.of(context)
                                       .pushNamed(EditLocationSettingsPageView.pageName, arguments: {
                                     "title": locationSettings[position].headerItem,
                                     "locationSettings": locationSettings.first
                                   });
-
                                 },
                                 leading: Container(
-                                  padding: EdgeInsets.all(5.0),
-                                  width: 60, height: 60,
+                                  padding: const EdgeInsets.only(left: 11.0, bottom: 12, top: 13, right: 11),
                                   decoration:BoxDecoration(
                                     color: locationSettings[position].bgLeading,
                                     borderRadius: BorderRadius.circular(100),
                                   ),
                                   child: Image.asset(locationSettings[position].leading,
-                                    width: 37, height: 37,)
+                                    )
                                 ),
                                 title: Text(locationSettings[position].headerItem,
                                   style: const TextStyle(fontFamily: "Inter", fontSize: 14, fontWeight: FontWeight.w700, color: labelColorTextField),),
                                 subtitle: Padding(
-                                  padding: const EdgeInsets.only(
-                                      top: 13.0, left: 0.0, bottom: 0.0,),
+                                  padding: const EdgeInsets.only(top: 13.0, bottom: 0.0,),
                                   child: Row(
                                     children: [
                                       Stack(children: [
@@ -143,7 +139,7 @@ class _HomeLocationSettingsState extends State<HomeLocationSettingsPageView> {
                                         Padding(
                                           padding: const EdgeInsets.only(top:5.0, right: 1.0, left: 65.0),
                                           child: Text(locationSettings[position].locationNumber,
-                                            style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w400, fontFamily: "Inter", color: labelColorTextField),),
+                                            style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w400, fontFamily: "Inter", color: titleProgramEventManage),),
                                         ),
                                       ]),
                                     ],
@@ -178,24 +174,24 @@ class _HomeLocationSettingsState extends State<HomeLocationSettingsPageView> {
     LocationSettingsModel(
       headerItem: 'Akwa Palace Hôtel 2022',
       desc: 'centre ville',
-      bgColor: const Color(0xffFFDFCC),
+      bgColor: const Color(0xffCCFFCE),
       txtColor: kPrimaryColor,
-      leading: "assets/images/delegate_account/event_details_orange.png",
-      smallIcon: "assets/images/location_settings/small_location_orange.png",
+      leading: "assets/images/delegate_account/event_details_green.png",
+      smallIcon: "assets/images/delegate_account/small_location_green.png",
       locationNumber: "+32",
-      iconColor: kPrimaryColor,
-      bgLeading: const Color(0xffFFC3A0),
+      iconColor: const Color(0xff05D40D),
+      bgLeading: const Color(0xffA0FFA3),
     ),
     LocationSettingsModel(
       headerItem: 'Douala bar 2022',
       desc: 'bonjour bonjour',
-      bgColor: const Color(0xffCCF9FF),
+      bgColor: const Color(0xffFFFDCC),
       txtColor: kPrimaryColor,
-      leading: "assets/images/delegate_account/event_details_blue.png",
-      smallIcon: "assets/images/location_settings/small_location_blue.png",
+      leading: "assets/images/delegate_account/event_details_yellow.png",
+      smallIcon: "assets/images/delegate_account/small_location_yellow.png",
       locationNumber: "+32",
-      iconColor: const Color(0xff05B7D4),
-      bgLeading: const Color(0xffA0F1FF),
+      iconColor: const Color(0xffD4CC05),
+      bgLeading: const Color(0xffFFFBA0),
     ),
     LocationSettingsModel(
       headerItem: 'Akwa Palace Hôtel 2022',
@@ -211,13 +207,13 @@ class _HomeLocationSettingsState extends State<HomeLocationSettingsPageView> {
     LocationSettingsModel(
       headerItem: 'Douala bar 2022',
       desc: 'bonjour bonjour',
-      bgColor: const Color(0xffCCF9FF),
+      bgColor: const Color(0xffCDCCFF),
       txtColor: kPrimaryColor,
-      leading: "assets/images/delegate_account/event_details_blue.png",
-      smallIcon: "assets/images/location_settings/small_location_blue.png",
+      leading: "assets/images/delegate_account/event_details_fullblue.png",
+      smallIcon: "assets/images/delegate_account/small_location_fullblue.png",
       locationNumber: "+32",
-      iconColor: const Color(0xff05B7D4),
-      bgLeading: const Color(0xffA0F1FF),
+      iconColor: const Color(0xff0905D4),
+      bgLeading: const Color(0xffA1A0FF),
     ),
     LocationSettingsModel(
       headerItem: 'Akwa Palace Hôtel 2022',

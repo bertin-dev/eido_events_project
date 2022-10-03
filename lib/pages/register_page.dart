@@ -115,7 +115,7 @@ class _RegisterPageViewState extends State<RegisterPageView> {
                     keyboardType: TextInputType.text,
                     validator: (str) => str!.isEmpty ? 'Veuillez insérer la ville' : null,
                     labelColor: labelColorTextField,
-                    imgLeftIcon: Image.asset("assets/images/location-icon2.png", width: 22, height: 22,),
+                    imgLeftIcon: Image.asset("assets/images/location-icon3.png", width: 22, height: 22,),
                   ),
                   const SizedBox(height: 20),
                   IpasswordField(
