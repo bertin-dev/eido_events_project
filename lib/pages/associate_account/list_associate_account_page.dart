@@ -49,6 +49,7 @@ class _ListAssociateAccountPageViewState extends State<ListAssociateAccountPageV
 
   @override
   void initState() {
+    super.initState();
     _scaffoldKey = GlobalKey<ScaffoldState>();
     _creatAssociateAccountFormKey = GlobalKey<FormState>();
     _accountList = [

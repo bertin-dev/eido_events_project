@@ -22,7 +22,7 @@ class _DelegateHomePageViewState extends State<DelegateHomePageView> {
         builder: (context, orientation){
           final hv = MediaQuery.of(context).size.height / 100;
           final wv = MediaQuery.of(context).size.width / 100;
-          final _media = MediaQuery.of(context).size;
+          final media = MediaQuery.of(context).size;
           return Scaffold(
             //backgroundColor: Colors.green,
             body: ListView(
@@ -31,7 +31,7 @@ class _DelegateHomePageViewState extends State<DelegateHomePageView> {
               children: [
                 SizedBox(
                   //color: Colors.grey.shade50,
-                  height: _media.height / 2 + 10,
+                  height: media.height / 2 + 10,
                   child: Stack(
                     children: <Widget>[
                       Column(
@@ -43,20 +43,21 @@ class _DelegateHomePageViewState extends State<DelegateHomePageView> {
                                 Material(
                                   elevation: 4,
                                   child: Container(
-                                    decoration: const BoxDecoration(
+                                    decoration: BoxDecoration(
                                       image: DecorationImage(
-                                        image: AssetImage('assets/images/delegate_account/wedding_del_home.png'),
+                                        image: const AssetImage('assets/images/delegate_account/wedding_del_home.png'),
                                         fit: BoxFit.cover,
+                                          colorFilter: ColorFilter.mode(Colors.black.withOpacity(1.0), BlendMode.dstATop)
                                       ),
                                     ),
                                   ),
                                 ),
-                                Opacity(
-                                  opacity: 0.6,
+                                /*Opacity(
+                                  opacity: 1.0,
                                   child: Container(
                                     color: Colors.black,
                                   ),
-                                )
+                                )*/
                               ],
                             ),
                           ),
@@ -67,7 +68,7 @@ class _DelegateHomePageViewState extends State<DelegateHomePageView> {
                         ],
                       ),
                       Positioned(
-                        top: _media.longestSide <= 775
+                        top: media.longestSide <= 775
                             ? screenAwareSize(20, context)
                             : screenAwareSize(35, context),
                         left: 1,
@@ -127,7 +128,7 @@ class _DelegateHomePageViewState extends State<DelegateHomePageView> {
                                   Text(
                                     "1er mai 2022 - 14:00",
                                     style: TextStyle(
-                                        fontSize: _media.longestSide <= 775 ? 12 : 17,
+                                        fontSize: media.longestSide <= 775 ? 12 : 17,
                                         color: Colors.white,
                                         fontWeight: FontWeight.w500,
                                         fontFamily: 'Inter'),
@@ -136,13 +137,13 @@ class _DelegateHomePageViewState extends State<DelegateHomePageView> {
                                   Text(
                                     "Mariage d'Aîcha",
                                     style: TextStyle(
-                                        fontSize: _media.longestSide <= 775 ? 23 : 28,
+                                        fontSize: media.longestSide <= 775 ? 23 : 28,
                                         color: Colors.white,
                                         fontWeight: FontWeight.w600,
                                         fontFamily: 'Inter'),
                                   ),
                                   const SizedBox(height: 11,),
-                                  Container(height: 1, color: const Color(0xff2D68E6), width: _media.width/2,),
+                                  Container(height: 1, color: const Color(0xff2D68E6), width: media.width/2,),
                                   const SizedBox(height: 12.5,),
                                   Row(
                                     children: [
@@ -151,7 +152,7 @@ class _DelegateHomePageViewState extends State<DelegateHomePageView> {
                                       Text(
                                         "Mairie de Douala 5ème",
                                         style: TextStyle(
-                                            fontSize: _media.longestSide <= 775 ? 11 : 16,
+                                            fontSize: media.longestSide <= 775 ? 11 : 16,
                                             color: Colors.white,
                                             fontWeight: FontWeight.w400,
                                             fontFamily: 'Inter'),

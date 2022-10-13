@@ -15,6 +15,10 @@ import '../pages/controller_account/controller_home_page.dart';
 import '../pages/delegate_account/delegate_home_page.dart';
 import '../pages/delegate_account/delegate_login_step2_page.dart';
 import '../pages/delegate_account/events_page.dart';
+import '../pages/events/add_new_event_page.dart';
+import '../pages/events/add_new_event_step2_page.dart';
+import '../pages/events/manage_tickets_page.dart';
+import '../pages/events/qr_code_detail_page.dart';
 import '../pages/forget_password_page.dart';
 import '../pages/location_settings/add_location_settings.dart';
 import '../pages/location_settings/add_settings.dart';
@@ -127,6 +131,17 @@ class RouteGenerator {
         return MaterialPageRoute(settings: routeSettings, builder: (context) => const AddProgramPageView());
       case SuccessProgramPageView.pageName:
         return MaterialPageRoute(settings: routeSettings, builder: (context) => const SuccessProgramPageView());
+      case ManageTicketsPageView.pageName:
+        return MaterialPageRoute(settings: routeSettings, builder: (context) => const ManageTicketsPageView());
+      case QrCodeDetailPageView.pageName:
+        Map param = routeSettings.arguments as Map;
+        return MaterialPageRoute(settings: routeSettings, builder: (context) => QrCodeDetailPageView(
+            listTicketsModel: param["list_ticket"]
+        ));
+      case AddNewEventPageView.pageName:
+        return MaterialPageRoute(settings: routeSettings, builder: (context) => const AddNewEventPageView());
+      case AddNewEventStep2PageView.pageName:
+        return MaterialPageRoute(settings: routeSettings, builder: (context) => const AddNewEventStep2PageView());
       default:
         return MaterialPageRoute(settings: routeSettings, builder: (context) => const SplashScreen());
 

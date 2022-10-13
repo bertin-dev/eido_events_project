@@ -98,6 +98,7 @@ flutter:
     - assets/images/location_settings/
     - assets/images/associate_account/
     - assets/images/manage_event_programs/
+    - assets/images/events/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
