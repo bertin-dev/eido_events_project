@@ -4,9 +4,15 @@ import '../constants.dart';
 import '../models/bottom_sheet_menu.dart';
 import '../models/menus.dart';
 import '../pages/associate_account/detail_profils_associate_account.dart';
+import '../pages/associate_account/list_associate_account_page.dart';
 import '../pages/associate_account/privilege_associate_account.dart';
 import '../pages/events/add_new_event_page.dart';
+import '../pages/events/host_create/program_events_home_page.dart';
 import '../pages/events/manage_tickets_page.dart';
+import '../pages/events/renew_event_page.dart';
+import '../pages/guests/guests_list_page.dart';
+import '../pages/manage_event_programs/program_home_page.dart';
+import '../pages/manage_rubrique/rubrique_list_page.dart';
 
 
 class LocationBaseSettingsWidget extends StatefulWidget {
@@ -281,6 +287,8 @@ class LocationBaseAssociateAccountWidget extends StatefulWidget {
   final VoidCallback? onPressedMenu;
   final String? iconMenu2;
   final VoidCallback? onPressedMenu2;
+  final String? iconMenu3;
+  final VoidCallback? onPressedMenu3;
   final GlobalKey<ScaffoldState> devKey;
   final String fullBgImg;
   final VoidCallback? onPressedShared;
@@ -309,6 +317,8 @@ class LocationBaseAssociateAccountWidget extends StatefulWidget {
     required this.isDrawerNavRight,
     this.iconMenu2,
     this.onPressedMenu2,
+    this.iconMenu3,
+    this.onPressedMenu3,
     this.bgHeader = "assets/images/location_settings/bg-header-add-location.png",
     this.heightBgHeader = 125,
     this.bgBodyLeftSide,
@@ -589,7 +599,7 @@ with TickerProviderStateMixin{
                       //title of page
                       Expanded(
                         child: Text(widget.title,
-                          style: const TextStyle(fontSize: 19, fontWeight: FontWeight.w600, color: whiteColor, fontFamily: "Inter"),textAlign: TextAlign.left,),),
+                          style: const TextStyle(fontSize: 19, fontWeight: FontWeight.w700, color: whiteColor, fontFamily: "Inter"),textAlign: TextAlign.left,),),
 
                       if(widget.iconMenu != null)...{
                         IconButton(
@@ -604,6 +614,15 @@ with TickerProviderStateMixin{
                         IconButton(
                           onPressed: widget.onPressedMenu2,
                           icon: Image.asset(widget.iconMenu2!,
+                            width: 30,
+                            height: 30,),
+                        )
+                      },
+
+                      if(widget.iconMenu3 != null)...{
+                        IconButton(
+                          onPressed: widget.onPressedMenu3,
+                          icon: Image.asset(widget.iconMenu3!,
                             width: 30,
                             height: 30,),
                         )
@@ -826,11 +845,32 @@ with TickerProviderStateMixin{
                                   Navigator.of(context).pushNamed(ManageTicketsPageView.pageName);
                                 }
 
+                                //planing de l'évenement
+                                if(position==2){
+                                  Navigator.of(context).pop();
+                                  Navigator.of(context).pushNamed(ProgramPageView.pageName);
+                                }
+
+                                print("position=$position");
+
+                                //liste des rubriques
+                                if(position==4){
+                                  Navigator.of(context).pop();
+                                  Navigator.of(context).pushNamed(RubriqueListPageView.pageName);
+                                }
+
+
+                                //liste des invités
+                                if(position==5){
+                                  Navigator.of(context).pop();
+                                  Navigator.of(context).pushNamed(GuestsListPageView.pageName);
+                                }
+
                                 //liste des comptes associés
-                                /*if(position==6){
+                                if(position==6){
                                   Navigator.of(context).pop();
                                   Navigator.of(context).pushNamed(ListAssociateAccountPageView.pageName);
-                                }*/
+                                }
                               },
                               child: Container(
                                   decoration:BoxDecoration(
@@ -1110,8 +1150,8 @@ with TickerProviderStateMixin{
                                                     elevation: 4,
                                                     borderRadius:
                                                     BorderRadius.circular(100),
-                                                    child: Padding(
-                                                      padding: const EdgeInsets.all(1.0),
+                                                    child: const Padding(
+                                                      padding: EdgeInsets.all(1.0),
                                                       child: CircleAvatar(
                                                           radius: 13,
                                                           backgroundImage: NetworkImage(
@@ -1223,8 +1263,8 @@ with TickerProviderStateMixin{
                                               crossAxisAlignment: CrossAxisAlignment.start,
                                               children: <Widget>[
                                                 Wrap(
-                                                  children: [
-                                                    const Text("Mariage d'Alice ", style: TextStyle(
+                                                  children: const [
+                                                    Text("Mariage d'Alice ", style: TextStyle(
                                                         fontSize: 16.0,
                                                         color: labelColorTextField,
                                                         fontWeight: FontWeight.w700,
@@ -1318,8 +1358,8 @@ with TickerProviderStateMixin{
                                                     elevation: 4,
                                                     borderRadius:
                                                     BorderRadius.circular(100),
-                                                    child: Padding(
-                                                      padding: const EdgeInsets.all(1.0),
+                                                    child: const Padding(
+                                                      padding: EdgeInsets.all(1.0),
                                                       child: CircleAvatar(
                                                           radius: 13,
                                                           backgroundImage: NetworkImage(
@@ -1526,8 +1566,442 @@ with TickerProviderStateMixin{
                                                     elevation: 4,
                                                     borderRadius:
                                                     BorderRadius.circular(100),
-                                                    child: Padding(
-                                                      padding: const EdgeInsets.all(1.0),
+                                                    child: const Padding(
+                                                      padding: EdgeInsets.all(1.0),
+                                                      child: CircleAvatar(
+                                                          radius: 13,
+                                                          backgroundImage: NetworkImage(
+                                                            'https://play-images-prod-cms.tech.tvnz.co.nz/api/v1/web/image/content/dam/images/entertainment/shows/p/person-of-interest/personofinterest_coverimg.png.2017-03-08T11:21:33+13:00.jpg?width=960&height=540',
+                                                          )),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: const EdgeInsets.only(left: 32.0,),
+                                                  child: Material(
+                                                    color: kPrimaryColor,
+                                                    elevation: 4,
+                                                    borderRadius:
+                                                    BorderRadius.circular(100),
+                                                    child: const Padding(
+                                                      padding: EdgeInsets.all(1.0),
+                                                      child: CircleAvatar(
+                                                          radius: 13,
+                                                          backgroundImage: NetworkImage(
+                                                            'https://i.insider.com/5c9a115d8e436a63e42c2883?width=600&format=jpeg&auto=webp',
+                                                          )),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: const EdgeInsets.only(left: 48.0,),
+                                                  child: Material(
+                                                    color: kPrimaryColor,
+                                                    elevation: 4,
+                                                    borderRadius: BorderRadius.circular(100),
+                                                    child: const Padding(
+                                                      padding: EdgeInsets.all(1.0),
+                                                      child: CircleAvatar(
+                                                        radius: 12,
+                                                        backgroundColor: whiteColor,
+                                                        child: Text("+254", style: TextStyle(fontSize: 7.75, fontWeight: FontWeight.w400),),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ]),
+                                            ],
+                                          ),
+                                        ),
+                                        Expanded(
+                                          flex: 1,
+                                          child:Row(
+                                            mainAxisAlignment: MainAxisAlignment.end,
+                                            children: [
+                                              Image.asset("assets/images/home_page/ant-design_clock-circle-filled.png", width: 19, height: 19,),
+                                              const SizedBox(width: 5,),
+                                              const Text("JJ-5", style: TextStyle(
+                                                  fontSize: 11.0,
+                                                  color: Colors.red,
+                                                  fontWeight: FontWeight.w500,
+                                                  fontStyle: FontStyle.normal,
+                                                  fontFamily: "Inter"
+                                              ),
+                                              ),
+                                            ],
+                                          ),)
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )
+                        ),
+                      ),
+                    ],
+                  ),
+                  ListView(
+                    shrinkWrap: true,
+                    primary: false,
+                    //physics: const NeverScrollableScrollPhysics(),
+                    padding: const EdgeInsets.only(left: 10, right: 10),
+                    children: [
+                      InkWell(
+                        onTap: (){
+                          Navigator.of(context).pushNamed(RenewEventPageView.pageName);
+                        },
+                        child: Container(
+                            //margin: const EdgeInsets.only(left: 0, right: 0, top: 0, bottom: 0),
+                            decoration:BoxDecoration(
+                                color: const Color(0xffFEE2EA),
+                                borderRadius: BorderRadius.circular(8),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withOpacity(0.15),
+                                    blurRadius: 8,
+                                    //spreadRadius: 0.2,
+                                    //offset: const Offset(0, 8)
+                                  ),
+                                ]
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(20),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    color: const Color(0xffF2F2F2),
+                                    child: Row(
+                                      children: [
+                                        Container(
+                                          height: 47,
+                                          width: 2.0,
+                                          color: Colors.red,
+                                        ),
+                                        Expanded(
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(left: 10.0, right: 0, top: 5.0, bottom: 5.0),
+                                            child: Column(
+                                              mainAxisAlignment: MainAxisAlignment.start,
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: <Widget>[
+                                                Wrap(
+                                                  children: const [
+                                                    Text("Anniversaire de la copine...", style: TextStyle(
+                                                        fontSize: 16.0,
+                                                        color: labelColorTextField,
+                                                        fontWeight: FontWeight.w700,
+                                                        fontStyle: FontStyle.normal,
+                                                        fontFamily: "Inter"
+                                                    ),
+                                                    ),
+                                                  ],
+                                                ),
+                                                const Text("Douala B'ssadi, 12ième", style: TextStyle(
+                                                    fontSize: 13.0,
+                                                    color: greyColor,
+                                                    fontWeight: FontWeight.w400,
+                                                    fontStyle: FontStyle.normal,
+                                                    fontFamily: "Inter"
+                                                ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 22),
+                                    child: Row(
+                                      children: [
+                                        Expanded(
+                                          flex: 1,
+                                          child: Column(
+                                            children: [
+                                              Row(
+                                                children: [
+                                                  Image.asset("assets/images/home_page/rounded-icon-red.png", width: 13, height: 13,),
+                                                  const SizedBox(width: 5,),
+                                                  const Text("25 Mai 2022", style: TextStyle(
+                                                      fontSize: 7.0,
+                                                      color: successTextColor,
+                                                      fontWeight: FontWeight.w500,
+                                                      fontFamily: "Inter",
+                                                      fontStyle: FontStyle.normal
+                                                  ),
+                                                  ),
+                                                ],
+                                              ),
+                                              Row(
+                                                children: [
+                                                  Image.asset("assets/images/home_page/rounded-icon-black.png", width: 13, height: 13,),
+                                                  const SizedBox(width: 5,),
+                                                  const Text("28 Juin 2022", style: TextStyle(
+                                                      fontSize: 7.0,
+                                                      color: successTextColor,
+                                                      fontWeight: FontWeight.w500,
+                                                      fontFamily: "Inter",
+                                                      fontStyle: FontStyle.normal
+                                                  ),
+                                                  ),
+                                                ],
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                        Expanded(
+                                          flex: 1,
+                                          child: Row(
+                                            //crossAxisAlignment: CrossAxisAlignment.center,
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: [
+                                              Stack(children: [
+                                                Padding(
+                                                  padding: const EdgeInsets.only(left: 0.0, top: 0.5,),
+                                                  child: Material(
+                                                    color: kPrimaryColor,
+                                                    elevation: 4,
+                                                    borderRadius: BorderRadius.circular(100),
+                                                    child: const Padding(
+                                                      padding: EdgeInsets.all(1.0),
+                                                      child: CircleAvatar(
+                                                          radius: 13,
+                                                          backgroundImage: NetworkImage(
+                                                            'https://i.insider.com/5c9a115d8e436a63e42c2883?width=600&format=jpeg&auto=webp',
+                                                          )),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: const EdgeInsets.only(left: 16.0,),
+                                                  child: Material(
+                                                    color: kPrimaryColor,
+                                                    elevation: 4,
+                                                    borderRadius:
+                                                    BorderRadius.circular(100),
+                                                    child: const Padding(
+                                                      padding: EdgeInsets.all(1.0),
+                                                      child: CircleAvatar(
+                                                          radius: 13,
+                                                          backgroundImage: NetworkImage(
+                                                            'https://play-images-prod-cms.tech.tvnz.co.nz/api/v1/web/image/content/dam/images/entertainment/shows/p/person-of-interest/personofinterest_coverimg.png.2017-03-08T11:21:33+13:00.jpg?width=960&height=540',
+                                                          )),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: const EdgeInsets.only(left: 32.0,),
+                                                  child: Material(
+                                                    color: kPrimaryColor,
+                                                    elevation: 4,
+                                                    borderRadius:
+                                                    BorderRadius.circular(100),
+                                                    child: const Padding(
+                                                      padding: EdgeInsets.all(1.0),
+                                                      child: CircleAvatar(
+                                                          radius: 13,
+                                                          backgroundImage: NetworkImage(
+                                                            'https://i.insider.com/5c9a115d8e436a63e42c2883?width=600&format=jpeg&auto=webp',
+                                                          )),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: const EdgeInsets.only(left: 48.0,),
+                                                  child: Material(
+                                                    color: kPrimaryColor,
+                                                    elevation: 4,
+                                                    borderRadius: BorderRadius.circular(100),
+                                                    child: const Padding(
+                                                      padding: EdgeInsets.all(1.0),
+                                                      child: CircleAvatar(
+                                                        radius: 12,
+                                                        backgroundColor: whiteColor,
+                                                        child: Text("+254", style: TextStyle(fontSize: 7.75, fontWeight: FontWeight.w400),),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ]),
+                                            ],
+                                          ),
+                                        ),
+                                        Expanded(
+                                          flex: 1,
+                                          child:Row(
+                                            mainAxisAlignment: MainAxisAlignment.end,
+                                            children: [
+                                              Image.asset("assets/images/home_page/ant-design_clock-circle-filled.png", width: 19, height: 19,),
+                                              const SizedBox(width: 5,),
+                                              const Text("Expiré", style: TextStyle(
+                                                  fontSize: 11.0,
+                                                  color: Colors.red,
+                                                  fontWeight: FontWeight.w500,
+                                                  fontStyle: FontStyle.normal,
+                                                  fontFamily: "Inter"
+                                              ),
+                                              ),
+                                            ],
+                                          ),)
+                                      ],
+                                    ),
+                                  ),
+                                  const SizedBox(height: 13,),
+                                  Divider(color: const Color(0xff828282).withOpacity(0.2), height: 5),
+                                  const Text("Suppression dans 3 jours en cas de non renouvellement", style: TextStyle(
+                                      fontSize: 11.0,
+                                      color: redColor,
+                                      fontWeight: FontWeight.w500,
+                                      fontFamily: "Inter",
+                                      fontStyle: FontStyle.normal
+                                  ),
+                                  ),
+                                ],
+                              ),
+                            )
+                        ),
+                      ),
+                      InkWell(
+                        onTap: (){
+                          getBottomSheetMenu();
+                        },
+                        child: Container(
+                            margin: const EdgeInsets.only(left: 0, right: 0, top: 10, bottom: 0),
+                            decoration:BoxDecoration(
+                                color: whiteColor,
+                                borderRadius: BorderRadius.circular(8),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withOpacity(0.15),
+                                    blurRadius: 8,
+                                    //spreadRadius: 0.2,
+                                    //offset: const Offset(0, 8)
+                                  ),
+                                ]
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(20),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    color: const Color(0xffF2F2F2),
+                                    child: Row(
+                                      children: [
+                                        Container(
+                                          height: 47,
+                                          width: 2.0,
+                                          color: Colors.red,
+                                        ),
+                                        Expanded(
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(left: 10.0, right: 0, top: 5.0, bottom: 5.0),
+                                            child: Column(
+                                              mainAxisAlignment: MainAxisAlignment.start,
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: <Widget>[
+                                                Wrap(
+                                                  children: const [
+                                                    Text("Mariage d'Alice ", style: TextStyle(
+                                                        fontSize: 16.0,
+                                                        color: labelColorTextField,
+                                                        fontWeight: FontWeight.w700,
+                                                        fontStyle: FontStyle.normal,
+                                                        fontFamily: "Inter"
+                                                    ),
+                                                    ),
+                                                  ],
+                                                ),
+                                                const Text("Baffoussam, Entrée de la ville", style: TextStyle(
+                                                    fontSize: 13.0,
+                                                    color: greyColor,
+                                                    fontWeight: FontWeight.w400,
+                                                    fontStyle: FontStyle.normal,
+                                                    fontFamily: "Inter"
+                                                ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 22),
+                                    child: Row(
+                                      children: [
+                                        Expanded(
+                                          flex: 1,
+                                          child: Column(
+                                            children: [
+                                              Row(
+                                                children: [
+                                                  Image.asset("assets/images/home_page/rounded-icon-red.png", width: 13, height: 13,),
+                                                  const SizedBox(width: 5,),
+                                                  const Text("25 Mai 2022", style: TextStyle(
+                                                      fontSize: 7.0,
+                                                      color: successTextColor,
+                                                      fontWeight: FontWeight.w500,
+                                                      fontFamily: "Inter",
+                                                      fontStyle: FontStyle.normal
+                                                  ),
+                                                  ),
+                                                ],
+                                              ),
+                                              Row(
+                                                children: [
+                                                  Image.asset("assets/images/home_page/rounded-icon-black.png", width: 13, height: 13,),
+                                                  const SizedBox(width: 5,),
+                                                  const Text("28 Juin 2022", style: TextStyle(
+                                                      fontSize: 7.0,
+                                                      color: successTextColor,
+                                                      fontWeight: FontWeight.w500,
+                                                      fontFamily: "Inter",
+                                                      fontStyle: FontStyle.normal
+                                                  ),
+                                                  ),
+                                                ],
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                        Expanded(
+                                          flex: 1,
+                                          child: Row(
+                                            //crossAxisAlignment: CrossAxisAlignment.center,
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: [
+                                              Stack(children: [
+                                                Padding(
+                                                  padding: const EdgeInsets.only(left: 0.0, top: 0.5,),
+                                                  child: Material(
+                                                    color: kPrimaryColor,
+                                                    elevation: 4,
+                                                    borderRadius: BorderRadius.circular(100),
+                                                    child: const Padding(
+                                                      padding: EdgeInsets.all(1.0),
+                                                      child: CircleAvatar(
+                                                          radius: 13,
+                                                          backgroundImage: NetworkImage(
+                                                            'https://i.insider.com/5c9a115d8e436a63e42c2883?width=600&format=jpeg&auto=webp',
+                                                          )),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: const EdgeInsets.only(left: 16.0,),
+                                                  child: Material(
+                                                    color: kPrimaryColor,
+                                                    elevation: 4,
+                                                    borderRadius:
+                                                    BorderRadius.circular(100),
+                                                    child: const Padding(
+                                                      padding: EdgeInsets.all(1.0),
                                                       child: CircleAvatar(
                                                           radius: 13,
                                                           backgroundImage: NetworkImage(
@@ -1742,224 +2216,8 @@ with TickerProviderStateMixin{
                                                     elevation: 4,
                                                     borderRadius:
                                                     BorderRadius.circular(100),
-                                                    child: Padding(
-                                                      padding: const EdgeInsets.all(1.0),
-                                                      child: CircleAvatar(
-                                                          radius: 13,
-                                                          backgroundImage: NetworkImage(
-                                                            'https://play-images-prod-cms.tech.tvnz.co.nz/api/v1/web/image/content/dam/images/entertainment/shows/p/person-of-interest/personofinterest_coverimg.png.2017-03-08T11:21:33+13:00.jpg?width=960&height=540',
-                                                          )),
-                                                    ),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: const EdgeInsets.only(left: 32.0,),
-                                                  child: Material(
-                                                    color: kPrimaryColor,
-                                                    elevation: 4,
-                                                    borderRadius:
-                                                    BorderRadius.circular(100),
                                                     child: const Padding(
                                                       padding: EdgeInsets.all(1.0),
-                                                      child: CircleAvatar(
-                                                          radius: 13,
-                                                          backgroundImage: NetworkImage(
-                                                            'https://i.insider.com/5c9a115d8e436a63e42c2883?width=600&format=jpeg&auto=webp',
-                                                          )),
-                                                    ),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: const EdgeInsets.only(left: 48.0,),
-                                                  child: Material(
-                                                    color: kPrimaryColor,
-                                                    elevation: 4,
-                                                    borderRadius: BorderRadius.circular(100),
-                                                    child: const Padding(
-                                                      padding: EdgeInsets.all(1.0),
-                                                      child: CircleAvatar(
-                                                        radius: 12,
-                                                        backgroundColor: whiteColor,
-                                                        child: Text("+254", style: TextStyle(fontSize: 7.75, fontWeight: FontWeight.w400),),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ]),
-                                            ],
-                                          ),
-                                        ),
-                                        Expanded(
-                                          flex: 1,
-                                          child:Row(
-                                            mainAxisAlignment: MainAxisAlignment.end,
-                                            children: [
-                                              Image.asset("assets/images/home_page/ant-design_clock-circle-filled.png", width: 19, height: 19,),
-                                              const SizedBox(width: 5,),
-                                              const Text("JJ-5", style: TextStyle(
-                                                  fontSize: 11.0,
-                                                  color: Colors.red,
-                                                  fontWeight: FontWeight.w500,
-                                                  fontStyle: FontStyle.normal,
-                                                  fontFamily: "Inter"
-                                              ),
-                                              ),
-                                            ],
-                                          ),)
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            )
-                        ),
-                      ),
-                    ],
-                  ),
-                  ListView(
-                    shrinkWrap: true,
-                    primary: false,
-                    //physics: const NeverScrollableScrollPhysics(),
-                    padding: const EdgeInsets.only(left: 10, right: 10),
-                    children: [
-                      InkWell(
-                        onTap: (){
-                          getBottomSheetMenu();
-                        },
-                        child: Container(
-                            margin: const EdgeInsets.only(left: 10, right: 10, top: 20, bottom: 20),
-                            decoration:BoxDecoration(
-                                color: whiteColor,
-                                borderRadius: BorderRadius.circular(8),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black.withOpacity(0.15),
-                                    blurRadius: 8,
-                                    //spreadRadius: 0.2,
-                                    //offset: const Offset(0, 8)
-                                  ),
-                                ]
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(20),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    color: const Color(0xffF2F2F2),
-                                    child: Row(
-                                      children: [
-                                        Container(
-                                          height: 47,
-                                          width: 2.0,
-                                          color: Colors.red,
-                                        ),
-                                        Expanded(
-                                          child: Padding(
-                                            padding: const EdgeInsets.only(left: 10.0, right: 0, top: 5.0, bottom: 5.0),
-                                            child: Column(
-                                              mainAxisAlignment: MainAxisAlignment.start,
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: <Widget>[
-                                                Wrap(
-                                                  children: const [
-                                                    Text("Mariage d'Alice ", style: TextStyle(
-                                                        fontSize: 16.0,
-                                                        color: labelColorTextField,
-                                                        fontWeight: FontWeight.w700,
-                                                        fontStyle: FontStyle.normal,
-                                                        fontFamily: "Inter"
-                                                    ),
-                                                    ),
-                                                  ],
-                                                ),
-                                                const Text("Baffoussam, Entrée de la ville", style: TextStyle(
-                                                    fontSize: 13.0,
-                                                    color: greyColor,
-                                                    fontWeight: FontWeight.w400,
-                                                    fontStyle: FontStyle.normal,
-                                                    fontFamily: "Inter"
-                                                ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 22),
-                                    child: Row(
-                                      children: [
-                                        Expanded(
-                                          flex: 1,
-                                          child: Column(
-                                            children: [
-                                              Row(
-                                                children: [
-                                                  Image.asset("assets/images/home_page/rounded-icon-red.png", width: 13, height: 13,),
-                                                  const SizedBox(width: 5,),
-                                                  const Text("25 Mai 2022", style: TextStyle(
-                                                      fontSize: 7.0,
-                                                      color: successTextColor,
-                                                      fontWeight: FontWeight.w500,
-                                                      fontFamily: "Inter",
-                                                      fontStyle: FontStyle.normal
-                                                  ),
-                                                  ),
-                                                ],
-                                              ),
-                                              Row(
-                                                children: [
-                                                  Image.asset("assets/images/home_page/rounded-icon-black.png", width: 13, height: 13,),
-                                                  const SizedBox(width: 5,),
-                                                  const Text("28 Juin 2022", style: TextStyle(
-                                                      fontSize: 7.0,
-                                                      color: successTextColor,
-                                                      fontWeight: FontWeight.w500,
-                                                      fontFamily: "Inter",
-                                                      fontStyle: FontStyle.normal
-                                                  ),
-                                                  ),
-                                                ],
-                                              )
-                                            ],
-                                          ),
-                                        ),
-                                        Expanded(
-                                          flex: 1,
-                                          child: Row(
-                                            //crossAxisAlignment: CrossAxisAlignment.center,
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                              Stack(children: [
-                                                Padding(
-                                                  padding: const EdgeInsets.only(left: 0.0, top: 0.5,),
-                                                  child: Material(
-                                                    color: kPrimaryColor,
-                                                    elevation: 4,
-                                                    borderRadius: BorderRadius.circular(100),
-                                                    child: const Padding(
-                                                      padding: EdgeInsets.all(1.0),
-                                                      child: CircleAvatar(
-                                                          radius: 13,
-                                                          backgroundImage: NetworkImage(
-                                                            'https://i.insider.com/5c9a115d8e436a63e42c2883?width=600&format=jpeg&auto=webp',
-                                                          )),
-                                                    ),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: const EdgeInsets.only(left: 16.0,),
-                                                  child: Material(
-                                                    color: kPrimaryColor,
-                                                    elevation: 4,
-                                                    borderRadius:
-                                                    BorderRadius.circular(100),
-                                                    child: Padding(
-                                                      padding: const EdgeInsets.all(1.0),
                                                       child: CircleAvatar(
                                                           radius: 13,
                                                           backgroundImage: NetworkImage(
@@ -2071,8 +2329,8 @@ with TickerProviderStateMixin{
                                               crossAxisAlignment: CrossAxisAlignment.start,
                                               children: <Widget>[
                                                 Wrap(
-                                                  children: [
-                                                    const Text("Mariage d'Alice ", style: TextStyle(
+                                                  children: const [
+                                                    Text("Mariage d'Alice ", style: TextStyle(
                                                         fontSize: 16.0,
                                                         color: labelColorTextField,
                                                         fontWeight: FontWeight.w700,
@@ -2166,8 +2424,8 @@ with TickerProviderStateMixin{
                                                     elevation: 4,
                                                     borderRadius:
                                                     BorderRadius.circular(100),
-                                                    child: Padding(
-                                                      padding: const EdgeInsets.all(1.0),
+                                                    child: const Padding(
+                                                      padding: EdgeInsets.all(1.0),
                                                       child: CircleAvatar(
                                                           radius: 13,
                                                           backgroundImage: NetworkImage(

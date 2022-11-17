@@ -59,6 +59,8 @@ dependencies:
   dotted_border: ^2.0.0+2
   #grouped_list: ^5.1.2
   #sticky_grouped_list: ^3.1.0
+  google_maps_flutter: ^2.2.1
+  geolocator: ^9.0.2
 
 flutter_icons:
   android: "launcher_icon"
@@ -99,6 +101,8 @@ flutter:
     - assets/images/associate_account/
     - assets/images/manage_event_programs/
     - assets/images/events/
+    - assets/images/guests/
+    - assets/images/rubrique/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

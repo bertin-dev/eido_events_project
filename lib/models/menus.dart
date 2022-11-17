@@ -19,6 +19,14 @@ class HomeBottomNavigation{
   static const String notificationInactive ="assets/images/profile-inactive-icon.png";
   static const String notificationActive ="assets/images/profile-inactive-icon.png";
 
+  static const String homeProgramInactive ="assets/images/guests/program-inactive-icon.png";
+  static const String homeProgramActive ="assets/images/guests/program-active-icon.png";
+
+  static const String cartographyActive ="assets/images/guests/cartographie-active-icon.png";
+  static const String cartographyInactive ="assets/images/guests/cartographie-inactive-icon.png";
+
+  static const String productInactive ="assets/images/guests/product-inactive-icon.png";
+  static const String productActive ="assets/images/guests/product-active-icon.png";
 
   static final Menus homeMenu = Menus(
       title: "Accueil",
@@ -38,10 +46,37 @@ class HomeBottomNavigation{
       color: const Color(0xff7A7D86),
       inactiveIcon: Image.asset(notificationInactive, width: 23.75, height: 25,));
 
+
+
+  static final Menus homeProgram = Menus(
+      title: "Programmes",
+      icon: Image.asset(homeProgramActive, width: 23.75, height: 25,),
+      color: const Color(0xff7A7D86),
+      inactiveIcon: Image.asset(homeProgramInactive, width: 23.75, height: 25,));
+
+  static final Menus homeCartography = Menus(
+      title: "Cartographie",
+      icon: Image.asset(cartographyActive, width: 23.75, height: 25,),
+      color: const Color(0xff7A7D86),
+      inactiveIcon: Image.asset(cartographyInactive, width: 23.75, height: 25,));
+
+  static final Menus homeProduct = Menus(
+      title: "Produits",
+      icon: Image.asset(productActive, width: 23.75, height: 25,),
+      color: const Color(0xff7A7D86),
+      inactiveIcon: Image.asset(productInactive, width: 23.75, height: 25,));
+
+
   static final List<Menus> menus = <Menus>[
     homeMenu,
     homeEvent,
     homeNotification
+  ];
+
+  static final List<Menus> menus2 = <Menus>[
+    homeProgram,
+    homeCartography,
+    homeProduct
   ];
 
 }

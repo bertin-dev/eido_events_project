@@ -9,11 +9,13 @@ class CustomButton extends StatelessWidget {
   final VoidCallback onPressed;
   final Color textColor;
   final String text;
+  final double? textSize;
   final Color color;
 
    const CustomButton({Key? key,
     required this.onPressed,
     required this.text,
+    this.textSize = 16.0,
     required this.textColor,
     required this.color
   }) : super(key: key);
@@ -29,7 +31,7 @@ class CustomButton extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100.0)),
         child: Padding(
           padding: const EdgeInsets.only(top:16.0, bottom: 16.0),
-          child: Text(text, style: const TextStyle(fontSize: 16.0, fontWeight: FontWeight.w700, fontFamily: "Inter", fontStyle: FontStyle.normal,),textAlign: TextAlign.center,),
+          child: Text(text, style: TextStyle(fontSize: textSize!, fontWeight: FontWeight.w700, fontFamily: "Inter", fontStyle: FontStyle.normal,),textAlign: TextAlign.center,),
         ),
       ),
     );
@@ -544,25 +546,27 @@ class CustomButtonRightIcon extends StatelessWidget {
   final Color textColor;
   final String text;
   final Color color;
-  final String icon;
+  final String? icon;
   final double radius;
   final double pVertical;
   final double pHorizontal;
+  final double? size;
 
   const CustomButtonRightIcon({Key? key,
     required this.onPressed,
     required this.text,
     required this.textColor,
     required this.color,
-    required this.icon,
+    this.icon,
     required this.radius,
     required this.pVertical,
-    required this.pHorizontal
+    required this.pHorizontal,
+    this.size
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 32),
+      padding: EdgeInsets.symmetric(vertical: pVertical, horizontal: pHorizontal),
       color: color,
       shape:  RoundedRectangleBorder(
         side: BorderSide(width: 1.0, color: color),
@@ -576,14 +580,16 @@ class CustomButtonRightIcon extends StatelessWidget {
            Text(
             text,
             style: TextStyle(
-                fontSize: 16.0, color: textColor, fontWeight: FontWeight.w700, fontFamily: "Inter"),
+                fontSize: size ?? 16.0, color: textColor, fontWeight: FontWeight.w700, fontFamily: "Inter"),
             textAlign: TextAlign.center,
           ),
           const SizedBox(width: 12.0),
-          Image.asset(icon,
-            fit: BoxFit.cover,
-            width: 20,
-            height: 20,),
+          if(icon!=null)...{
+            Image.asset(icon!,
+              fit: BoxFit.cover,
+              width: 20,
+              height: 20,),
+          },
         ],
       ),
     );
