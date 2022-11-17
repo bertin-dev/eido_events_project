@@ -137,12 +137,27 @@ flutter:
          - asset: assets/fonts/Inter/Inter-UI-BlackItalic.ttf
          - asset: assets/fonts/Inter/Inter-Bold.ttf
   #         style: italic
-     - family: Trajan Pro
+     - family: Impact
        fonts:
          - asset: assets/fonts/Impact/impact.ttf
          - asset: assets/fonts/Impact/Impacted.ttf
          - asset: assets/fonts/Impact/unicode.impact.ttf
            weight: 700
+
+     - family: Roboto
+       fonts:
+         - asset: assets/fonts/Roboto/Roboto-Black.ttf
+         - asset: assets/fonts/Roboto/Roboto-BlackItalic.ttf
+         - asset: assets/fonts/Roboto/Roboto-Bold.ttf
+         - asset: assets/fonts/Roboto/Roboto-BoldItalic.ttf
+         - asset: assets/fonts/Roboto/Roboto-Italic.ttf
+         - asset: assets/fonts/Roboto/Roboto-Light.ttf
+         - asset: assets/fonts/Roboto/Roboto-LightItalic.ttf
+         - asset: assets/fonts/Roboto/Roboto-Medium.ttf
+         - asset: assets/fonts/Roboto/Roboto-MediumItalic.ttf
+         - asset: assets/fonts/Roboto/Roboto-Regular.ttf
+         - asset: assets/fonts/Roboto/Roboto-Thin.ttf
+         - asset: assets/fonts/Roboto/Roboto-ThinItalic.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
