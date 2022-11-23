@@ -1,6 +1,8 @@
 
+import 'package:eido_events_project/pages/server_account/home_server_page.dart';
 import 'package:eido_events_project/pages/splash_screen.dart';
 import 'package:eido_events_project/routes/route_generators.dart';
+import 'package:eido_events_project/services/local_notifications/notification_service.dart';
 import 'package:flutter/material.dart';
 
 
@@ -18,6 +20,17 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   final navigatorKey = GlobalKey<NavigatorState>();
+  late final NotificationService notificationService;
+
+
+  @override
+  void initState() {
+    notificationService = NotificationService();
+    listenToNotificationStream();
+    notificationService.initializePlatformNotifications();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -53,6 +66,16 @@ class _MyAppState extends State<MyApp> {
       //home:MyApp1()
     );
   }
+
+
+
+  void listenToNotificationStream() =>
+      notificationService.behaviorSubject.listen((payload) {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => HomeAccountServerPageView(payload: payload)));
+      });
 }
 
 

@@ -21,82 +21,77 @@ class _NotificationsPageViewState extends State<NotificationsPageView> {
     // TODO: implement initState
     super.initState();
 
-    setState(() {
-      tasks.add(NotificationsModel("Meeting", "Room 400", "12:30", Colors.red, false));
-      tasks.add(NotificationsModel("Meeting", "Room 400", "12:30", Colors.purple, true));
-      tasks.add(NotificationsModel("Meeting", "Room 400", "12:30", Colors.amber, false));
-      tasks.add(NotificationsModel("Meeting", "Room 400", "12:30", Colors.green, true));
-      tasks.add(NotificationsModel("Meeting", "Room 400", "12:30", Colors.blue, true));
-    });
+    tasks.add(NotificationsModel(id: 1, name: "David Silbia", description: "Demande à avoir un serveur", tasktime: 2, bgColorDelete: Colors.red, isFgColor: true,
+        isDivider: false, isAccepted: true, isRejected: true, createdBy: "chatnoir122"
+    ));
+    tasks.add(NotificationsModel(id: 2, name: "Eric Bullet", description: "Demande à avoir un serveur", tasktime: 5, bgColorDelete: Colors.red, isFgColor: false,
+        isDivider: true, isAccepted: false, isRejected: false, createdBy: "chatnoir122"
+    ));
+    tasks.add(NotificationsModel(id: 3, name: "David Silbia", description: "Demande à avoir un serveur", tasktime: 60, bgColorDelete: Colors.red, isFgColor: true,
+        isDivider: false, isAccepted: true, isRejected: true, createdBy: "chatnoir122"
+    ));
+    tasks.add(NotificationsModel(id: 4, name: "Eric Bullet", description: "Demande à avoir un serveur", tasktime: 16, bgColorDelete: Colors.red, isFgColor: false,
+        isDivider: true, isAccepted: false, isRejected: false, createdBy: "chatnoir122"
+    ));
+    tasks.add(NotificationsModel(id: 5, name: "Eric Bullet", description: "Demande à avoir un serveur", tasktime: 31, bgColorDelete: Colors.red, isFgColor: false,
+        isDivider: true, isAccepted: false, isRejected: false, createdBy: "chatnoir122"
+    ));
+
   }
 
   @override
   Widget build(BuildContext context) {
-    final fifteenAgo = DateTime.now().subtract(const Duration(minutes: 15));
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: notifBgColor,
-      /*appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(80.0), // here the desired height
-        child: AppBar(
-          title: const Text("Notifications", style: TextStyle(fontWeight: FontWeight.w400, fontSize: 18, color: whiteColor),),
-          centerTitle: false,
-          //toolbarHeight: 1.0,
-          /*flexibleSpace: Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/images/home_page/notifications.png'),
-                fit: BoxFit.fill,
-              ),
-            ),
-          ),*/
-          backgroundColor: kPrimaryColor,
-          elevation: 0.0,
-        ),
-      ),*/
       body: Column(
         children: [
           Container(
             width: MediaQuery.of(context).size.width,
             height: 102,
             decoration: const BoxDecoration(
-                image: DecorationImage(
+              color: kPrimaryColor,
+                /*image: DecorationImage(
                   image: AssetImage('assets/images/home_page/bg-notif.png'),
                   fit: BoxFit.cover,
-                )
+                )*/
             ),
-            child: Column(
-              children: [
-                Container(
-                  margin: const EdgeInsets.only(top: 55, right: 20, left: 24),
-                  child: Row(
-                    children: <Widget>[
-                      InkWell(
-                        onTap: () => Navigator.of(context).pop(),
-                        child: const Icon(Icons.arrow_back, color: whiteColor, size: 25,),
-                      ),
-                      const SizedBox(width: 11,),
-                      const Expanded(
-                            child: Text("Notifications", style: TextStyle(fontWeight: FontWeight.w700, fontSize: 19, color: whiteColor, fontStyle: FontStyle.normal, fontFamily: "Inter")),
-                      ),
-                    ],
+            child: Container(
+              margin: const EdgeInsets.only(top: 35, right: 20, left: 24),
+              child: Row(
+                children: <Widget>[
+                  InkWell(
+                    onTap: () => Navigator.of(context).pop(),
+                    child: Image.asset("assets/images/left-icon.png", width: 32, height: 32,)
                   ),
-                ),
-              ],
+                  const SizedBox(width: 11,),
+                  const Expanded(
+                    child: Text("Notifications", style: TextStyle(fontWeight: FontWeight.w700, fontSize: 19, color: whiteColor, fontStyle: FontStyle.normal, fontFamily: "Inter")),
+                  ),
+                ],
+              ),
             ),
           ),
           ListView.builder(
             shrinkWrap: true,
             itemCount: tasks.length,
+            padding: EdgeInsets.zero,
             itemBuilder: (context, position){
+              final timeEgo = DateTime.now().subtract(Duration(minutes: tasks[position].tasktime));
               return Dismissible(
                 key: Key(tasks[position].toString()),
                 background: _myHiddenContainer(
-                  //tasks[position].status
-                    Colors.red
+                    tasks[position].bgColorDelete
                 ),
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 13.0),
+                  decoration: BoxDecoration(
+                    color: tasks[position].isFgColor ? const Color(0xffD6F4FF) : null,
+                    border: tasks[position].isFgColor ? const Border(
+                      bottom: BorderSide(width: 1.0, color: iconColor),
+                      top: BorderSide(width: 1.0, color: iconColor),
+                    ) : null,
+                  ),
                   child: ListTile(
                     minVerticalPadding: 0,
                     //contentPadding: const EdgeInsets.symmetric(horizontal: 23.0, vertical: 20.0),
@@ -106,24 +101,30 @@ class _NotificationsPageViewState extends State<NotificationsPageView> {
                         child: Image.asset("assets/images/home_page/avatar.png"),
                       ),
                     ),
-                    title: Wrap(
-                      children: const [
-                        Text("David Siliba ", style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Inter"),),
-                        Text("demande à avoir un serveur", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, fontFamily: "Inter"))
-                      ],
+                    title: RichText(
+                      text: TextSpan(
+                          style: const TextStyle(
+                              fontSize: 12,
+                              fontFamily: "Inter",
+                              color: Color(0xff060518)
+                          ),
+                          children: <TextSpan>[
+                            TextSpan(text: "${tasks[position].name} ", style: const TextStyle(fontWeight: FontWeight.bold)),
+                            TextSpan(text: tasks[position].description, style: const TextStyle(fontWeight: FontWeight.w400)),
+                          ]
+                      ),
                     ),
                     subtitle: tasks[position].isDivider ? Wrap(
-                      children: const[
-                        SizedBox(height: 5,),
-                        Divider(height: 1,),
-                        SizedBox(height: 5,),
-                        Text("Encours de service par ",style: TextStyle(fontSize: 10, fontWeight: FontWeight.w500, fontFamily: "Inter")),
-                        Text(" chatnoir122", style: TextStyle(fontSize: 10, fontWeight: FontWeight.w500, color: iconColor, fontFamily: "Inter")),
+                      children: [
+                        const Divider(height: 1, color: Color(0xffBAC9CE),),
+                        const SizedBox(height: 5,),
+                        const Text("a été servi par ",style: TextStyle(fontSize: 10, fontWeight: FontWeight.w300, fontFamily: "Inter")),
+                        Text(tasks[position].createdBy, style: const TextStyle(fontSize: 10, fontWeight: FontWeight.w300, color: iconColor, fontFamily: "Inter")),
                       ],
                     ) :  null,
                     trailing: Wrap(
                       children: [
-                        Text(timeago.format(fifteenAgo),style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w300))
+                        Text(timeago.format(timeEgo), style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w300))
                       ],
                     ),
                   ),

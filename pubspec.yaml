@@ -61,6 +61,12 @@ dependencies:
   #sticky_grouped_list: ^3.1.0
   google_maps_flutter: ^2.2.1
   geolocator: ^9.0.2
+  carousel_slider: ^4.1.1
+  flutter_local_notifications: ^9.7.0
+  timezone: ^0.8.0
+  rxdart: ^0.27.5
+  flutter_native_timezone: ^2.0.0
+
 
 flutter_icons:
   android: "launcher_icon"
@@ -103,6 +109,7 @@ flutter:
     - assets/images/events/
     - assets/images/guests/
     - assets/images/rubrique/
+    - assets/images/profil/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

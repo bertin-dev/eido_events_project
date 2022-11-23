@@ -2,7 +2,7 @@
 import 'package:eido_events_project/pages/delegate_account/delegate_login_page.dart';
 import 'package:eido_events_project/pages/home_page.dart';
 import 'package:eido_events_project/pages/notifications_page.dart';
-import 'package:eido_events_project/pages/onbording_page.dart';
+import 'package:eido_events_project/pages/onboarding_page.dart';
 import 'package:eido_events_project/pages/register_page.dart';
 import 'package:eido_events_project/pages/success_page.dart';
 import 'package:flutter/material.dart';
@@ -55,7 +55,9 @@ import '../pages/manage_rubrique/search_product_page.dart';
 import '../pages/manage_rubrique/search_rubrique_programpage.dart';
 import '../pages/otp_checking_page.dart';
 import '../pages/reset_forget_password_page.dart';
+import '../pages/server_account/home_server_page.dart';
 import '../pages/splash_screen.dart';
+import '../pages/transitionPage.dart';
 import '../widgets/offline_page.dart';
 
 class RouteGenerator {
@@ -88,9 +90,15 @@ class RouteGenerator {
       case NotificationsPageView.pageName:
         return MaterialPageRoute(settings: routeSettings, builder: (context) => const NotificationsPageView());
       case DelegateLoginPage.pageName:
-        return MaterialPageRoute(settings: routeSettings, builder: (context) => const DelegateLoginPage());
+        Map param = routeSettings.arguments as Map;
+        return MaterialPageRoute(settings: routeSettings, builder: (context) => DelegateLoginPage(
+            typeAccount: param["typeAccount"]
+        ));
       case DelegateLoginStep2PageView.pageName:
-        return MaterialPageRoute(settings: routeSettings, builder: (context) => const DelegateLoginStep2PageView());
+        Map param = routeSettings.arguments as Map;
+        return MaterialPageRoute(settings: routeSettings, builder: (context) => DelegateLoginStep2PageView(
+            typeAccount: param["typeAccount"]
+        ));
       case DelegateHomePageView.pageName:
         return MaterialPageRoute(settings: routeSettings, builder: (context) => const DelegateHomePageView());
       case EventsPageView.pageName:
@@ -214,6 +222,13 @@ class RouteGenerator {
         return MaterialPageRoute(settings: routeSettings, builder: (context) => ProgramGuestPageView(
             listProgramModel: param["listProgramModel"]
         ));
+
+        //Page tamporaire pour montrer les comptes serveurs, contrôlleurs delegue et administrateurs
+      case TransitionPageView.pageName:
+        return MaterialPageRoute(settings: routeSettings, builder: (context) => const TransitionPageView());
+
+      case HomeAccountServerPageView.pageName:
+        return MaterialPageRoute(settings: routeSettings, builder: (context) => HomeAccountServerPageView());
 
       default:
         return MaterialPageRoute(settings: routeSettings, builder: (context) => const SplashScreen());
