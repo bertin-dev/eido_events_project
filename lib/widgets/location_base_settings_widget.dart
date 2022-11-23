@@ -13,6 +13,7 @@ import '../pages/events/renew_event_page.dart';
 import '../pages/guests/guests_list_page.dart';
 import '../pages/manage_event_programs/program_home_page.dart';
 import '../pages/manage_rubrique/rubrique_list_page.dart';
+import '../utils/screen_size.dart';
 
 
 class LocationBaseSettingsWidget extends StatefulWidget {
@@ -377,6 +378,7 @@ with TickerProviderStateMixin{
         builder: (context, orientation){
           final hv = MediaQuery.of(context).size.height / 100;
           final wv = MediaQuery.of(context).size.width / 100;
+          final media = MediaQuery.of(context).size;
           return Scaffold(
               resizeToAvoidBottomInset: false,
               key: widget.devKey,
@@ -512,19 +514,19 @@ with TickerProviderStateMixin{
                 }).toList(),
 
               ) : null,
-              body: getBody(wv, hv),
+              body: getBody(wv, hv, media),
           );
         });
   }
 
-  Widget getBody(double width, double height) {
+  Widget getBody(double width, double height, Size media) {
     switch(_selectedIndex){
       case 0:
         return homePage(width, height);
       case 1:
         return events(width, height);
       case 2:
-        return const Center(child: Text("Profile"),);
+        return profil(media);
       default:
         return Container();
     }
@@ -799,6 +801,136 @@ with TickerProviderStateMixin{
     );
   }
 
+  Widget profil(Size media){
+    return Stack(
+      children: [
+        Container(
+          width: MediaQuery.of(context).size.width,
+          height: 225,
+          decoration: const BoxDecoration(
+            color: kPrimaryColor
+              /*image: DecorationImage(
+                image: AssetImage('assets/images/home_page/bg-home3.png'),
+                fit: BoxFit.cover,
+              )*/
+          ),
+        ),
+        const Positioned(
+          top: 53,
+          left: 1,
+          right: 1,
+          child: Center(
+            child: Text("Mon Espace", style: TextStyle(fontWeight: FontWeight.w700, fontSize: 19, color: whiteColor, fontStyle: FontStyle.normal, fontFamily: "Inter"),),
+          )
+        ),
+        Positioned(
+          left: 1.0,
+          right: 1.0,
+          top: 100,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Container(
+                padding: const EdgeInsets.all(20),
+                decoration:BoxDecoration(
+                  color: whiteColor,
+                  borderRadius: BorderRadius.circular(100),
+                ),
+                child: const CircleAvatar(
+                  backgroundColor: Colors.transparent,
+                  backgroundImage: AssetImage("assets/images/home_page/avatar.png"),
+                  radius: 35,
+                  //backgroundColor: Color(0xfff1f3f5),
+                ),
+              ),
+              Column(
+                children:  const [
+                  Text("Alvares Jess",
+                    style: TextStyle(fontWeight: FontWeight.w700, fontSize: 23, color: whiteColor, fontFamily: "Inter", fontStyle: FontStyle.normal),),
+                  SizedBox(height: 5,),
+                  Text("alvares@gmail.com",
+                    style: TextStyle(fontWeight: FontWeight.w400, fontSize: 18, color: whiteColor, fontFamily: "Inter", fontStyle: FontStyle.normal),),
+                ],
+              ),
+            ],
+          ),
+        ),
+        Container(
+          margin: EdgeInsets.only(top: media.longestSide <= 775
+              ? screenAwareSize(245, context)
+              : screenAwareSize(323, context),
+              bottom: MediaQuery.of(context).viewInsets.bottom),
+          child: ListView.separated(
+            itemCount: itemsMenuProfil.length,
+            padding: EdgeInsets.zero,
+            itemBuilder: (_, position) {
+              return InkWell(
+                  onTap: (){
+                    //gestion des billets
+                    if(position==1){
+                      Navigator.of(context).pop();
+                      Navigator.of(context).pushNamed(ManageTicketsPageView.pageName);
+                    }
+
+                    //planing de l'évenement
+                    if(position==2){
+                      Navigator.of(context).pop();
+                      Navigator.of(context).pushNamed(ProgramPageView.pageName);
+                    }
+
+                    print("position=$position");
+
+                    //liste des rubriques
+                    if(position==4){
+                      Navigator.of(context).pop();
+                      Navigator.of(context).pushNamed(RubriqueListPageView.pageName);
+                    }
+
+
+                    //liste des invités
+                    if(position==5){
+                      Navigator.of(context).pop();
+                      Navigator.of(context).pushNamed(GuestsListPageView.pageName);
+                    }
+
+                    //liste des comptes associés
+                    if(position==6){
+                      Navigator.of(context).pop();
+                      Navigator.of(context).pushNamed(ListAssociateAccountPageView.pageName);
+                    }
+                  },
+                  child: Container(
+                      decoration:BoxDecoration(
+                        //color: Colors.green,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
+                      child: Row(
+                        //crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              itemsMenuProfil[position].icon,
+                              const SizedBox(width: 10,),
+                              Text(itemsMenuProfil[position].title,
+                                style: TextStyle(fontSize: 16, color: itemsMenuProfil[position].color, fontWeight: FontWeight.w400, fontFamily: 'Inter', fontStyle: FontStyle.normal),),
+                            ],
+                          ),
+                          itemsMenuProfil[position].arrowRight,
+                        ],
+                      )
+                  )
+              );
+            }, separatorBuilder: (BuildContext context, int index) {
+            return const Divider(height: 2,);
+          },
+          ),
+        ),
+      ],
+    );
+  }
+
   getBottomSheetMenu() {
     showModalBottomSheet(
       context: context,
@@ -812,10 +944,11 @@ with TickerProviderStateMixin{
               child: Container(
                 padding: const EdgeInsets.only(left: 10, right: 13, top: 25, bottom: 33),
                 decoration: const BoxDecoration(
-                  image: DecorationImage(
+                  color: whiteColor,
+                  /*image: DecorationImage(
                     image: AssetImage("assets/images/events/bg-homepage-bottomsheet.png"),
                     fit: BoxFit.cover,
-                  ),
+                  ),*/
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(16.0),
                     topRight: Radius.circular(16.0),
@@ -922,6 +1055,16 @@ with TickerProviderStateMixin{
     BottomSheetMenu("Suivi des activités", Image.asset("assets/images/events/suivi-activite-icon.png", width: 36, height: 36,), const Icon(Icons.arrow_forward_outlined, size: 16,), successTextColor),
     BottomSheetMenu("Reporter l'évènement", Image.asset("assets/images/events/reporter-event-icon.png", width: 36, height: 36,), const Icon(Icons.arrow_forward_outlined, size: 16,), successTextColor),
     BottomSheetMenu("Supprimer l'évènement", Image.asset("assets/images/events/supprimer-event-icon.png", width: 36, height: 36,), const Icon(Icons.arrow_forward_outlined, size: 16,), successTextColor),
+  ];
+
+  List<BottomSheetMenu> itemsMenuProfil = [
+    BottomSheetMenu("Mes Invitations", Image.asset("assets/images/profil/invitation.png", width: 45, height: 45,), const Icon(Icons.arrow_forward_ios, size: 20, color: kPrimaryColor,), blackColor),
+    BottomSheetMenu("Historique de paiement", Image.asset("assets/images/profil/historique.png", width: 45, height: 45,), const Icon(Icons.arrow_forward_ios, size: 20, color: kPrimaryColor,), blackColor),
+    BottomSheetMenu("Changer de mot de passe", Image.asset("assets/images/profil/password.png", width: 45, height: 45,), const Icon(Icons.arrow_forward_ios, size: 20, color: kPrimaryColor,), blackColor),
+    BottomSheetMenu("A Propos", Image.asset("assets/images/profil/apropos.png", width: 45, height: 45,), const Icon(Icons.arrow_forward_ios, size: 20, color: kPrimaryColor,), blackColor),
+    BottomSheetMenu("Emplacements (56)", Image.asset("assets/images/profil/emplacement.png", width: 45, height: 45,), const Icon(Icons.arrow_forward_ios, size: 20, color: kPrimaryColor,), blackColor),
+    BottomSheetMenu("Abonnements (22)", Image.asset("assets/images/profil/abonnement.png", width: 45, height: 45,), const Icon(Icons.arrow_forward_ios, size: 20, color: kPrimaryColor,), blackColor),
+    BottomSheetMenu("Se déconnecter", Image.asset("assets/images/profil/deconnecter.png", width: 45, height: 45,), const Icon(Icons.arrow_forward_ios, size: 20, color: kPrimaryColor,), blackColor)
   ];
 
  Widget _tabSection(BuildContext context) {

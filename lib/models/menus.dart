@@ -17,7 +17,7 @@ class HomeBottomNavigation{
   static const String eventActive ="assets/images/event-active-icon.png";
   static const String eventInactive ="assets/images/event-inactive-icon.png";
   static const String notificationInactive ="assets/images/profile-inactive-icon.png";
-  static const String notificationActive ="assets/images/profile-inactive-icon.png";
+  static const String notificationActive ="assets/images/profile-active-icon.png";
 
   static const String homeProgramInactive ="assets/images/guests/program-inactive-icon.png";
   static const String homeProgramActive ="assets/images/guests/program-active-icon.png";
@@ -42,7 +42,7 @@ class HomeBottomNavigation{
 
   static final Menus homeNotification = Menus(
       title: "Profil",
-      icon: Image.asset(notificationInactive, width: 23.75, height: 25,),
+      icon: Image.asset(notificationActive, width: 23.75, height: 25,),
       color: const Color(0xff7A7D86),
       inactiveIcon: Image.asset(notificationInactive, width: 23.75, height: 25,));
 
