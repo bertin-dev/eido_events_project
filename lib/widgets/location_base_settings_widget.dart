@@ -301,6 +301,7 @@ class LocationBaseAssociateAccountWidget extends StatefulWidget {
   final double? heightBgHeader;
   final String? bgBodyLeftSide;
   final double? dividerBgBodyLeftSide;
+  final Color? color;
 
 
   const LocationBaseAssociateAccountWidget({
@@ -323,7 +324,8 @@ class LocationBaseAssociateAccountWidget extends StatefulWidget {
     this.bgHeader = "assets/images/location_settings/bg-header-add-location.png",
     this.heightBgHeader = 125,
     this.bgBodyLeftSide,
-    this.dividerBgBodyLeftSide
+    this.dividerBgBodyLeftSide,
+    this.color
    }) : super(key: key);
 
   @override
@@ -490,7 +492,7 @@ with TickerProviderStateMixin{
               ) : null,
               // Disable opening the end drawer with a swipe gesture.
               endDrawerEnableOpenDragGesture: false,
-              backgroundColor: whiteColor,
+              backgroundColor: widget.color ?? whiteColor,
               bottomNavigationBar: widget.isBottomNav==true ? BottomNavigationBar(
 
                 /*selectedFontSize: 10,
@@ -549,10 +551,10 @@ with TickerProviderStateMixin{
               Container(
                 height: widget.heightBgHeader,
                 decoration: BoxDecoration(
-                  image: DecorationImage(
+                  image: widget.bgHeader != "" ? DecorationImage(
                     image: AssetImage(widget.bgHeader!),
                     fit: BoxFit.cover,
-                  ),
+                  ) : null,
                 ),
               ),
 

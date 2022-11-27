@@ -1,12 +1,17 @@
 import 'package:eido_events_project/constants.dart';
+import 'package:eido_events_project/providers/app.dart';
 import 'package:flutter/material.dart';
 
 import '../../widgets/custom_widgets.dart';
+import '../controller_account/controller_home_page.dart';
+import '../notifications_page.dart';
+import '../server_account/home_server_page.dart';
 import 'delegate_home_page.dart';
 
 
 class DelegateLoginStep2PageView extends StatefulWidget {
-  const DelegateLoginStep2PageView({Key? key}) : super(key: key);
+  String typeAccount;
+  DelegateLoginStep2PageView({Key? key, required this.typeAccount}) : super(key: key);
   static const String pageName = "delagate_login_step2";
 
   @override
@@ -90,8 +95,15 @@ class _DelegateLoginStep2PageViewState extends State<DelegateLoginStep2PageView>
                           text: 'Se connecter',
                           textColor: Colors.white,
                           onPressed: () async {
-                            Navigator.of(context, rootNavigator: true)
-                                      .pushNamed(DelegateHomePageView.pageName);
+
+                            if(widget.typeAccount==BaseModel.CONTROLER){
+                              Navigator.of(context).pushNamed(ControllerHomePageView.pageName);
+                            } else if (widget.typeAccount==BaseModel.DELEGUATE){
+                              Navigator.of(context).pushNamed(DelegateHomePageView.pageName);
+                            } else {
+                              Navigator.of(context).pushNamed(HomeAccountServerPageView.pageName);
+                            }
+
                           },
                         ),
                       ],

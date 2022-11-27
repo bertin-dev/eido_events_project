@@ -1,4 +1,5 @@
 import 'package:badges/badges.dart';
+import 'package:eido_events_project/pages/events/host_create/panier_items_list_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
@@ -400,7 +401,9 @@ class _ProgramEventsHomeDetailsPageViewState extends State<ProgramEventsHomeDeta
                         textColor: Colors.white,
                         textSize: 13.0,
                         onPressed: () async {
-                          //Navigator.of(context, rootNavigator: true).pushNamed(AddNewEventStep2PageView.pageName);
+                          Navigator.of(context).pushNamed(PanierItemsListPageView.pageName, arguments: {
+                          "listProgramModel" : [widget.listProgramModel]
+                          });
                         },
                       ),
                       const SizedBox(height: 24,)

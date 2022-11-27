@@ -715,10 +715,7 @@ class _HomePageViewState extends State<HomePageView> {
                         ),
                         InkWell(
                           //padding: EdgeInsets.zero,
-                            onTap: () {
-                              Navigator.of(context, rootNavigator: true)
-                                  .pushNamed(DelegateLoginPage.pageName);
-                            },
+                            onTap: () { print("calendar");},
                             child: Image.asset("assets/images/home_page/calendar-icon.png", width: 19.89, height: 20,)
                         ),
                         const SizedBox(width: 15.47,),
@@ -1614,10 +1611,11 @@ class _HomePageViewState extends State<HomePageView> {
               child: Container(
                 padding: const EdgeInsets.only(left: 10, right: 13, top: 25, bottom: 33),
                 decoration: const BoxDecoration(
-                  image: DecorationImage(
+                  color: whiteColor,
+                  /*image: DecorationImage(
                     image: AssetImage("assets/images/events/bg-homepage-bottomsheet.png"),
                     fit: BoxFit.cover,
-                  ),
+                  ),*/
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(16.0),
                     topRight: Radius.circular(16.0),

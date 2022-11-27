@@ -9,6 +9,7 @@ class TicketModel{
   late String matricule;
   late String created;
   late String createdBy;
+  late String phone;
 
   TicketModel(
       {required this.id,
@@ -16,7 +17,8 @@ class TicketModel{
         required this.unity,
         required this.matricule,
         required this.created,
-        required this.createdBy}
+        required this.createdBy,
+        required this.phone}
       );
 
 

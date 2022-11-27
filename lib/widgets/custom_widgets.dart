@@ -92,16 +92,16 @@ class _CustomButtonWithLoadingState extends State<CustomButtonWithLoading> {
           shadowColor: Colors.black, //specify the button's elevation color
           elevation: 4.0, //buttons Material shadow
           fixedSize: const Size(5.0, 1.0),
-          textStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, fontFamily: 'roboto'), //specify the button's text TextStyle
+          textStyle: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, fontFamily: 'roboto'), //specify the button's text TextStyle
           padding: const EdgeInsets.only(top: 4.0, bottom: 4.0, right: 8.0, left: 8.0), //specify the button's Padding
-          minimumSize: Size(20, 40), //specify the button's first: width and second: height
-          side: BorderSide(color: Colors.yellow, width: 2.0, style: BorderStyle.solid), //set border for the button
+          minimumSize: const Size(20, 40), //specify the button's first: width and second: height
+          side: const BorderSide(color: Colors.yellow, width: 2.0, style: BorderStyle.solid), //set border for the button
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(35.0)), // set the buttons shape. Make its birders rounded etc
           enabledMouseCursor: MouseCursor.defer, //used to construct ButtonStyle.mouseCursor
           disabledMouseCursor: MouseCursor.uncontrolled, //used to construct ButtonStyle.mouseCursor
-          visualDensity: VisualDensity(horizontal: 0.0, vertical: 0.0), //set the button's visual density
+          visualDensity: const VisualDensity(horizontal: 0.0, vertical: 0.0), //set the button's visual density
           tapTargetSize: MaterialTapTargetSize.padded, // set the MaterialTapTarget size. can set to: values, padded and shrinkWrap properties
-          animationDuration: Duration(milliseconds: 100), //the buttons animations duration
+          animationDuration: const Duration(milliseconds: 100), //the buttons animations duration
           enableFeedback: true, //to set the feedback to true or false
           alignment: Alignment.bottomCenter, //set the button's child Alignment
         ),
@@ -214,7 +214,7 @@ class _IpasswordFieldState extends State<IpasswordField> {
       textInputAction: TextInputAction.done,
       cursorColor: kPrimaryColor,
       obscureText: passwordVisible,
-      style: TextStyle(fontWeight: FontWeight.w400, color: widget.color),
+      style: TextStyle(fontWeight: FontWeight.w400, color: widget.color, fontFamily: 'Inter'),
       keyboardType: widget.keyboardType,
       decoration: InputDecoration(
         //prefixIcon: widget.leftIcon != null ? widget.leftIcon! : const Icon(Icons.lock, color: iconColor,),
@@ -238,7 +238,7 @@ class _IpasswordFieldState extends State<IpasswordField> {
             width: 1.0,
           ),
         ),
-        labelStyle: TextStyle(fontWeight: FontWeight.w400, fontSize: 15.0, color: widget.color),
+        labelStyle: TextStyle(fontWeight: FontWeight.w400, fontSize: 15.0, color: widget.color, fontFamily: 'Inter'),
         filled: true,
         //fillColor: Color.fromRGBO(255, 255, 255, 0.8),
         //contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
@@ -323,7 +323,7 @@ class _ItextFieldState extends State<ItextField> {
         primaryColor: kPrimaryColor,
       ),
       child: widget.maxLength != null ? TextFormField(
-        style: TextStyle(fontWeight: FontWeight.w400, color: widget.labelColor),
+        style: TextStyle(fontWeight: FontWeight.w400, color: widget.labelColor, fontFamily: 'Inter'),
         textInputAction: TextInputAction.next,
         cursorColor: kPrimaryColor,
         maxLength: widget.maxLength,
@@ -343,7 +343,7 @@ class _ItextFieldState extends State<ItextField> {
           hintText: widget.hintText,
           fillColor: Colors.white,
           filled: true,
-          labelStyle: TextStyle(fontWeight: FontWeight.w400, fontSize: 15.0, color: widget.labelColor),
+          labelStyle: TextStyle(fontWeight: FontWeight.w400, fontSize: 15.0, color: widget.labelColor, fontFamily: 'Inter'),
           contentPadding: const EdgeInsets.all(15.0),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12.0),
@@ -362,13 +362,13 @@ class _ItextFieldState extends State<ItextField> {
       )
           :
       TextFormField(
-        style: TextStyle(fontWeight: FontWeight.w400, color: widget.labelColor),
+        style: TextStyle(fontWeight: FontWeight.w400, color: widget.labelColor, fontFamily: 'Inter'),
         textInputAction: TextInputAction.next,
         cursorColor: kPrimaryColor,
         keyboardType: widget.keyboardType,
         decoration: InputDecoration(
           //suffixIcon: Icon(icon, color: const Color(0xff039BE5),),
-          labelStyle: TextStyle(fontWeight: FontWeight.w400, fontSize: 15.0, color: widget.labelColor),
+          labelStyle: TextStyle(fontWeight: FontWeight.w400, fontSize: 15.0, color: widget.labelColor, fontFamily: 'Inter'),
           prefixIcon: widget.imgLeftIcon != null
               ? Container(
             padding: const EdgeInsets.only(left: 15, right: 10, top: 15, bottom: 15),
@@ -477,7 +477,7 @@ class ItextFieldImgIcon extends StatelessWidget {
         primaryColor: kPrimaryColor,
       ),
       child: TextFormField(
-        style: TextStyle(fontWeight: FontWeight.w400, color: labelColor),
+        style: TextStyle(fontWeight: FontWeight.w400, color: labelColor, fontFamily: 'Inter'),
         textInputAction: TextInputAction.next,
         keyboardType: keyboardType,
         validator: validator,
@@ -513,7 +513,7 @@ class ItextFieldImgIcon extends StatelessWidget {
             child: suffix ?? const Text(''),
           )
               : null,
-          labelStyle: TextStyle(fontWeight: FontWeight.w400, fontSize: 15.0, color: labelColor),
+          labelStyle: TextStyle(fontWeight: FontWeight.w400, fontSize: 15.0, color: labelColor, fontFamily: 'Inter'),
           prefixIcon: prefix != null
               ? Container(
             padding: EdgeInsets.only(left: pLeftPreffix??0, right: pRightPreffix??0, top: pTopPreffix??0, bottom: pBottomPreffix??0),
@@ -653,7 +653,7 @@ class CustomBtnForAlert extends StatelessWidget {
             SizedBox(width: sPacingBtn!),
           },
           Text(textBtn,
-            style: TextStyle(color: textColorBtn, fontWeight: FontWeight.w700, fontSize: textSizeBtn), textAlign: TextAlign.center,),
+            style: TextStyle(color: textColorBtn, fontWeight: FontWeight.w700, fontSize: textSizeBtn, fontFamily: 'Inter'), textAlign: TextAlign.center,),
 
           if(iconRightBtn != null)...{
             SizedBox(width: sPacingBtn!),

@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import '../constants.dart';
 import '../providers/app.dart';
 import '../widgets/custom_widgets.dart';
+import 'controller_account/controller_home_page.dart';
 import 'events/host_create/program_events_home_page.dart';
 import 'location_settings/home_location_settings.dart';
 
@@ -147,8 +148,10 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                             InkWell(
                                 onTap: () {
-                                  //Navigator.of(context, rootNavigator: true).pushNamed(ForgetPasswordPageView.pageName);
-                                  Navigator.of(context).pushNamed(ProgramEventsHomePageView.pageName);
+                                  Navigator.of(context, rootNavigator: true).pushNamed(ForgetPasswordPageView.pageName);
+
+                                  //interface deja implémenté mais pas encore expoité dans une bouton
+                                  //Navigator.of(context).pushNamed(ProgramEventsHomePageView.pageName);
                                 },
                                 child: const Text("Mot de passe oublié?",
                                   style: TextStyle(color: textColor, fontStyle: FontStyle.normal,fontWeight: FontWeight.w400, fontFamily: "Inter", fontSize: 14.0), textAlign: TextAlign.right,)),

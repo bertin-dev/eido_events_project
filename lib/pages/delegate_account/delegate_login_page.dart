@@ -12,8 +12,8 @@ import 'events_page.dart';
 
 class DelegateLoginPage extends StatefulWidget {
   static const String pageName = "delagate_login";
-
-  const DelegateLoginPage({Key? key}) : super(key: key);
+  String typeAccount;
+  DelegateLoginPage({Key? key, required this.typeAccount}) : super(key: key);
   @override
   _LoginPageState createState() => _LoginPageState();
 }
@@ -155,7 +155,9 @@ class _LoginPageState extends State<DelegateLoginPage> {
                                   textColor: Colors.white,
                                   onPressed: () async {
                                     Navigator.of(context, rootNavigator: true)
-                                        .pushNamed(DelegateLoginStep2PageView.pageName);
+                                        .pushNamed(DelegateLoginStep2PageView.pageName, arguments: {
+                                          "typeAccount" : widget.typeAccount
+                                    });
                                   },
                                 ),
                               ),

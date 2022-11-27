@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../../constants.dart';
 import '../../models/ticket_model.dart';
 import '../../widgets/location_base_settings_widget.dart';
+import 'add_new_event_page.dart';
 
 class ManageTicketsPageView extends StatefulWidget {
   static const String pageName = "events/manage_tickets";
@@ -35,9 +36,9 @@ class _ManageTicketsPageViewState extends State<ManageTicketsPageView> {
             padding: const EdgeInsets.only(top: 135, left: 11, right: 10, bottom: 0),
               child: Wrap(
               children: const [
-                Text("Historique",
+                Text("Historique ",
                     style:TextStyle(fontSize: 13, color: titleProgramEventManage, fontWeight: FontWeight.w400, fontFamily: 'Inter',)),
-                Text("de paiement dôts",
+                Text("de paiement des billets",
                     style:TextStyle(fontSize: 13, color: titleProgramEventManage, fontWeight: FontWeight.w700, fontFamily: 'Inter',)),
               ],
             ),
@@ -72,6 +73,7 @@ class _ManageTicketsPageViewState extends State<ManageTicketsPageView> {
                           children: [
                             const Text("Montant cumulé",
                                 style:TextStyle(fontSize: 10, color: whiteColor, fontWeight: FontWeight.w400, fontFamily: 'Inter',)),
+                          const SizedBox(height: 4,),
                             RichText(
                               text: TextSpan(
                                 //style: TextStyle(color: Colors.red, fontSize: 16),
@@ -91,7 +93,7 @@ class _ManageTicketsPageViewState extends State<ManageTicketsPageView> {
                             ),
                           ],
                         ),
-                        const SizedBox(width: 6.37,),
+                        const SizedBox(width: 12.37,),
                         Image.asset('assets/images/events/line.png'),
                         const SizedBox(width: 42,),
                         Column(
@@ -131,7 +133,7 @@ class _ManageTicketsPageViewState extends State<ManageTicketsPageView> {
       },
       iconMenu2: "assets/images/manage_event_programs/add-icon.png",
       onPressedMenu2:() {
-        //getBottomSheet(context);
+        Navigator.of(context).pushNamed(AddNewEventPageView.pageName);
       },
       devKey: _scaffoldKey,
       fullBgImg: "",
@@ -142,12 +144,12 @@ class _ManageTicketsPageViewState extends State<ManageTicketsPageView> {
 
 
   List<TicketModel> listTicket = [
-    TicketModel(id: 1, amount: 30000, unity: "xaf", matricule: "EID458-54874", created: "25 Jan 2022", createdBy: "Eric Kong"),
-    TicketModel(id: 1, amount: 30000, unity: "xaf", matricule: "EID458-54874", created: "25 Jan 2022", createdBy: "Eric Kong"),
-    TicketModel(id: 1, amount: 30000, unity: "xaf", matricule: "EID458-54874", created: "25 Jan 2022", createdBy: "Eric Kong"),
-    TicketModel(id: 1, amount: 30000, unity: "xaf", matricule: "EID458-54874", created: "25 Jan 2022", createdBy: "Eric Kong"),
-    TicketModel(id: 1, amount: 30000, unity: "xaf", matricule: "EID458-54874", created: "25 Jan 2022", createdBy: "Eric Kong"),
-    TicketModel(id: 1, amount: 30000, unity: "xaf", matricule: "EID458-54874", created: "25 Jan 2022", createdBy: "Eric Kong"),
+    TicketModel(id: 1, amount: 30000, unity: "xaf", matricule: "EID458-54874", created: "25 Jan 2022", createdBy: "Eric Kong", phone: "+237 694 04 89 25"),
+    TicketModel(id: 1, amount: 30000, unity: "xaf", matricule: "EID458-54874", created: "25 Jan 2022", createdBy: "Eric Kong", phone: "+237 697 85 47 85"),
+    TicketModel(id: 1, amount: 30000, unity: "xaf", matricule: "EID458-54874", created: "25 Jan 2022", createdBy: "Eric Kong", phone: "+237 697 85 47 85"),
+    TicketModel(id: 1, amount: 30000, unity: "xaf", matricule: "EID458-54874", created: "25 Jan 2022", createdBy: "Eric Kong", phone: "+237 697 85 47 85"),
+    TicketModel(id: 1, amount: 30000, unity: "xaf", matricule: "EID458-54874", created: "25 Jan 2022", createdBy: "Eric Kong", phone: "+237 697 85 47 85"),
+    TicketModel(id: 1, amount: 30000, unity: "xaf", matricule: "EID458-54874", created: "25 Jan 2022", createdBy: "Eric Kong", phone: "+237 697 85 47 85"),
   ];
   
 }

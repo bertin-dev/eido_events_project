@@ -72,3 +72,12 @@ class Global{
   static final shared =Global();
   bool isInstructionView = false;
 }
+
+abstract class BaseModel {
+
+  static const String CONTROLER = "controlleur";
+  static const String DELEGUATE = "delegue";
+  static const String SERVER = "serveur";
+  static const String ADMIN = "administrateur";
+
+}

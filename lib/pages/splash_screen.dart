@@ -4,7 +4,7 @@ import 'package:eido_events_project/constants.dart';
 import 'package:eido_events_project/pages/login_page.dart';
 import 'package:flutter/material.dart';
 
-import 'onbording_page.dart';
+import 'onboarding_page.dart';
 
 //Page de chargement
 

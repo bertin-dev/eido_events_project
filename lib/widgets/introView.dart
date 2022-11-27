@@ -29,9 +29,13 @@ class IntroView extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
+              const SizedBox(height: 15,),
+              const Center(
+                child: Text("Eido", style: TextStyle(color: Color(0xff181818), fontFamily: 'Inter', fontWeight: FontWeight.w700, fontSize: 19),),
+              ),
               Container(
                 padding: const EdgeInsets.only(
-                    top: 0, bottom: 0, right: 35, left: 35),
+                    top: 0, bottom: 0, right: 38, left: 38),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -64,9 +68,7 @@ class IntroView extends StatelessWidget {
                           color: descOnBoarding),
                       textAlign: TextAlign.center,
                     ),
-                    SizedBox(
-                      height: hv * 5,
-                    ),
+                    //SizedBox(height: hv * 5,),
                   ],
                 ),
               ),
